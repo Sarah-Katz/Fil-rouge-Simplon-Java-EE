@@ -8,16 +8,14 @@ public class ConvertPanier {
 
 	public PanierDTO paniertodto(PanierDO panierdo) {
 		ConvertCommande convertcomm = new ConvertCommande();
-		PanierDTO panierdto = new PanierDTO(panierdo.getIdpanier(), panierdo.getClient(),
-				convertcomm.commandetodto(panierdo.getCommande()));
+		PanierDTO panierdto = new PanierDTO(panierdo.getIdpanier(), convertcomm.commandetodto(panierdo.getCommande()));
 		return panierdto;
 	}
-	
+
 	public PanierDO paniertodo(PanierDTO panierdto) {
 		ConvertCommande convertcomm = new ConvertCommande();
 		PanierDAOimpl panierdao = new PanierDAOimpl();
-		PanierDO panierdo = panierdao.create(convertcomm.commandetodo(panierdto.getCommande()),
-				panierdto.getClient());
+		PanierDO panierdo = panierdao.create(convertcomm.commandetodo(panierdto.getCommande()));
 		return panierdo;
 	}
 
