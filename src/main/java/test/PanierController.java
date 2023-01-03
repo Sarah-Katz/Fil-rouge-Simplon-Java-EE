@@ -17,8 +17,8 @@ import accesDonnees.DO.ProduitDO;
 @Controller
 @RequestMapping("/panier")
 public class PanierController {
-	private ClientDO client = new ClientDAOimpl().create("Katz", "Sarah", "44 rue du test", 0606060606, "mail@mail.mail", null);
-	private PanierDO panier = new PanierDAOimpl().create(null, client);
+	private PanierDO panier = new PanierDAOimpl().create(null);
+	private ClientDO client = new ClientDAOimpl().create("Katz", "Sarah", "44 rue du test", 0606060606, "mail@mail.mail", panier);
 	private List<ProduitDO> products = new ArrayList();
 
 	@GetMapping
