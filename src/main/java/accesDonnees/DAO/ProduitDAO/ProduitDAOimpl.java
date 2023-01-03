@@ -22,7 +22,7 @@ public class ProduitDAOimpl implements IProduitDAO {
 	public List<ProduitDO> findAll() {
 		EntityManager em = Util.JPA.getEntityManager();
 		@SuppressWarnings("unchecked")
-		List<ProduitDO> list = (List<ProduitDO>) em.createQuery("SELECT p FROM ProduitDO p").getResultList();
+		List<ProduitDO> list = (List<ProduitDO>) em.createQuery("SELECT p FROM ProduitDO p ORDER BY p.ref").getResultList();
 		return list;
 	}
 
