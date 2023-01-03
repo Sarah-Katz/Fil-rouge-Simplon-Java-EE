@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Panier</title>
+</head>
+<body>
+	<div th:each="prod:${products}">
+		<span th:text="${prod.nom}"></span>
+		<span th:text="${prod.description}"></span>
+		<span th:text="${prod.categorie}"></span>
+		<span th:text="${prod.ref}"></span>
+		<span th:text="${prod.prix}"></span>
+	</div>
+</body>
+</html>

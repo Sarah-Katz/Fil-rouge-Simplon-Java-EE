@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Liste Produits</title>
+</head>
+<body>
+	<a href="/prod">Créer des produits</a>
+	<div th:each="prod:${products}">
+		<span th:text="${prod.nom}"></span>
+		<span th:text="${prod.description}"></span>
+		<span th:text="${prod.categorie}"></span>
+		<span th:text="${prod.ref}"></span>
+		<span th:text="${prod.prix}"></span>
+		<a href="/panier" target="_blank">Ajouter au panier</a>
+	</div>
+</body>
+</html>
