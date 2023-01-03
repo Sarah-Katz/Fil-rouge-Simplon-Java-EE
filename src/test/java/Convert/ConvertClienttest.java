@@ -34,7 +34,7 @@ public class ConvertClienttest {
 		final ClientDAOimpl clientdao = new ClientDAOimpl();
 		final ClientDO clientdo = clientdao.create("test", "test", "test", 102, "TEST", null);
 		final PanierDAOimpl panierdao = new PanierDAOimpl();
-		final PanierDO panierdo = panierdao.create(commandedo, clientdo);
+		final PanierDO panierdo = panierdao.create(commandedo);
 		clientdo.setPanier(panierdo);
 		final ConvertClient convert = new ConvertClient();
 		ClientDTO clientdto = convert.clienttodto(clientdo);
@@ -58,7 +58,7 @@ public class ConvertClienttest {
 		final ClientDTO clientdto = new ClientDTO(1, "test", "test", "test", 102, "TEST", null);
 		final PanierDAOimpl panierdao = new PanierDAOimpl();
 		final ConvertClient convert = new ConvertClient();
-		final PanierDO panierdo = panierdao.create(commandedo, convert.clienttodo(clientdto));
+		final PanierDO panierdo = panierdao.create(commandedo);
 		clientdto.setPanier(panierdo);
 		ClientDO clientdo = convert.clienttodo(clientdto);
 		assertEquals(clientdo.getNom(), clientdto.getNom());

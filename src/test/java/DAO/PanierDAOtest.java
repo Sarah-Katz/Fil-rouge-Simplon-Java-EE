@@ -10,10 +10,8 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
-import accesDonnees.DAO.ClientDAO.ClientDAOimpl;
 import accesDonnees.DAO.CommandeDAO.CommandeDAOimpl;
 import accesDonnees.DAO.PanierDAO.PanierDAOimpl;
-import accesDonnees.DO.ClientDO;
 import accesDonnees.DO.CommandeDO;
 import accesDonnees.DO.PanierDO;
 
