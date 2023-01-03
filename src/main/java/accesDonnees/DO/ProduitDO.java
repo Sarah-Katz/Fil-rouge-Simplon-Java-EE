@@ -34,7 +34,7 @@ public class ProduitDO {
 	@Column(name = "prix")
 	private double prix;
 
-	ProduitDO() {
+	public ProduitDO() {
 	}
 
 	/**
