@@ -11,10 +11,10 @@ import accesDonnees.DO.PanierDO;
 
 public class PanierDAOimpl implements IPanierDAO {
 
-	public PanierDO create(final CommandeDO commande, final ClientDO client) {
+	public PanierDO create(final CommandeDO commande) {
 		final EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
-		final PanierDO panier = new PanierDO(client, commande);
+		final PanierDO panier = new PanierDO(commande);
 		em.persist(panier);
 		em.getTransaction().commit();
 		return panier;
@@ -43,17 +43,6 @@ public class PanierDAOimpl implements IPanierDAO {
 		query.setParameter("id", id);
 		final PanierDO panier = (PanierDO) query.getSingleResult();
 		panier.setCommande(commande);
-		em.getTransaction().commit();
-		return panier;
-	}
-
-	public PanierDO updateClient(final int id, final ClientDO client) {
-		final EntityManager em = Util.JPA.getEntityManager();
-		em.getTransaction().begin();
-		final Query query = em.createQuery("SELECT p FROM PanierDO p WHERE p.id = :id");
-		query.setParameter("id", id);
-		final PanierDO panier = (PanierDO) query.getSingleResult();
-		panier.setClient(client);
 		em.getTransaction().commit();
 		return panier;
 	}

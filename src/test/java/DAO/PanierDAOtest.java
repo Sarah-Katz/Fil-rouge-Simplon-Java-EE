@@ -25,8 +25,7 @@ public class PanierDAOtest {
 	@Order(1)
 	public void testPanierDOcreate() {
 		final CommandeDO commande = new CommandeDAOimpl().create(null, null, 0);
-		final ClientDO client = new ClientDAOimpl().create("nom", "prenom", "adresse", 06, "mail", null);
-		final PanierDO panier = PANIERDAOIMPL.create(commande, client);
+		final PanierDO panier = PANIERDAOIMPL.create(commande);
 		assertEquals(commande, panier.getCommande());
 	}
 
@@ -59,30 +58,14 @@ public class PanierDAOtest {
 
 	@Test
 	@Order(4)
-	public void testPanierDOupdateClient() {
-		final List<PanierDO> liste = PANIERDAOIMPL.findAll();
-		final CommandeDO commande = liste.get(0).getCommande();
-		final ClientDO client = liste.get(0).getClient();
-		final List<PanierDO> panierliste = PANIERDAOIMPL.findByCommande(commande);
-		final PanierDO panier = panierliste.get(0);
-		final int id = panier.getIdpanier();
-		PANIERDAOIMPL.updateClient(id, client);
-		assertEquals(client, panier.getClient());
-	}
-
-	@Test
-	@Order(5)
 	public void testAchatDOdelete() {
 		final List<PanierDO> liste = PANIERDAOIMPL.findAll();
 		final CommandeDO commande = liste.get(0).getCommande();
 		final List<PanierDO> panierliste = PANIERDAOIMPL.findByCommande(commande);
 		final PanierDO panier = panierliste.get(0);
-		final int idclient = panier.getClient().getIdclient();
 		final int idcomm = panier.getCommande().getIdcomm();
 		final int idpanier = panier.getIdpanier();
-		ClientDAOimpl clientdao = new ClientDAOimpl();
 		PANIERDAOIMPL.delete(idpanier);
-		clientdao.delete(idclient);
 		CommandeDAOimpl commandedao = new CommandeDAOimpl();
 		commandedao.delete(idcomm);
 	}

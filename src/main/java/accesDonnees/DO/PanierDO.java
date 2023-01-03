@@ -18,14 +18,11 @@ import lombok.Data;
  */
 @Entity
 @Table(name = "panier")
-@Data
-public class PanierDO {
+public class PanierDO extends ClientDO{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idpanier")
 	private int idpanier;
-	@OneToOne
-	private ClientDO client;
 	@OneToOne
 	private CommandeDO commande;
 
@@ -38,8 +35,35 @@ public class PanierDO {
 	 * @param client   le client associé au panier
 	 * @param commande la commande associée au panier
 	 */
-	public PanierDO(ClientDO client, CommandeDO commande) {
-		this.client = client;
+	public PanierDO(final CommandeDO commande) {
+		this.commande = commande;
+	}
+
+	/**
+	 * @return the idpanier
+	 */
+	public int getIdpanier() {
+		return idpanier;
+	}
+
+	/**
+	 * @param idpanier the idpanier to set
+	 */
+	public void setIdpanier(int idpanier) {
+		this.idpanier = idpanier;
+	}
+
+	/**
+	 * @return the commande
+	 */
+	public CommandeDO getCommande() {
+		return commande;
+	}
+
+	/**
+	 * @param commande the commande to set
+	 */
+	public void setCommande(CommandeDO commande) {
 		this.commande = commande;
 	}
 
