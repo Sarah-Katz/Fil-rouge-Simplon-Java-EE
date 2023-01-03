@@ -19,7 +19,6 @@ import lombok.Data;
  *
  */
 @Entity
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 @Table(name = "client")
 @Data
 public class ClientDO {
