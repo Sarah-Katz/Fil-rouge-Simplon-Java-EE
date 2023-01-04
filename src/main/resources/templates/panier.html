@@ -4,17 +4,24 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Panier</title>
 </head>
 
 <body>
+	<a href="/prodlist">Retour liste produits</a><br>
+	<form action="/achat" method="get">
+		<button type="submit">Valider le panier</button>
+	</form>
 	<div class="produit" th:each="prod:${products}">
 		<span th:text="${prod.nom}"></span>
 		<span th:text="${prod.description}"></span>
 		<span th:text="${prod.categorie}"></span>
 		<span th:text="${prod.prix}"></span><br>
-		<span>---------------------</span>
+		<form action="/panier" method="post">
+			<input type="hidden" name="id" th:value="${prod.idprod}">
+			<button type="submit">Retirer du panier</button>
+		</form>
 	</div>
 </body>
 

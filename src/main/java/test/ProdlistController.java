@@ -2,7 +2,9 @@ package test;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,29 +33,22 @@ public class ProdlistController {
 
 	@GetMapping
 	public String getProducts(Model model) {
-		final List<CommandeDO> commlist = COMMDAO.findAll();
-		products.removeAll(products);
-		List<ProduitDO> listdb = PRODDAO.findAll();
-		int lastRef = 0;
-		for (CommandeDO c : commlist) {
-			List<ProduitDO> commprodlist = c.getListeprod();
-			for (ProduitDO pl : commprodlist) {
-				for (ProduitDO p : listdb) {
-					if (p.getRef() != lastRef && p.getIdprod() != pl.getIdprod()) {
-						products.add(p);
-						lastRef = p.getRef();
-					}
-				}
-			}
-		}
-		products.addAll(listdb);
-		model.addAttribute("products", products);
-		return "prodlist";
+	    Set<ProduitDO> products = new HashSet<>();
+	    List<ProduitDO> listdb = PRODDAO.findAll();
+	    Set<Integer> refs = new HashSet<>();
+	    for (ProduitDO p : listdb) {
+	        if (!p.isIncomm() && !refs.contains(p.getRef())) {
+	            products.add(p);
+	            refs.add(p.getRef());
+	        }
+	    }
+	    model.addAttribute("products", products);
+	    return "prodlist";
 	}
 
 	@PostMapping
-	public String addToCart(@RequestParam int ref) {
-		List<ProduitDO> productlist = PRODDAO.findByRef(ref);
+	public String addToCart(@RequestParam int id) {
+		final ProduitDO product = PRODDAO.findById(id);
 		final ClientDO client = new ClientDAOimpl().findByMail("mail@mail.mail");
 		final Date date = new Date(System.currentTimeMillis());
 		List<ProduitDO> panierlist = new ArrayList<>();
@@ -65,10 +60,9 @@ public class ProdlistController {
 		} else {
 			commande = client.getPanier().getCommande();
 		}
-		if (productlist.size() > 0) {
-			commande.getListeprod().add(productlist.get(0));
-			COMMDAO.updateProduit(commande.getIdcomm(), commande.getListeprod());
-		}
+		PRODDAO.updateincomm(id, true);
+		commande.getListeprod().add(product);
+		COMMDAO.updateProduit(commande.getIdcomm(), commande.getListeprod());
 		return "redirect:prodlist";
 	}
 

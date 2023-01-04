@@ -17,9 +17,9 @@
 			<h2 class="nom" th:text="${prod.nom}"></h2><br>
 			<span class="description" th:text="${prod.description}"></span><br>
 			<span class="categorie" th:text="${prod.categorie}"></span><br>
-			<span class="prix" th:text="${prod.prix} + €"></span><br>			
+			<span class="prix" th:text="${prod.prix} + €"></span><br>		
 			<form action="/prodlist" method="post">
-				<input type="hidden" name="productId" th:value="${prod.idprod}">
+				<input type="hidden" name="id" th:value="${prod.idprod}">
 				<button type="submit">Ajouter au panier</button>
 			</form>
 		</div>
