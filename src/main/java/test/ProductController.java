@@ -17,7 +17,7 @@ import accesDonnees.DO.ProduitDO;
 @RequestMapping("/prod")
 public class ProductController {
 
-	private List<ProduitDO> products = new ArrayList();
+	private List<ProduitDO> products = new ArrayList<ProduitDO>();
 	private final ProduitDAOimpl PRODDAO = new ProduitDAOimpl();
 
 	@GetMapping
@@ -32,20 +32,5 @@ public class ProductController {
 				product.getRef(), product.getPrix());
 		products.add(prod);
 		return "redirect:/prod";
-	}
-
-	@GetMapping("/prodlist")
-	public String getProducts(Model model) {
-		products.removeAll(products);
-		List<ProduitDO> listdb = PRODDAO.findAll();
-		int lastRef = 0;
-		for (ProduitDO p : listdb) {
-			if (p.getRef() != lastRef) {
-				products.add(p);
-				lastRef = p.getRef();
-			}
-		}
-		model.addAttribute("products", products);
-		return "prodlist";
 	}
 }
