@@ -11,7 +11,7 @@ public interface IClientDAO {
 	
 	public List<ClientDO> findAll();
 	
-	public List<ClientDO> findByMail(final String mail);
+	public ClientDO findByMail(final String mail);
 	
 	public ClientDO updateNom(final int id, final String nom);
 	
