@@ -30,7 +30,7 @@ public class ConvertClienttest {
 		listeprod.add(produit1);
 		listeprod.add(produit2);
 		final CommandeDAOimpl commandedao = new CommandeDAOimpl();
-		final CommandeDO commandedo = commandedao.create(date, listeprod, 10);
+		final CommandeDO commandedo = commandedao.create(date, listeprod);
 		final ClientDAOimpl clientdao = new ClientDAOimpl();
 		final ClientDO clientdo = clientdao.create("test", "test", "test", 102, "TEST", null);
 		final PanierDAOimpl panierdao = new PanierDAOimpl();
@@ -54,7 +54,7 @@ public class ConvertClienttest {
 		listeprod.add(produit1);
 		listeprod.add(produit2);
 		final CommandeDAOimpl commandedao = new CommandeDAOimpl();
-		final CommandeDO commandedo = commandedao.create(date, listeprod, 10);
+		final CommandeDO commandedo = commandedao.create(date, listeprod);
 		final ClientDTO clientdto = new ClientDTO(1, "test", "test", "test", 102, "TEST", null);
 		final PanierDAOimpl panierdao = new PanierDAOimpl();
 		final ConvertClient convert = new ConvertClient();

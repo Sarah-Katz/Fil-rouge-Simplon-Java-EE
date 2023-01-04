@@ -26,12 +26,11 @@ class ConvertCommandetest {
 		listeprod.add(produit1);
 		listeprod.add(produit2);
 		final CommandeDAOimpl commandedao = new CommandeDAOimpl();
-		final CommandeDO commandedo = commandedao.create(date, listeprod, 10);
+		final CommandeDO commandedo = commandedao.create(date, listeprod);
 		final ConvertCommande convert = new ConvertCommande();
 		CommandeDTO commandedto = convert.commandetodto(commandedo);
 		assertEquals(commandedo.getDate(), commandedto.getDate());
 		assertEquals(commandedo.getListeprod(), commandedto.getListeprod());
-		assertEquals(commandedo.getPrix(), commandedto.getPrix());
 	}
 	
 	@Test
@@ -42,12 +41,11 @@ class ConvertCommandetest {
 		final List<ProduitDO> listeprod = new ArrayList<ProduitDO>();
 		listeprod.add(produit1);
 		listeprod.add(produit2);
-		final CommandeDTO commandedto = new CommandeDTO(1, date, listeprod, 10);
+		final CommandeDTO commandedto = new CommandeDTO(1, date, listeprod);
 		final ConvertCommande convert = new ConvertCommande();
 		CommandeDO commandedo = convert.commandetodo(commandedto);
 		assertEquals(commandedo.getDate(), commandedto.getDate());
 		assertEquals(commandedo.getListeprod(), commandedto.getListeprod());
-		assertEquals(commandedo.getPrix(), commandedto.getPrix());
 	}
 
 }

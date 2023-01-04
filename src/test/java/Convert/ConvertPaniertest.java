@@ -29,7 +29,7 @@ class ConvertPaniertest {
 		listeprod.add(produit1);
 		listeprod.add(produit2);
 		final CommandeDAOimpl commandedao = new CommandeDAOimpl();
-		final CommandeDO commandedo = commandedao.create(date, listeprod, 10);
+		final CommandeDO commandedo = commandedao.create(date, listeprod);
 		final PanierDAOimpl panierdao = new PanierDAOimpl();
 		final PanierDO panierdo = panierdao.create(commandedo);
 		final ConvertPanier convert = new ConvertPanier();
@@ -45,7 +45,7 @@ class ConvertPaniertest {
 		final List<ProduitDO> listeprod = new ArrayList<ProduitDO>();
 		listeprod.add(produit1);
 		listeprod.add(produit2);
-		final CommandeDTO commandedto = new CommandeDTO(1, date, listeprod, 10);
+		final CommandeDTO commandedto = new CommandeDTO(1, date, listeprod);
 		final PanierDTO panierdto = new PanierDTO(1, commandedto);
 		final ConvertPanier convert = new ConvertPanier();
 		PanierDO panierdo = convert.paniertodo(panierdto);
