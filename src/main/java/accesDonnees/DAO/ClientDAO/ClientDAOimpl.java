@@ -25,11 +25,10 @@ public class ClientDAOimpl implements IClientDAO {
 		return list;
 	}
 
-	public List<ClientDO> findByMail(final String mail) {
-		@SuppressWarnings("unchecked")
-		List<ClientDO> list = EM.createQuery("SELECT c FROM ClientDO c WHERE c.mail = :mail").setParameter("mail", mail)
-				.getResultList();
-		return list;
+	public ClientDO findByMail(final String mail) {
+		ClientDO client = (ClientDO) EM.createQuery("SELECT c FROM ClientDO c WHERE c.mail = :mail").setParameter("mail", mail)
+				.getSingleResult();
+		return client;
 	}
 
 	public ClientDO updateNom(final int id, final String nom) {
