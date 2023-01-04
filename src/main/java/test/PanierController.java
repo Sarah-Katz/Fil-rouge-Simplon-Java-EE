@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import accesDonnees.DAO.ClientDAO.ClientDAOimpl;
-import accesDonnees.DAO.PanierDAO.PanierDAOimpl;
 import accesDonnees.DO.ClientDO;
 import accesDonnees.DO.PanierDO;
 import accesDonnees.DO.ProduitDO;
@@ -17,18 +16,20 @@ import accesDonnees.DO.ProduitDO;
 @Controller
 @RequestMapping("/panier")
 public class PanierController {
-	private PanierDO panier = new PanierDAOimpl().create(null);
-	private ClientDO client = new ClientDAOimpl().create("Katz", "Sarah", "44 rue du test", 0606060606, "mail@mail.mail", panier);
 	
-	private List<ProduitDO> products = new ArrayList();
+	private List<ProduitDO> products = new ArrayList<ProduitDO>();
 
 	@GetMapping
 	public String showPanier(Model model) {
+		products.removeAll(products);
+		final ClientDO client = new ClientDAOimpl().findByMail("mail@mail.mail");
+		final PanierDO panier = client.getPanier(); 
 		model.addAttribute("panier", panier);
-		List<ProduitDO> listprod = panier.getCommande().getListeprod();
+		final List<ProduitDO> listprod = panier.getCommande().getListeprod();
 		for (ProduitDO p : listprod) {
 			products.add(p);
 		}
+		model.addAttribute("products", products);
 		return "panier";
 	}
 }

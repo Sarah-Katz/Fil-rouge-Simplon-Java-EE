@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import accesDonnees.DAO.ClientDAO.ClientDAOimpl;
 import accesDonnees.DAO.CommandeDAO.CommandeDAOimpl;
+import accesDonnees.DAO.PanierDAO.PanierDAOimpl;
 import accesDonnees.DAO.ProduitDAO.ProduitDAOimpl;
 import accesDonnees.DO.ClientDO;
 import accesDonnees.DO.CommandeDO;
+import accesDonnees.DO.PanierDO;
 import accesDonnees.DO.ProduitDO;
 
 @Controller
@@ -24,6 +26,7 @@ public class ProdlistController {
 
 	private List<ProduitDO> products = new ArrayList<ProduitDO>();
 	private final ProduitDAOimpl PRODDAO = new ProduitDAOimpl();
+	private final PanierDAOimpl PANIERDAO = new PanierDAOimpl();
 
 	@GetMapping("/prodlist")
 	public String getProducts(Model model) {
@@ -48,7 +51,8 @@ public class ProdlistController {
 		CommandeDO commande = null;
 		if (client.getPanier().getCommande() == null) {
 			commande = new CommandeDAOimpl().create(date, products);
-			client.getPanier().setCommande(commande);
+			PanierDO panier = client.getPanier();
+			PANIERDAO.updateCommande(panier.getIdpanier(), commande);
 		} else {
 			commande = client.getPanier().getCommande();
 		}
