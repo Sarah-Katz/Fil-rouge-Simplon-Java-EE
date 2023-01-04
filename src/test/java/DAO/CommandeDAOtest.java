@@ -72,7 +72,7 @@ class CommandeDAOtest {
 		List<ProduitDO> nouveau_produit = new ArrayList<ProduitDO>();
 		ancien_produit.add(produit2);
 		CommandeDAOimpl commandedao = new CommandeDAOimpl();
-		CommandeDO commande = commandedao.updateProduit(ancien_produit, nouveau_produit);
+		CommandeDO commande = commandedao.updateProduit(1, nouveau_produit);
 		
 		assertEquals(nouveau_produit,commande.getListeprod());
 	}

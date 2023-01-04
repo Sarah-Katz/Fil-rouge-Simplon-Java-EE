@@ -30,6 +30,8 @@ public class ProduitDO {
 	private int ref;
 	@Column(name = "prix")
 	private double prix;
+	@Column(name = "incomm")
+	private boolean incomm;
 
 	public ProduitDO() {
 	}
@@ -82,6 +84,14 @@ public class ProduitDO {
 		this.prix = prix;
 	}
 
+	public boolean isIncomm() {
+		return incomm;
+	}
+
+	public void setIncomm(boolean incomm) {
+		this.incomm = incomm;
+	}
+
 	/**
 	 * Constructeur permettant de créer un produit avec tous ses attributs.
 	 *
@@ -97,6 +107,7 @@ public class ProduitDO {
 		this.categorie = cate;
 		this.ref = ref;
 		this.prix = prix;
+		this.incomm = false;
 	}
 
 }
