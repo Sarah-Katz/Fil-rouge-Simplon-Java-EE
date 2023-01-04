@@ -121,5 +121,17 @@ public class ProduitDAOimpl implements IProduitDAO {
 		em.getTransaction().commit();
 		return produit;
 	}
+	
+	public ProduitDO updateincomm(final int id, final boolean incomm) {
+		EntityManager em = Util.JPA.getEntityManager();
+		em.getTransaction().begin();
+		Query query = em.createQuery("SELECT p from ProduitDO p where p.idprod =:id");
+		query.setParameter("id", id);
+		ProduitDO produit = (ProduitDO) query.getSingleResult();
+		produit.setIncomm(incomm);
+		em.merge(produit);
+		em.getTransaction().commit();
+		return produit;
+	}
 
 }
