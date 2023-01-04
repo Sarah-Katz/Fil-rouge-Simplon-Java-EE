@@ -39,11 +39,11 @@ public class CommandeDAOimpl implements ICommandeDAO {
 		return commande;
 	}
 
-	public CommandeDO updateProduit(final List<ProduitDO> ancien_produit, final List<ProduitDO> nouveau_produit) {
+	public CommandeDO updateProduit(final int id, final List<ProduitDO> nouveau_produit) {
 		EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
-		Query query = em.createQuery("SELECT c from CommandeDO c where c.commande =:commande");
-		query.setParameter("commande", ancien_produit);
+		Query query = em.createQuery("SELECT c from CommandeDO c where c.idcomm = :id");
+		query.setParameter("id", id);
 		CommandeDO commande = (CommandeDO) query.getSingleResult();
 		commande.setListeprod(nouveau_produit);
 		em.getTransaction().commit();

@@ -14,7 +14,7 @@ public interface ICommandeDAO {
 
 	public CommandeDO updateDate(final Date ancien_date, final Date nouveau_date);
 
-	public CommandeDO updateProduit(final List<ProduitDO> ancien_produit, final List<ProduitDO> nouveau_produit);
+	public CommandeDO updateProduit(final int id, final List<ProduitDO> nouveau_produit);
 	
 	public void delete(final int id);
 }
