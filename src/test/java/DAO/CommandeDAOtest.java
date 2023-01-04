@@ -27,13 +27,11 @@ class CommandeDAOtest {
 		ProduitDO produit = produitdao.create("jean", "description", "categorie", 1, 3000);
 		List<ProduitDO> listprod = new ArrayList<ProduitDO>();
 		listprod.add(produit);
-		double prix = 2000;
 		CommandeDAOimpl commandedao = new CommandeDAOimpl();
-		CommandeDO commande = commandedao.create(date, listprod, prix);
+		CommandeDO commande = commandedao.create(date, listprod);
 		
 		assertEquals(date,commande.getDate());
 		assertEquals(listprod,commande.getListeprod());
-		assertEquals(prix,commande.getPrix());
 	}
 	
 	@Test

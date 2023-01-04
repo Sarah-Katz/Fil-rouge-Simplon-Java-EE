@@ -29,8 +29,6 @@ public class CommandeDO {
 	private int idcomm;
 	@Column(name = "datecomm")
 	private Date date;
-	@Column(name = "prixcomm")
-	private double prix;
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "commande")
 	private List<ProduitDO> listeprod = new ArrayList<ProduitDO>();
@@ -64,18 +62,6 @@ public class CommandeDO {
 
 
 
-	public double getPrix() {
-		return prix;
-	}
-
-
-
-	public void setPrix(double prix) {
-		this.prix = prix;
-	}
-
-
-
 	public List<ProduitDO> getListeprod() {
 		return listeprod;
 	}
@@ -95,10 +81,9 @@ public class CommandeDO {
 	 * @param listeprod la liste des produits de la commande
 	 * @param prix      le prix total de la commande
 	 */
-	public CommandeDO(Date date, List<ProduitDO> listeprod, double prix) {
+	public CommandeDO(Date date, List<ProduitDO> listeprod) {
 		this.date = date;
 		this.listeprod = listeprod;
-		this.prix = prix;
 	}
 
 }

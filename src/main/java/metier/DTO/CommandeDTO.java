@@ -18,7 +18,6 @@ public class CommandeDTO {
 	
 	private int idcomm;
 	private Date date;
-	private double prix;
 	private List<ProduitDO> listeprod = new ArrayList<ProduitDO>();
 
 	CommandeDTO() {
@@ -31,11 +30,10 @@ public class CommandeDTO {
 	 * @param listeprod la liste des produits de la commande
 	 * @param prix      le prix total de la commande
 	 */
-	public CommandeDTO(int idcomm, Date date, List<ProduitDO> listeprod, double prix) {
+	public CommandeDTO(int idcomm, Date date, List<ProduitDO> listeprod) {
 		this.idcomm = idcomm;
 		this.date = date;
 		this.listeprod = listeprod;
-		this.prix = prix;
 	}
 
 	public int getIdcomm() {
@@ -52,14 +50,6 @@ public class CommandeDTO {
 
 	public void setDate(Date date) {
 		this.date = date;
-	}
-
-	public double getPrix() {
-		return prix;
-	}
-
-	public void setPrix(double prix) {
-		this.prix = prix;
 	}
 
 	public List<ProduitDO> getListeprod() {

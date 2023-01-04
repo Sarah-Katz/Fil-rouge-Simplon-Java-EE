@@ -12,10 +12,10 @@ import accesDonnees.DO.ProduitDO;
 
 public class CommandeDAOimpl implements ICommandeDAO {
 
-	public CommandeDO create(final Date date, final List<ProduitDO> listeprod, final double prix) {
+	public CommandeDO create(final Date date, final List<ProduitDO> listeprod) {
 		EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
-		CommandeDO commande = new CommandeDO(date, listeprod, prix);
+		CommandeDO commande = new CommandeDO(date, listeprod);
 		em.persist(commande);
 		em.getTransaction().commit();
 		return commande;
@@ -46,17 +46,6 @@ public class CommandeDAOimpl implements ICommandeDAO {
 		query.setParameter("commande", ancien_produit);
 		CommandeDO commande = (CommandeDO) query.getSingleResult();
 		commande.setListeprod(nouveau_produit);
-		em.getTransaction().commit();
-		return commande;
-	}
-
-	public CommandeDO updatePrix(final double ancien_prix, final double nouveau_prix) {
-		EntityManager em = Util.JPA.getEntityManager();
-		em.getTransaction().begin();
-		Query query = em.createQuery("SELECT c from CommandeDO c where c.prix =:prix");
-		query.setParameter("prix", ancien_prix);
-		CommandeDO commande = (CommandeDO) query.getSingleResult();
-		commande.setPrix(nouveau_prix);
 		em.getTransaction().commit();
 		return commande;
 	}
