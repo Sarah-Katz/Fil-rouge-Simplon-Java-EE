@@ -11,8 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import lombok.Data;
-
 /**
  * Classe représentant un achat dans le système de gestion du stock.
  *
@@ -21,7 +19,6 @@ import lombok.Data;
  */
 @Entity
 @Table(name = "achat")
-@Data
 public class AchatDO {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,6 +38,80 @@ public class AchatDO {
 
 	AchatDO() {
 	}
+	
+	
+
+	public int getIdachat() {
+		return idachat;
+	}
+
+
+
+	public void setIdachat(int idachat) {
+		this.idachat = idachat;
+	}
+
+
+
+	public Date getDateachat() {
+		return dateachat;
+	}
+
+
+
+	public void setDateachat(Date dateachat) {
+		this.dateachat = dateachat;
+	}
+
+
+
+	public int getQuantite() {
+		return quantite;
+	}
+
+
+
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
+	}
+
+
+
+	public double getPrix() {
+		return prix;
+	}
+
+
+
+	public void setPrix(double prix) {
+		this.prix = prix;
+	}
+
+
+
+	public ProduitDO getProduit() {
+		return produit;
+	}
+
+
+
+	public void setProduit(ProduitDO produit) {
+		this.produit = produit;
+	}
+
+
+
+	public FournisseurDO getFournisseur() {
+		return fournisseur;
+	}
+
+
+
+	public void setFournisseur(FournisseurDO fournisseur) {
+		this.fournisseur = fournisseur;
+	}
+
+
 
 	/**
 	 * Constructeur de la classe.

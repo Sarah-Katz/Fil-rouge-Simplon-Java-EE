@@ -14,8 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.Data;
-
 /**
  * Classe représentant une commande.
  *
@@ -24,7 +22,6 @@ import lombok.Data;
  */
 @Entity
 @Table(name = "commande")
-@Data
 public class CommandeDO {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,6 +37,56 @@ public class CommandeDO {
 
 	CommandeDO() {
 	}
+	
+	
+
+	public int getIdcomm() {
+		return idcomm;
+	}
+
+
+
+	public void setIdcomm(int idcomm) {
+		this.idcomm = idcomm;
+	}
+
+
+
+	public Date getDate() {
+		return date;
+	}
+
+
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+
+
+	public double getPrix() {
+		return prix;
+	}
+
+
+
+	public void setPrix(double prix) {
+		this.prix = prix;
+	}
+
+
+
+	public List<ProduitDO> getListeprod() {
+		return listeprod;
+	}
+
+
+
+	public void setListeprod(List<ProduitDO> listeprod) {
+		this.listeprod = listeprod;
+	}
+
+
 
 	/**
 	 * Constructeur permettant de créer une nouvelle commande.

@@ -10,7 +10,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import lombok.Data;
 
 /**
  * Classe représentant un fournisseur.
@@ -20,7 +19,6 @@ import lombok.Data;
  */
 @Entity
 @Table(name = "fournisseur")
-@Data
 public class FournisseurDO {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -2,7 +2,6 @@ package accesDonnees.DAO.PanierDAO;
 
 import java.util.List;
 
-import accesDonnees.DO.ClientDO;
 import accesDonnees.DO.CommandeDO;
 import accesDonnees.DO.PanierDO;
 
