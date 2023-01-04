@@ -31,7 +31,7 @@ public class ClientDO {
 	private int tel;
 	@Column(name = "mail")
 	private String mail;
-	@OneToOne(mappedBy = "commande")
+	@OneToOne
 	private PanierDO panier;
 
 	ClientDO() {
