@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 /**
  * Classe représentant un produit.
  *
@@ -34,80 +33,54 @@ public class ProduitDO {
 
 	public ProduitDO() {
 	}
-	
-	
 
 	public int getIdprod() {
 		return idprod;
 	}
 
-
-
 	public void setIdprod(int idprod) {
 		this.idprod = idprod;
 	}
-
-
 
 	public String getNom() {
 		return nom;
 	}
 
-
-
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-
-
 
 	public String getDescription() {
 		return description;
 	}
 
-
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-
 
 	public String getCategorie() {
 		return categorie;
 	}
 
-
-
 	public void setCategorie(String categorie) {
 		this.categorie = categorie;
 	}
-
-
 
 	public int getRef() {
 		return ref;
 	}
 
-
-
 	public void setRef(int ref) {
 		this.ref = ref;
 	}
-
-
 
 	public double getPrix() {
 		return prix;
 	}
 
-
-
 	public void setPrix(double prix) {
 		this.prix = prix;
 	}
-
-
 
 	/**
 	 * Constructeur permettant de créer un produit avec tous ses attributs.
@@ -125,6 +98,5 @@ public class ProduitDO {
 		this.ref = ref;
 		this.prix = prix;
 	}
-
 
 }

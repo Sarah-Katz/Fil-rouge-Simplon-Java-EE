@@ -22,10 +22,11 @@ public class ProduitDAOimpl implements IProduitDAO {
 	public List<ProduitDO> findAll() {
 		EntityManager em = Util.JPA.getEntityManager();
 		@SuppressWarnings("unchecked")
-		List<ProduitDO> list = (List<ProduitDO>) em.createQuery("SELECT p FROM ProduitDO p ORDER BY p.ref").getResultList();
+		List<ProduitDO> list = (List<ProduitDO>) em.createQuery("SELECT p FROM ProduitDO p ORDER BY p.ref")
+				.getResultList();
 		return list;
 	}
-	
+
 	public ProduitDO findById(final int id) {
 		EntityManager em = Util.JPA.getEntityManager();
 		Query query = em.createQuery("SELECT p FROM ProduitDO p where p.idprod = :id");
@@ -34,15 +35,24 @@ public class ProduitDAOimpl implements IProduitDAO {
 		return prod;
 	}
 
-	public List<ProduitDO> findByName(final String nom) {
+	public List<ProduitDO> findByRef(final int ref) {
 		EntityManager em = Util.JPA.getEntityManager();
-		Query query = em.createQuery("SELECT p FROM ProduitDO p where p.nom LIKE :nom");
-		query.setParameter("nom", "%"+nom+"%");
+		Query query = em.createQuery("SELECT p FROM ProduitDO p where p.ref = :ref");
+		query.setParameter("ref", ref);
 		@SuppressWarnings("unchecked")
 		List<ProduitDO> list = query.getResultList();
 		return list;
 	}
-	
+
+	public List<ProduitDO> findByName(final String nom) {
+		EntityManager em = Util.JPA.getEntityManager();
+		Query query = em.createQuery("SELECT p FROM ProduitDO p where p.nom LIKE :nom");
+		query.setParameter("nom", "%" + nom + "%");
+		@SuppressWarnings("unchecked")
+		List<ProduitDO> list = query.getResultList();
+		return list;
+	}
+
 	public void delete(final int id) {
 		EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();

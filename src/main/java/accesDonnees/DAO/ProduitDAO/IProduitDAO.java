@@ -9,6 +9,7 @@ public interface IProduitDAO {
 			final double prix);
 	public List<ProduitDO> findAll();
 	public ProduitDO findById(final int id);
+	public List<ProduitDO> findByRef(final int ref);
 	public List<ProduitDO> findByName(final String nom);
 	public void delete(final int id);
 	public ProduitDO updateNom(final String ancien_nom, final String nouveau_nom);

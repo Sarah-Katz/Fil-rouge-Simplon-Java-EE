@@ -27,16 +27,23 @@ public class ProdlistController {
 	private List<ProduitDO> products = new ArrayList<ProduitDO>();
 	private final ProduitDAOimpl PRODDAO = new ProduitDAOimpl();
 	private final PanierDAOimpl PANIERDAO = new PanierDAOimpl();
+	private final CommandeDAOimpl COMMDAO = new CommandeDAOimpl();
 
 	@GetMapping
 	public String getProducts(Model model) {
+		final List<CommandeDO> commlist = COMMDAO.findAll();
 		products.removeAll(products);
 		List<ProduitDO> listdb = PRODDAO.findAll();
 		int lastRef = 0;
-		for (ProduitDO p : listdb) {
-			if (p.getRef() != lastRef) {
-				products.add(p);
-				lastRef = p.getRef();
+		for (CommandeDO c : commlist) {
+			List<ProduitDO> commprodlist = c.getListeprod();
+			for (ProduitDO pl : commprodlist) {
+				for (ProduitDO p : listdb) {
+					if (p.getRef() != lastRef && p.getIdprod() != pl.getIdprod()) {
+						products.add(p);
+						lastRef = p.getRef();
+					}
+				}
 			}
 		}
 		products.addAll(listdb);
@@ -45,8 +52,8 @@ public class ProdlistController {
 	}
 
 	@PostMapping
-	public String addToCart(@RequestParam int productId) {
-		ProduitDO product = PRODDAO.findById(productId);
+	public String addToCart(@RequestParam int ref) {
+		List<ProduitDO> productlist = PRODDAO.findByRef(ref);
 		final ClientDO client = new ClientDAOimpl().findByMail("mail@mail.mail");
 		final Date date = new Date(System.currentTimeMillis());
 		List<ProduitDO> panierlist = new ArrayList<>();
@@ -58,7 +65,10 @@ public class ProdlistController {
 		} else {
 			commande = client.getPanier().getCommande();
 		}
-		commande.getListeprod().add(product);
+		if (productlist.size() > 0) {
+			commande.getListeprod().add(productlist.get(0));
+			COMMDAO.updateProduit(commande.getIdcomm(), commande.getListeprod());
+		}
 		return "redirect:prodlist";
 	}
 
