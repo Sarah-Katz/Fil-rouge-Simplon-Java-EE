@@ -8,6 +8,7 @@ public interface IProduitDAO {
 	public ProduitDO create(final String nom, final String desc, final String categorie, final int ref,
 			final double prix);
 	public List<ProduitDO> findAll();
+	public ProduitDO findById(final int id);
 	public List<ProduitDO> findByName(final String nom);
 	public void delete(final int id);
 	public ProduitDO updateNom(final String ancien_nom, final String nouveau_nom);

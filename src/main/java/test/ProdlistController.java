@@ -7,9 +7,9 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import accesDonnees.DAO.ClientDAO.ClientDAOimpl;
 import accesDonnees.DAO.CommandeDAO.CommandeDAOimpl;
@@ -21,14 +21,14 @@ import accesDonnees.DO.PanierDO;
 import accesDonnees.DO.ProduitDO;
 
 @Controller
-@RequestMapping("/prod")
+@RequestMapping("/prodlist")
 public class ProdlistController {
 
 	private List<ProduitDO> products = new ArrayList<ProduitDO>();
 	private final ProduitDAOimpl PRODDAO = new ProduitDAOimpl();
 	private final PanierDAOimpl PANIERDAO = new PanierDAOimpl();
 
-	@GetMapping("/prodlist")
+	@GetMapping
 	public String getProducts(Model model) {
 		products.removeAll(products);
 		List<ProduitDO> listdb = PRODDAO.findAll();
@@ -44,19 +44,22 @@ public class ProdlistController {
 		return "prodlist";
 	}
 
-	@PostMapping("/prodlist")
-	public String addToCart(@ModelAttribute ProduitDO prod) {
+	@PostMapping
+	public String addToCart(@RequestParam int productId) {
+		ProduitDO product = PRODDAO.findById(productId);
 		final ClientDO client = new ClientDAOimpl().findByMail("mail@mail.mail");
 		final Date date = new Date(System.currentTimeMillis());
+		List<ProduitDO> panierlist = new ArrayList<>();
 		CommandeDO commande = null;
 		if (client.getPanier().getCommande() == null) {
-			commande = new CommandeDAOimpl().create(date, products);
+			commande = new CommandeDAOimpl().create(date, panierlist);
 			PanierDO panier = client.getPanier();
 			PANIERDAO.updateCommande(panier.getIdpanier(), commande);
 		} else {
 			commande = client.getPanier().getCommande();
 		}
-		commande.getListeprod().add(prod);
+		commande.getListeprod().add(product);
 		return "redirect:prodlist";
 	}
+
 }

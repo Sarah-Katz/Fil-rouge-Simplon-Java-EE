@@ -3,21 +3,26 @@
 
 <head>
 	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" th:href="@{/CSS/prodlist.css}">
 	<title>Liste Produits</title>
 </head>
 
 <body>
 	<a href="/prod">Créer des produits</a>
-	<div th:each="prod:${products}">
-		<span th:text="${prod.nom}"></span>
-		<span th:text="${prod.description}"></span>
-		<span th:text="${prod.categorie}"></span>
-		<span th:text="${prod.ref}"></span>
-		<span th:text="${prod.prix}"></span>
-		<form th:action="@{/prod/prodlist}" method="post">
-			<input type="hidden" name="productId" th:value="${prod.idprod}" />
-			<button type="submit">Ajouter au panier</button>
-		</form>
+	<a href="/panier">Panier</a>
+	<div id="container">
+		<div class="produit" th:each="prod:${products}">
+			<h2 class="nom" th:text="${prod.nom}"></h2><br>
+			<span class="description" th:text="${prod.description}"></span><br>
+			<span class="categorie" th:text="${prod.categorie}"></span><br>
+			<span class="prix" th:text="${prod.prix} + €"></span><br>			
+			<form action="/prodlist" method="post">
+				<input type="hidden" name="productId" th:value="${prod.idprod}">
+				<button type="submit">Ajouter au panier</button>
+			</form>
+		</div>
 	</div>
 </body>
 

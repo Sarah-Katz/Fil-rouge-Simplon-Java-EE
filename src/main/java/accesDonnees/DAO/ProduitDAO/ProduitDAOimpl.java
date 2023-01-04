@@ -25,6 +25,14 @@ public class ProduitDAOimpl implements IProduitDAO {
 		List<ProduitDO> list = (List<ProduitDO>) em.createQuery("SELECT p FROM ProduitDO p ORDER BY p.ref").getResultList();
 		return list;
 	}
+	
+	public ProduitDO findById(final int id) {
+		EntityManager em = Util.JPA.getEntityManager();
+		Query query = em.createQuery("SELECT p FROM ProduitDO p where p.idprod = :id");
+		query.setParameter("id", id);
+		ProduitDO prod = (ProduitDO) query.getSingleResult();
+		return prod;
+	}
 
 	public List<ProduitDO> findByName(final String nom) {
 		EntityManager em = Util.JPA.getEntityManager();
