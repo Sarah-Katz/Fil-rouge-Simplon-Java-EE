@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import accesDonnees.DO.ClientDO;
 import accesDonnees.DO.CommandeDO;
 import accesDonnees.DO.PanierDO;
 
