@@ -5,15 +5,16 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import accesDonnees.DO.FournisseurDO;
 import accesDonnees.DO.ProduitDO;
 
 public class ProduitDAOimpl implements IProduitDAO {
 
 	public ProduitDO create(final String nom, final String desc, final String categorie, final int ref,
-			final double prix) {
+			final double prix, final FournisseurDO fournisseur) {
 		EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
-		ProduitDO produit = new ProduitDO(nom, desc, categorie, ref, prix);
+		ProduitDO produit = new ProduitDO(nom, desc, categorie, ref, prix,fournisseur);
 		em.persist(produit);
 		em.getTransaction().commit();
 		return produit;

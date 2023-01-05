@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -32,6 +33,8 @@ public class ProduitDO {
 	private double prix;
 	@Column(name = "incomm")
 	private boolean incomm;
+	@ManyToOne
+	private FournisseurDO fournisseur;
 
 	public ProduitDO() {
 	}
@@ -45,12 +48,13 @@ public class ProduitDO {
 	 * @param ref  la référence du produit
 	 * @param prix le prix du produit
 	 */
-	public ProduitDO(String nom, String desc, String cate, int ref, double prix) {
+	public ProduitDO(String nom, String desc, String cate, int ref, double prix, FournisseurDO fournisseur) {
 		this.nom = nom;
 		this.description = desc;
 		this.categorie = cate;
 		this.ref = ref;
 		this.prix = prix;
+		this.fournisseur = fournisseur;
 		this.incomm = false;
 	}
 	public int getIdprod() {
@@ -108,6 +112,16 @@ public class ProduitDO {
 	public void setIncomm(boolean incomm) {
 		this.incomm = incomm;
 	}
+
+	public FournisseurDO getFournisseur() {
+		return fournisseur;
+	}
+
+	public void setFournisseur(FournisseurDO fournisseur) {
+		this.fournisseur = fournisseur;
+	}
+	
+	
 
 	
 

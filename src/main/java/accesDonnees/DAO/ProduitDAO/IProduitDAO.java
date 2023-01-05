@@ -2,11 +2,12 @@ package accesDonnees.DAO.ProduitDAO;
 
 import java.util.List;
 
+import accesDonnees.DO.FournisseurDO;
 import accesDonnees.DO.ProduitDO;
 
 public interface IProduitDAO {
 	public ProduitDO create(final String nom, final String desc, final String categorie, final int ref,
-			final double prix);
+			final double prix,final FournisseurDO fournisseur);
 	public List<ProduitDO> findAll();
 	public ProduitDO findById(final int id);
 	public List<ProduitDO> findByRef(final int ref);
