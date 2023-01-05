@@ -46,6 +46,18 @@ public class FournisseurDAOimpl implements IFournisseurDAO {
 		em.getTransaction().commit();
 		return fournisseur;
 	}
+	
+	public FournisseurDO updateProduits(final int id, final List<ProduitDO> produits) {
+		EntityManager em = Util.JPA.getEntityManager();
+		em.getTransaction().begin();
+		Query query = em.createQuery("SELECT f from FournisseurDO f where f.idfour =:id");
+		query.setParameter("id", id);
+		FournisseurDO fournisseur = (FournisseurDO) query.getSingleResult();
+		fournisseur.setProduits(produits);
+		em.merge(fournisseur);
+		em.getTransaction().commit();
+		return fournisseur;
+	}
 
 	public void delete(final int id) {
 		EntityManager em = Util.JPA.getEntityManager();
