@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Fournisseurs</title>
+</head>
+
+<body>
+	<div class="fournisseur" th:each="four:${fournisseurs}">
+		<span th:text="${four.nom}"></span>
+		<form action="/interne" method="post">
+			<input type="hidden" name="id" th:value="${four.idfour}">
+			<button type="submit">Acheter chez ce fournisseur</button>
+		</form>
+	</div>
+</body>
+
+</html>
