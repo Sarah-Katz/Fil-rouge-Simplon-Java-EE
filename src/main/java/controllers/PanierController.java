@@ -18,6 +18,7 @@ import accesDonnees.DO.CommandeDO;
 import accesDonnees.DO.PanierDO;
 import accesDonnees.DO.ProduitDO;
 
+//TODO calculer prix total
 @Controller
 @RequestMapping("/panier")
 public class PanierController {

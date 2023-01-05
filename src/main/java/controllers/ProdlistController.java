@@ -22,11 +22,10 @@ import accesDonnees.DO.CommandeDO;
 import accesDonnees.DO.PanierDO;
 import accesDonnees.DO.ProduitDO;
 
+//TODO fix rafraichissement de la page fait remonter
 @Controller
 @RequestMapping("/prodlist")
 public class ProdlistController {
-
-	private List<ProduitDO> products = new ArrayList<ProduitDO>();
 	private final ProduitDAOimpl PRODDAO = new ProduitDAOimpl();
 	private final PanierDAOimpl PANIERDAO = new PanierDAOimpl();
 	private final CommandeDAOimpl COMMDAO = new CommandeDAOimpl();
