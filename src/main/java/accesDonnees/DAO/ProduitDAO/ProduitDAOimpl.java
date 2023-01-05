@@ -63,11 +63,11 @@ public class ProduitDAOimpl implements IProduitDAO {
 		em.getTransaction().commit();
 	}
 
-	public ProduitDO updateNom(final String ancien_nom, final String nouveau_nom) {
+	public ProduitDO updateNom(final int id, final String nouveau_nom) {
 		EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
-		Query query = em.createQuery("SELECT p from ProduitDO p where p.nom =:nom");
-		query.setParameter("nom", ancien_nom);
+		Query query = em.createQuery("SELECT p from ProduitDO p where p.idprod =:id");
+		query.setParameter("id", id);
 		ProduitDO produit = (ProduitDO) query.getSingleResult();
 		produit.setNom(nouveau_nom);
 		em.merge(produit);
@@ -75,11 +75,11 @@ public class ProduitDAOimpl implements IProduitDAO {
 		return produit;
 	}
 
-	public ProduitDO updateDesc(final String ancien_desc, final String nouveau_desc) {
+	public ProduitDO updateDesc(final int id, final String nouveau_desc) {
 		EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
-		Query query = em.createQuery("SELECT p from ProduitDO p where p.description =:description");
-		query.setParameter("description", ancien_desc);
+		Query query = em.createQuery("SELECT p from ProduitDO p where p.idprod =:id");
+		query.setParameter("id", id);
 		ProduitDO produit = (ProduitDO) query.getSingleResult();
 		produit.setDescription(nouveau_desc);
 		em.merge(produit);
@@ -87,11 +87,11 @@ public class ProduitDAOimpl implements IProduitDAO {
 		return produit;
 	}
 
-	public ProduitDO updatecate(final String ancien_cate, final String nouveau_cate) {
+	public ProduitDO updatecate(final int id, final String nouveau_cate) {
 		EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
-		Query query = em.createQuery("SELECT p from ProduitDO p where p.categorie =:categorie");
-		query.setParameter("categorie", ancien_cate);
+		Query query = em.createQuery("SELECT p from ProduitDO p where p.idprod =:id");
+		query.setParameter("id", id);
 		ProduitDO produit = (ProduitDO) query.getSingleResult();
 		produit.setCategorie(nouveau_cate);
 		em.merge(produit);
@@ -99,11 +99,11 @@ public class ProduitDAOimpl implements IProduitDAO {
 		return produit;
 	}
 
-	public ProduitDO updateref(final int ancien_ref, final int nouveau_ref) {
+	public ProduitDO updateref(final int id, final int nouveau_ref) {
 		EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
-		Query query = em.createQuery("SELECT p from ProduitDO p where p.ref =:ref");
-		query.setParameter("ref", ancien_ref);
+		Query query = em.createQuery("SELECT p from ProduitDO p where p.idprod =:id");
+		query.setParameter("id", id);
 		ProduitDO produit = (ProduitDO) query.getSingleResult();
 		produit.setRef(nouveau_ref);
 		em.merge(produit);
@@ -111,11 +111,11 @@ public class ProduitDAOimpl implements IProduitDAO {
 		return produit;
 	}
 
-	public ProduitDO updateprix(final double ancien_prix, final double nouveau_prix) {
+	public ProduitDO updateprix(final int id, final double nouveau_prix) {
 		EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
-		Query query = em.createQuery("SELECT p from ProduitDO p where p.prix =:prix");
-		query.setParameter("prix", ancien_prix);
+		Query query = em.createQuery("SELECT p from ProduitDO p where p.idprod =:id");
+		query.setParameter("id", id);
 		ProduitDO produit = (ProduitDO) query.getSingleResult();
 		produit.setPrix(nouveau_prix);
 		em.merge(produit);

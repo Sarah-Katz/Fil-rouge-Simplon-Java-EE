@@ -35,11 +35,11 @@ public class FournisseurDAOimpl implements IFournisseurDAO {
 		return prod;
 	}
 
-	public FournisseurDO update(final String ancien_nom, final String nouveau_nom) {
+	public FournisseurDO update(final int id, final String nouveau_nom) {
 		EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
-		Query query = em.createQuery("SELECT f from FournisseurDO f where f.nom =:nom");
-		query.setParameter("nom", ancien_nom);
+		Query query = em.createQuery("SELECT f from FournisseurDO f where f.idfour =:id");
+		query.setParameter("id", id);
 		FournisseurDO fournisseur = (FournisseurDO) query.getSingleResult();
 		fournisseur.setNom(nouveau_nom);
 		em.merge(fournisseur);

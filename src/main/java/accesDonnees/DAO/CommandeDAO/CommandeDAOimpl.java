@@ -28,11 +28,11 @@ public class CommandeDAOimpl implements ICommandeDAO {
 		return list;
 	}
 
-	public CommandeDO updateDate(final Date ancien_date, final Date nouveau_date) {
+	public CommandeDO updateDate(final int id, final Date nouveau_date) {
 		EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
-		Query query = em.createQuery("SELECT c from CommandeDO c where c.date =:date");
-		query.setParameter("date", ancien_date);
+		Query query = em.createQuery("SELECT c from CommandeDO c where c.idcomm =:id");
+		query.setParameter("id", id);
 		CommandeDO commande = (CommandeDO) query.getSingleResult();
 		commande.setDate(nouveau_date);
 		em.getTransaction().commit();
