@@ -2,6 +2,8 @@ package Util;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import accesDonnees.DAO.ClientDAO.ClientDAOimpl;
 import accesDonnees.DAO.FournisseurDAO.FournisseurDAOimpl;
 import accesDonnees.DAO.PanierDAO.PanierDAOimpl;
@@ -18,9 +20,10 @@ public class Test {
 	final static FournisseurDAOimpl FOURDAO = new FournisseurDAOimpl();
 	
 	public static void main(String[] args) {
-//		addClientToDb();
+//		dropTables();
+		addClientToDb();
 		addProductsToDb();
-//		addFournisseurToDb();
+		addFournisseurToDb();
 	}
 	
 	public static ClientDO addClientToDb() {
@@ -30,7 +33,7 @@ public class Test {
 	}
 	
 	public static ProduitDO createprod(String nom, String desc, String cat, int ref, double prix) {
-		ProduitDO prod = PRODUITDAO.create(nom, desc, cat, ref, prix);
+		ProduitDO prod = PRODUITDAO.create(nom, desc, cat, ref, prix, null);
 		return prod;		
 	}
 	
@@ -60,7 +63,20 @@ public class Test {
 	}
 	
 	public static void addFournisseurToDb() {
+		FournisseurDO four = FOURDAO.create("Centrale d'achat", null);
 		List<ProduitDO> produits = PRODUITDAO.findAll();
-		FournisseurDO four = FOURDAO.create("Centrale d'achat", produits);
+		for (ProduitDO p : produits) {
+			PRODUITDAO.updatefour(p.getIdprod(), four);
+		}
+		FOURDAO.updateProduits(four.getIdfour(), produits);
 	}
+	
+	public static void dropTables() {
+		EntityManager em = Util.JPA.getEntityManager();
+		em.getTransaction().begin();
+	    String query = "DROP TABLE achat, client, commande, fournisseur, panier, fournisseur_produit, produit CASCADE";
+	    em.createNativeQuery(query).executeUpdate();
+	    em.getTransaction().commit();
+	}
+
 }

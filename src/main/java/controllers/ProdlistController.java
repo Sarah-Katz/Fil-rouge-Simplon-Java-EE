@@ -32,7 +32,7 @@ public class ProdlistController {
 	private final CommandeDAOimpl COMMDAO = new CommandeDAOimpl();
 
 	@GetMapping
-	public String getProducts(Model model) {
+	public String getProduits(Model model) {
 	    Set<ProduitDO> products = new HashSet<>();
 	    List<ProduitDO> listdb = PRODDAO.findAll();
 	    Set<Integer> refs = new HashSet<>();
@@ -47,7 +47,7 @@ public class ProdlistController {
 	}
 
 	@PostMapping
-	public String addToCart(@RequestParam int id) {
+	public String addToPanier(@RequestParam int id) {
 		final ProduitDO product = PRODDAO.findById(id);
 		final ClientDO client = new ClientDAOimpl().findByMail("mail@mail.mail");
 		final Date date = new Date(System.currentTimeMillis());
