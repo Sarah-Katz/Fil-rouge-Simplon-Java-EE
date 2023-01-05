@@ -26,6 +26,14 @@ public class FournisseurDAOimpl implements IFournisseurDAO {
 				.getResultList();
 		return list;
 	}
+	
+	public FournisseurDO findById(final int id) {
+		EntityManager em = Util.JPA.getEntityManager();
+		Query query = em.createQuery("SELECT f FROM FournisseurDO f where f.idfour = :id");
+		query.setParameter("id", id);
+		FournisseurDO prod = (FournisseurDO) query.getSingleResult();
+		return prod;
+	}
 
 	public FournisseurDO update(final String ancien_nom, final String nouveau_nom) {
 		EntityManager em = Util.JPA.getEntityManager();
