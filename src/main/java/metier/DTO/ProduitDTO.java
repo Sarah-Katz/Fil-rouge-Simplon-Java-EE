@@ -1,5 +1,7 @@
 package metier.DTO;
 
+import accesDonnees.DO.FournisseurDO;
+
 /**
  * Classe représentant un produit.
  *
@@ -13,6 +15,7 @@ public class ProduitDTO {
 	private String categorie;
 	private int ref;
 	private double prix;
+	private FournisseurDO fournisseur;
 
 	public ProduitDTO() {
 	}
@@ -65,6 +68,14 @@ public class ProduitDTO {
 		this.prix = prix;
 	}
 
+	public FournisseurDO getFournisseur() {
+		return fournisseur;
+	}
+
+	public void setFournisseur(FournisseurDO fournisseur) {
+		this.fournisseur = fournisseur;
+	}
+
 	/**
 	 * Constructeur permettant de créer un produit avec tous ses attributs.
 	 *
@@ -74,13 +85,14 @@ public class ProduitDTO {
 	 * @param ref  la référence du produit
 	 * @param prix le prix du produit
 	 */
-	public ProduitDTO(int id, String nom, String desc, String cate, int ref, double prix) {
+	public ProduitDTO(int id, String nom, String desc, String cate, int ref, double prix, FournisseurDO fournisseur) {
 		this.idprod = id;
 		this.nom = nom;
 		this.description = desc;
 		this.categorie = cate;
 		this.ref = ref;
 		this.prix = prix;
+		this.fournisseur = fournisseur;
 	}
 
 }

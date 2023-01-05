@@ -21,7 +21,7 @@ class ConvertFournisseurtest {
 		String nom = "jean";
 		FournisseurDAOimpl fournisseurdao = new FournisseurDAOimpl();
 		ProduitDAOimpl produitdao = new ProduitDAOimpl();
-		ProduitDO produit = produitdao.create("jean", "description", "categorie", 1, 3000);
+		ProduitDO produit = produitdao.create("jean", "description", "categorie", 1, 3000,null);
 		List<ProduitDO> produits = new ArrayList<ProduitDO>();
 		produits.add(produit);
 		FournisseurDO fournisseurdo = fournisseurdao.create(nom, produits);
@@ -35,7 +35,7 @@ class ConvertFournisseurtest {
 		int id = 5;
 		String nom = "jean";
 		ProduitDAOimpl produitdao = new ProduitDAOimpl();
-		ProduitDO produit = produitdao.create("jean", "description", "categorie", 1, 3000);
+		ProduitDO produit = produitdao.create("jean", "description", "categorie", 1, 3000,null);
 		List<ProduitDO> produits = new ArrayList<ProduitDO>();
 		produits.add(produit);
 		FournisseurDTO fournisseurdto = new FournisseurDTO(id,nom, produits);

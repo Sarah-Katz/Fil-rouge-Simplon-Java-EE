@@ -24,7 +24,7 @@ class CommandeDAOtest {
 	public void testCommandeDOcreate() {
 		Date date = new Date(10);
 		ProduitDAOimpl produitdao = new ProduitDAOimpl();
-		ProduitDO produit = produitdao.create("jean", "description", "categorie", 1, 3000);
+		ProduitDO produit = produitdao.create("jean", "description", "categorie", 1, 3000,null);
 		List<ProduitDO> listprod = new ArrayList<ProduitDO>();
 		listprod.add(produit);
 		CommandeDAOimpl commandedao = new CommandeDAOimpl();
@@ -65,10 +65,10 @@ class CommandeDAOtest {
 	@Order(4)
 	public void testProduitDOupdateListeprod() {
 		ProduitDAOimpl produitdao = new ProduitDAOimpl();
-		ProduitDO produit = produitdao.create("jean", "description", "categorie", 1, 3000);
+		ProduitDO produit = produitdao.create("jean", "description", "categorie", 1, 3000,null);
 		List<ProduitDO> ancien_produit = new ArrayList<ProduitDO>();
 		ancien_produit.add(produit);
-		ProduitDO produit2 = produitdao.create("jean2", "description2", "categorie2", 1, 3000);
+		ProduitDO produit2 = produitdao.create("jean2", "description2", "categorie2", 1, 3000,null);
 		List<ProduitDO> nouveau_produit = new ArrayList<ProduitDO>();
 		ancien_produit.add(produit2);
 		CommandeDAOimpl commandedao = new CommandeDAOimpl();

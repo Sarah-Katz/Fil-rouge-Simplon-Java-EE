@@ -22,7 +22,7 @@ public class FournisseurDAOtest {
 	public void testFournisseurDOcreate() {
 		String nom = "jean";
 		ProduitDAOimpl produitdao = new ProduitDAOimpl();
-		ProduitDO produit = produitdao.create("jean", "description", "categorie", 1, 3000);
+		ProduitDO produit = produitdao.create("jean", "description", "categorie", 1, 3000,null);
 		List<ProduitDO> produits = new ArrayList<ProduitDO>();
 		produits.add(produit);
 		FournisseurDAOimpl fournisseurdao = new FournisseurDAOimpl();

@@ -25,7 +25,7 @@ class ProduitDAOtest {
 		int ref = 1;
 		double prix = 2000;
 		ProduitDAOimpl produitdao = new ProduitDAOimpl();
-		ProduitDO produit = produitdao.create(nom,desc,categorie,ref,prix);
+		ProduitDO produit = produitdao.create(nom,desc,categorie,ref,prix,null);
 		
 		assertEquals(nom,produit.getNom());
 		assertEquals(desc,produit.getDescription());

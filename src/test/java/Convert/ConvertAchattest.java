@@ -24,7 +24,7 @@ class ConvertAchattest {
 	@Test
 	public void testachattodto() {
 		ProduitDAOimpl produitdao = new ProduitDAOimpl();
-		ProduitDO produit = produitdao.create("jean", "description", "categorie", 1, 3000);
+		ProduitDO produit = produitdao.create("jean", "description", "categorie", 1, 3000,null);
 		List<ProduitDO> produits = new ArrayList<ProduitDO>();
 		produits.add(produit);
 		final FournisseurDO fournisseur = new FournisseurDAOimpl().create("test", produits);
@@ -40,9 +40,9 @@ class ConvertAchattest {
 	
 	@Test
 	public void testachattodo() {
-		final ProduitDTO produit = new ProduitDTO(5,"test", "testdesc", "testcat", 2323, 120);
+		final ProduitDTO produit = new ProduitDTO(5,"test", "testdesc", "testcat", 2323, 120,null);
 		ProduitDAOimpl produitdao = new ProduitDAOimpl();
-		ProduitDO produit1 = produitdao.create("jean", "description", "categorie", 1, 3000);
+		ProduitDO produit1 = produitdao.create("jean", "description", "categorie", 1, 3000,null);
 		List<ProduitDO> produits = new ArrayList<ProduitDO>();
 		produits.add(produit1);
 		final FournisseurDTO fournisseur = new FournisseurDTO(5,"test",produits);

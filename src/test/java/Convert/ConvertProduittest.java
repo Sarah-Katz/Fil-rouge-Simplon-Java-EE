@@ -19,7 +19,7 @@ public class ConvertProduittest {
 		int ref = 1;
 		double prix = 2000;
 		ProduitDAOimpl produitdao = new ProduitDAOimpl();
-		ProduitDO produitdo = produitdao.create(nom,desc,categorie,ref,prix);
+		ProduitDO produitdo = produitdao.create(nom,desc,categorie,ref,prix,null);
 		ConvertProduit convert = new ConvertProduit();
 		ProduitDTO produitdto = convert.prodtodto(produitdo);
 		assertEquals(produitdo.getNom(), produitdto.getNom());
@@ -37,7 +37,7 @@ public class ConvertProduittest {
 		String categorie = "categorie";
 		int ref = 1;
 		double prix = 2000;
-		ProduitDTO produitdto = new ProduitDTO(id,nom,desc,categorie,ref,prix);
+		ProduitDTO produitdto = new ProduitDTO(id,nom,desc,categorie,ref,prix,null);
 		ConvertProduit convert = new ConvertProduit();
 		ProduitDO produitdo = convert.prodtodo(produitdto);
 		assertEquals(produitdo.getNom(), produitdto.getNom());

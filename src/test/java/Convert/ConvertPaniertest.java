@@ -22,8 +22,8 @@ class ConvertPaniertest {
 
 	@Test
 	public void testpaniertodto() {
-		final ProduitDO produit1 = new ProduitDAOimpl().create("test", "testdesc", "testcat", 2323, 120);
-		final ProduitDO produit2 = new ProduitDAOimpl().create("test2", "testdesc2", "testcat2", 23232, 1202);
+		final ProduitDO produit1 = new ProduitDAOimpl().create("test", "testdesc", "testcat", 2323, 120,null);
+		final ProduitDO produit2 = new ProduitDAOimpl().create("test2", "testdesc2", "testcat2", 23232, 1202,null);
 		final Date date = new Date(10);
 		final List<ProduitDO> listeprod = new ArrayList<ProduitDO>();
 		listeprod.add(produit1);
@@ -39,8 +39,8 @@ class ConvertPaniertest {
 	
 	@Test
 	public void testpaniertodo() {
-		final ProduitDO produit1 = new ProduitDAOimpl().create("test", "testdesc", "testcat", 2323, 120);
-		final ProduitDO produit2 = new ProduitDAOimpl().create("test2", "testdesc2", "testcat2", 23232, 1202);
+		final ProduitDO produit1 = new ProduitDAOimpl().create("test", "testdesc", "testcat", 2323, 120,null);
+		final ProduitDO produit2 = new ProduitDAOimpl().create("test2", "testdesc2", "testcat2", 23232, 1202,null);
 		final Date date = new Date(10);
 		final List<ProduitDO> listeprod = new ArrayList<ProduitDO>();
 		listeprod.add(produit1);
