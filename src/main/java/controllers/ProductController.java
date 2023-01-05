@@ -28,9 +28,9 @@ public class ProductController {
 
 	@PostMapping
 	public String createProduct(@ModelAttribute ProduitDO product) {
-		ProduitDO prod = PRODDAO.create(product.getNom(), product.getDescription(), product.getCategorie(),
-				product.getRef(), product.getPrix());
-		products.add(prod);
+//		ProduitDO prod = PRODDAO.create(product.getNom(), product.getDescription(), product.getCategorie(),
+//				product.getRef(), product.getPrix());
+//		products.add(prod);
 		return "redirect:/prod";
 	}
 }

@@ -28,7 +28,6 @@ public class FournisseurDO {
 	@Column(name = "nomfour")
 	private String nom;
 	@OneToMany
-	@JoinColumn(name = "fournisseur")
 	private List<ProduitDO> produits = new ArrayList<ProduitDO>();
 
 	public FournisseurDO() {
