@@ -1,5 +1,10 @@
 package metier.DTO;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import accesDonnees.DO.ProduitDO;
+
 /**
  * Classe représentant un fournisseur.
  *
@@ -12,6 +17,7 @@ public class FournisseurDTO {
 	
 		private int idfour;
 		private String nom;
+		private List<ProduitDO> produits = new ArrayList<ProduitDO>();
 
 		public FournisseurDTO() {
 		}
@@ -21,9 +27,10 @@ public class FournisseurDTO {
 		 *
 		 * @param nom le nom du fournisseur
 		 */
-		public FournisseurDTO(final int id, final String nom) {
+		public FournisseurDTO(final int id, final String nom,final List<ProduitDO> produits) {
 			this.idfour = id;
 			this.nom = nom;
+			this.produits = produits;
 		}
 
 		public int getIdfour() {
@@ -41,5 +48,15 @@ public class FournisseurDTO {
 		public void setNom(String nom) {
 			this.nom = nom;
 		}
+
+		public List<ProduitDO> getProduits() {
+			return produits;
+		}
+
+		public void setProduits(List<ProduitDO> produits) {
+			this.produits = produits;
+		}
+		
+		
 
 }

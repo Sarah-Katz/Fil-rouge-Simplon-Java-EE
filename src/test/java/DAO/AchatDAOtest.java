@@ -25,7 +25,7 @@ public class AchatDAOtest {
 		final ProduitDO produit = new ProduitDAOimpl().create("test", "testdesc", "testcat", 2323, 120);
 		final Date date = new Date(10);
 		final AchatDAOimpl achatdao = new AchatDAOimpl();
-		final AchatDO achat = achatdao.create(date, 0, 0, produit, null);
+		final AchatDO achat = achatdao.create(date, produit, null);
 		assertEquals(date, achat.getDateachat());
 	}
 

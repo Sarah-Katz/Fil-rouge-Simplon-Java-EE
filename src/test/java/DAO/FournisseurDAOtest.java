@@ -10,7 +10,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
 import accesDonnees.DAO.FournisseurDAO.FournisseurDAOimpl;
+import accesDonnees.DAO.ProduitDAO.ProduitDAOimpl;
 import accesDonnees.DO.FournisseurDO;
+import accesDonnees.DO.ProduitDO;
 
 @TestMethodOrder(OrderAnnotation.class)
 public class FournisseurDAOtest {
@@ -19,8 +21,12 @@ public class FournisseurDAOtest {
 	@Order(1)
 	public void testFournisseurDOcreate() {
 		String nom = "jean";
+		ProduitDAOimpl produitdao = new ProduitDAOimpl();
+		ProduitDO produit = produitdao.create("jean", "description", "categorie", 1, 3000);
+		List<ProduitDO> produits = new ArrayList<ProduitDO>();
+		produits.add(produit);
 		FournisseurDAOimpl fournisseurdao = new FournisseurDAOimpl();
-		FournisseurDO fournisseur = fournisseurdao.create(nom);
+		FournisseurDO fournisseur = fournisseurdao.create(nom, produits);
 		
 		assertEquals(nom,fournisseur.getNom());
 	}

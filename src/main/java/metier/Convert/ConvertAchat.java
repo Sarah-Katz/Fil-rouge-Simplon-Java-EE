@@ -9,9 +9,8 @@ public class ConvertAchat {
 	public AchatDTO achattodto(AchatDO achatdo) {
 		ConvertProduit convertprod = new ConvertProduit();
 		ConvertFournisseur convertfour = new ConvertFournisseur();
-		AchatDTO achatdto = new AchatDTO(achatdo.getIdachat(), achatdo.getDateachat(), achatdo.getQuantite(),
-				achatdo.getPrix(), convertprod.prodtodto(achatdo.getProduit()),
-				convertfour.fourtodto(achatdo.getFournisseur()));
+		AchatDTO achatdto = new AchatDTO(achatdo.getIdachat(), achatdo.getDateachat(),
+				convertprod.prodtodto(achatdo.getProduit()), convertfour.fourtodto(achatdo.getFournisseur()));
 		return achatdto;
 	}
 
@@ -19,8 +18,8 @@ public class ConvertAchat {
 		ConvertProduit convertprod = new ConvertProduit();
 		ConvertFournisseur convertfour = new ConvertFournisseur();
 		AchatDAOimpl achatdao = new AchatDAOimpl();
-		AchatDO achatdo = achatdao.create(achatdto.getDateachat(), achatdto.getQuantite(), achatdto.getPrix(),
-				convertprod.prodtodo(achatdto.getProduit()), convertfour.fourtodo(achatdto.getFournisseur()));
+		AchatDO achatdo = achatdao.create(achatdto.getDateachat(), convertprod.prodtodo(achatdto.getProduit()),
+				convertfour.fourtodo(achatdto.getFournisseur()));
 		;
 		return achatdo;
 	}

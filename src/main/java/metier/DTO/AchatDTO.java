@@ -13,8 +13,6 @@ public class AchatDTO {
 	
 	private int idachat;
 	private Date dateachat;
-	private int quantite;
-	private double prix;
 	private ProduitDTO produit;
 	private FournisseurDTO fournisseur;
 
@@ -35,22 +33,6 @@ public class AchatDTO {
 
 	public void setDateachat(Date dateachat) {
 		this.dateachat = dateachat;
-	}
-
-	public int getQuantite() {
-		return quantite;
-	}
-
-	public void setQuantite(int quantite) {
-		this.quantite = quantite;
-	}
-
-	public double getPrix() {
-		return prix;
-	}
-
-	public void setPrix(double prix) {
-		this.prix = prix;
 	}
 
 	public ProduitDTO getProduit() {
@@ -78,12 +60,10 @@ public class AchatDTO {
 	 * @param produit     Produit acheté.
 	 * @param fournisseur Fournisseur de l'achat.
 	 */
-	public AchatDTO(final int id, final Date dateachat, final int quantite, final double prix, final ProduitDTO produit,
+	public AchatDTO(final int id, final Date dateachat, final ProduitDTO produit,
 			final FournisseurDTO fournisseur) {
 		this.idachat = id;
 		this.dateachat = dateachat;
-		this.quantite = quantite;
-		this.prix = prix;
 		this.produit = produit;
 		this.fournisseur = fournisseur;
 	}
