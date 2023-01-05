@@ -6,13 +6,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import accesDonnees.DO.FournisseurDO;
+import accesDonnees.DO.ProduitDO;
 
 public class FournisseurDAOimpl implements IFournisseurDAO {
 
-	public FournisseurDO create(final String nom) {
+	public FournisseurDO create(final String nom, final List<ProduitDO> produits) {
 		EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
-		FournisseurDO Fournisseur = new FournisseurDO(nom);
+		FournisseurDO Fournisseur = new FournisseurDO(nom, produits);
 		em.persist(Fournisseur);
 		em.getTransaction().commit();
 		return Fournisseur;

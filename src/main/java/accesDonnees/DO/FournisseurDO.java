@@ -1,5 +1,8 @@
 package accesDonnees.DO;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,8 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 
 /**
  * Classe représentant un fournisseur.
@@ -26,9 +29,9 @@ public class FournisseurDO {
 	private int idfour;
 	@Column(name = "nomfour")
 	private String nom;
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "produit")
-	private CommandeDO commande;
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "references")
+	private List<ProduitDO> produits = new ArrayList<ProduitDO>();
 
 	public FournisseurDO() {
 	}
@@ -36,10 +39,12 @@ public class FournisseurDO {
 	/**
 	 * Constructeur permettant de créer un nouveau fournisseur.
 	 *
-	 * @param nom le nom du fournisseur
+	 * @param nom      le nom du fournisseur
+	 * @param produits la liste des produits vendus par le fournisseur
 	 */
-	public FournisseurDO(final String nom) {
+	public FournisseurDO(final String nom, final List<ProduitDO> produits) {
 		this.nom = nom;
+		this.produits = produits;
 	}
 
 	public int getIdfour() {
@@ -58,14 +63,12 @@ public class FournisseurDO {
 		this.nom = nom;
 	}
 
-	public CommandeDO getCommande() {
-		return commande;
+	public List<ProduitDO> getProduits() {
+		return produits;
 	}
 
-	public void setCommande(CommandeDO commande) {
-		this.commande = commande;
+	public void setProduits(List<ProduitDO> produits) {
+		this.produits = produits;
 	}
-	
-	
 
 }

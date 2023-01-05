@@ -12,10 +12,10 @@ import accesDonnees.DO.ProduitDO;
 
 public class AchatDAOimpl implements IAchatDAO {
 
-	public AchatDO create(final Date dateachat, final int quanachat, final double prix, final ProduitDO produit, final FournisseurDO fournisseur) {
+	public AchatDO create(final Date dateachat, final ProduitDO produit, final FournisseurDO fournisseur) {
 		final EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
-		AchatDO achat = new AchatDO(dateachat, quanachat, prix, produit, fournisseur);
+		AchatDO achat = new AchatDO(dateachat, produit, fournisseur);
 		em.persist(achat);
 		em.getTransaction().commit();
 		return achat;
@@ -43,30 +43,6 @@ public class AchatDAOimpl implements IAchatDAO {
 		query.setParameter("id", id);
 		final AchatDO achat = (AchatDO) query.getSingleResult();
 		achat.setDateachat(dateachat);
-		em.merge(achat);
-		em.getTransaction().commit();
-		return achat;
-	}
-
-	public AchatDO updateQuanachat(final int id, final int quanachat) {
-		final EntityManager em = Util.JPA.getEntityManager();
-		em.getTransaction().begin();
-		final Query query = em.createQuery("SELECT a FROM AchatDO a WHERE a.id = :id");
-		query.setParameter("id", id);
-		final AchatDO achat = (AchatDO) query.getSingleResult();
-		achat.setQuantite(quanachat);
-		em.merge(achat);
-		em.getTransaction().commit();
-		return achat;
-	}
-
-	public AchatDO updatePrix(final int id, final double prix) {
-		final EntityManager em = Util.JPA.getEntityManager();
-		em.getTransaction().begin();
-		final Query query = em.createQuery("SELECT a FROM AchatDO a WHERE a.id = :id");
-		query.setParameter("id", id);
-		final AchatDO achat = (AchatDO) query.getSingleResult();
-		achat.setPrix(prix);
 		em.merge(achat);
 		em.getTransaction().commit();
 		return achat;

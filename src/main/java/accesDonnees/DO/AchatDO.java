@@ -26,10 +26,6 @@ public class AchatDO {
 	private int idachat;
 	@Column(name = "dateachat")
 	private Date dateachat;
-	@Column(name = "quanachat")
-	private int quantite;
-	@Column(name = "prixachat")
-	private double prix;
 	@OneToOne
 	private ProduitDO produit;
 	@OneToOne
@@ -38,80 +34,6 @@ public class AchatDO {
 
 	AchatDO() {
 	}
-	
-	
-
-	public int getIdachat() {
-		return idachat;
-	}
-
-
-
-	public void setIdachat(int idachat) {
-		this.idachat = idachat;
-	}
-
-
-
-	public Date getDateachat() {
-		return dateachat;
-	}
-
-
-
-	public void setDateachat(Date dateachat) {
-		this.dateachat = dateachat;
-	}
-
-
-
-	public int getQuantite() {
-		return quantite;
-	}
-
-
-
-	public void setQuantite(int quantite) {
-		this.quantite = quantite;
-	}
-
-
-
-	public double getPrix() {
-		return prix;
-	}
-
-
-
-	public void setPrix(double prix) {
-		this.prix = prix;
-	}
-
-
-
-	public ProduitDO getProduit() {
-		return produit;
-	}
-
-
-
-	public void setProduit(ProduitDO produit) {
-		this.produit = produit;
-	}
-
-
-
-	public FournisseurDO getFournisseur() {
-		return fournisseur;
-	}
-
-
-
-	public void setFournisseur(FournisseurDO fournisseur) {
-		this.fournisseur = fournisseur;
-	}
-
-
 
 	/**
 	 * Constructeur de la classe.
@@ -122,13 +44,44 @@ public class AchatDO {
 	 * @param produit     Produit acheté.
 	 * @param fournisseur Fournisseur de l'achat.
 	 */
-	public AchatDO(final Date dateachat, final int quantite, final double prix, final ProduitDO produit,
-			final FournisseurDO fournisseur) {
+	public AchatDO(final Date dateachat, final ProduitDO produit, final FournisseurDO fournisseur) {
 		this.dateachat = dateachat;
-		this.quantite = quantite;
-		this.prix = prix;
 		this.produit = produit;
 		this.fournisseur = fournisseur;
 	}
+	
+	public int getIdachat() {
+		return idachat;
+	}
+
+	public void setIdachat(int idachat) {
+		this.idachat = idachat;
+	}
+
+	public Date getDateachat() {
+		return dateachat;
+	}
+
+	public void setDateachat(Date dateachat) {
+		this.dateachat = dateachat;
+	}
+
+	public ProduitDO getProduit() {
+		return produit;
+	}
+
+	public void setProduit(ProduitDO produit) {
+		this.produit = produit;
+	}
+
+	public FournisseurDO getFournisseur() {
+		return fournisseur;
+	}
+
+	public void setFournisseur(FournisseurDO fournisseur) {
+		this.fournisseur = fournisseur;
+	}
+
+	
 
 }
