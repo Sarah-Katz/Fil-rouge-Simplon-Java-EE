@@ -1,4 +1,4 @@
-package test;
+package Util;
 
 import accesDonnees.DAO.ClientDAO.ClientDAOimpl;
 import accesDonnees.DAO.PanierDAO.PanierDAOimpl;
