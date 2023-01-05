@@ -1,9 +1,13 @@
 package Util;
 
+import java.util.List;
+
 import accesDonnees.DAO.ClientDAO.ClientDAOimpl;
+import accesDonnees.DAO.FournisseurDAO.FournisseurDAOimpl;
 import accesDonnees.DAO.PanierDAO.PanierDAOimpl;
 import accesDonnees.DAO.ProduitDAO.ProduitDAOimpl;
 import accesDonnees.DO.ClientDO;
+import accesDonnees.DO.FournisseurDO;
 import accesDonnees.DO.PanierDO;
 import accesDonnees.DO.ProduitDO;
 
@@ -11,16 +15,15 @@ public class Test {
 	final static ClientDAOimpl CLIENTDAO = new ClientDAOimpl();
 	final static PanierDAOimpl PANIERDAO = new PanierDAOimpl();
 	final static ProduitDAOimpl PRODUITDAO = new ProduitDAOimpl();	
+	final static FournisseurDAOimpl FOURDAO = new FournisseurDAOimpl();
 	
 	public static void main(String[] args) {
-//		CLIENTDAO.delete(29);
-//		ClientDO client = createclient();
-//		ClientDO client = CLIENTDAO.findByMail("mail@mail.mail");
-//		System.out.println(client.getPanier().toString());
+//		addClientToDb();
 		addProductsToDb();
+//		addFournisseurToDb();
 	}
 	
-	public static ClientDO createclient() {
+	public static ClientDO addClientToDb() {
 		PanierDO panier = PANIERDAO.create(null);
 		ClientDO client = CLIENTDAO.create("Katz", "Sarah", "44 rue du test", 0606060606, "mail@mail.mail", panier);
 		return client;
@@ -54,5 +57,10 @@ public class Test {
 		createprod("Saucisses de poulet aux herbes", "Des saucisses de poulet aux herbes fraîches et aux épices, idéales pour les grillades ou les plats en sauce", "Viande", 20, 5.99);
 		createprod("Filet mignon de porc", "Un filet mignon de porc tendre et juteux, idéal pour les repas de fête ou les plats en sauce", "Viande", 21, 13.99);
 		createprod("Aiguillettes de poulet", "Des aiguillettes de poulet tendres et juteuses, idéales pour les salades ou les plats en sauce", "Viande", 22, 7.99);
+	}
+	
+	public static void addFournisseurToDb() {
+		List<ProduitDO> produits = PRODUITDAO.findAll();
+		FournisseurDO four = FOURDAO.create("Centrale d'achat", produits);
 	}
 }

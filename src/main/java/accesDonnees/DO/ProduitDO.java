@@ -36,6 +36,23 @@ public class ProduitDO {
 	public ProduitDO() {
 	}
 
+	/**
+	 * Constructeur permettant de créer un produit avec tous ses attributs.
+	 *
+	 * @param nom  le nom du produit
+	 * @param desc la description du produit
+	 * @param cate la catégorie du produit
+	 * @param ref  la référence du produit
+	 * @param prix le prix du produit
+	 */
+	public ProduitDO(String nom, String desc, String cate, int ref, double prix) {
+		this.nom = nom;
+		this.description = desc;
+		this.categorie = cate;
+		this.ref = ref;
+		this.prix = prix;
+		this.incomm = false;
+	}
 	public int getIdprod() {
 		return idprod;
 	}
@@ -92,22 +109,6 @@ public class ProduitDO {
 		this.incomm = incomm;
 	}
 
-	/**
-	 * Constructeur permettant de créer un produit avec tous ses attributs.
-	 *
-	 * @param nom  le nom du produit
-	 * @param desc la description du produit
-	 * @param cate la catégorie du produit
-	 * @param ref  la référence du produit
-	 * @param prix le prix du produit
-	 */
-	public ProduitDO(String nom, String desc, String cate, int ref, double prix) {
-		this.nom = nom;
-		this.description = desc;
-		this.categorie = cate;
-		this.ref = ref;
-		this.prix = prix;
-		this.incomm = false;
-	}
+	
 
 }
