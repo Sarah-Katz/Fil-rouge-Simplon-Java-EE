@@ -9,9 +9,13 @@
 	<title>Liste Produits</title>
 </head>
 
-<body>
+<header>
 	<a href="/prod">Créer des produits</a>
+	<h1>E-shop une fois, e-shop toujours</h1>
 	<a href="/panier">Panier</a>
+</header>
+
+<body>
 	<div id="container">
 		<div class="produit" th:each="prod:${products}">
 			<h2 class="nom" th:text="${prod.nom}"></h2><br>

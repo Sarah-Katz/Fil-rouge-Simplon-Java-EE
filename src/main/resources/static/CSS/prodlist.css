@@ -1,34 +1,87 @@
+/* Styles généraux de la page */
 body {
-    padding: 100px;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+/* Styles pour les liens */
 a {
-    margin-bottom: 60px;
+  color: blue;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
 
-#Container {
-    margin: 10%;
-    width: 1000px;
-    height: 100vh;
-    display: flexbox;
-    flex-direction: row;
+header {
+  background-color: white;
+  position: sticky; /* rend le header "sticky" */
+  top: 0; /* place le header en haut de la page */
+  width: 100%; /* occupe toute la largeur de la page */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* ajoute une ombre au header */
+}
+header a {
+  color: blue;
+  text-decoration: none;
+  margin:1%
+}
+header a:hover {
+  text-decoration: underline;
+}
+header h1 {
+  margin: 0;
 }
 
-div.produit {
-    width: 400px;
-    margin: 50px;
+/* Styles pour le conteneur principal */
+#container {
+  width: 80%;
+  margin: 1em;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-h2 {
-    padding: 10px;
-    color: brown;
-    border: black solid 2px;
-    margin: 1%;
+/* Styles pour les produits */
+.produit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  margin: 1em;
+  text-align: left;
+  vertical-align: top;
 }
-
+.nom {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.description {
+  font-style: italic;
+}
+.categorie {
+  font-weight: bold;
+  color: green;
+}
 .prix {
-    font-size: larger;
-    font-weight: bold;
+  font-weight: bold;
+  color: red;
 }
 
-button {}
+/* Styles pour le design responsive */
+@media (max-width: 600px) {
+  #container {
+    width: 90%;
+  }
+  .produit {
+    width: 45%;
+  }
+}
