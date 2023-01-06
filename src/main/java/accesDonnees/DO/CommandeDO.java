@@ -32,6 +32,8 @@ public class CommandeDO {
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "commande")
 	private List<ProduitDO> listeprod = new ArrayList<ProduitDO>();
+	@Column(name = "active")
+	private boolean active;
 
 	CommandeDO() {
 	}
@@ -74,6 +76,18 @@ public class CommandeDO {
 
 
 
+	public boolean isActive() {
+		return active;
+	}
+
+
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+
+
 	/**
 	 * Constructeur permettant de créer une nouvelle commande.
 	 *
@@ -84,6 +98,7 @@ public class CommandeDO {
 	public CommandeDO(Date date, List<ProduitDO> listeprod) {
 		this.date = date;
 		this.listeprod = listeprod;
+		this.active = true;
 	}
 
 }
