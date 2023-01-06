@@ -57,6 +57,7 @@ public class ProduitDO {
 		this.fournisseur = fournisseur;
 		this.incomm = false;
 	}
+
 	public int getIdprod() {
 		return idprod;
 	}
@@ -120,9 +121,35 @@ public class ProduitDO {
 	public void setFournisseur(FournisseurDO fournisseur) {
 		this.fournisseur = fournisseur;
 	}
-	
-	
 
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(idprod).append("|");
+		sb.append(nom).append("|");
+		sb.append(description).append("|");
+		sb.append(categorie).append("|");
+		sb.append(ref).append("|");
+		sb.append(prix).append("|");
+		sb.append(incomm);
+//		sb.append(fournisseur.toString());
+		return sb.toString();
+	}
 	
+	public static ProduitDO fromString(String str) {
+	    // Split the string into tokens
+	    String[] tokens = str.split("\\|");
+	    // Extract the values of the fields from the tokens
+	    int idprod = Integer.parseInt(tokens[0]);
+	    String nom = tokens[1];
+	    String description = tokens[2];
+	    String categorie = tokens[3];
+	    int ref = Integer.parseInt(tokens[4]);
+	    double prix = Double.parseDouble(tokens[5]);
+	    boolean incomm = Boolean.parseBoolean(tokens[6]);
+//	    FournisseurDO fournisseur = FournisseurDO.fromString(tokens[7]);
+	    // Create and return a new ProduitDO object
+	    return new ProduitDO(nom, description, categorie, ref, prix, null);
+	}
 
 }

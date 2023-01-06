@@ -38,7 +38,7 @@ public class AchatDAOimpl implements IAchatDAO {
 	public AchatDO updateDateachat(final int id, final Date dateachat) {
 		final EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
-		final Query query = em.createQuery("SELECT a FROM AchatDO a WHERE a.id = :id");
+		final Query query = em.createQuery("SELECT a FROM AchatDO a WHERE a.idachat = :id");
 		query.setParameter("id", id);
 		final AchatDO achat = (AchatDO) query.getSingleResult();
 		achat.setDateachat(dateachat);
@@ -50,7 +50,7 @@ public class AchatDAOimpl implements IAchatDAO {
 	public AchatDO updateListeprod(final int id, final List<ProduitDO> listeprod) {
 		final EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
-		final Query query = em.createQuery("SELECT a FROM AchatDO a WHERE a.id = :id");
+		final Query query = em.createQuery("SELECT a FROM AchatDO a WHERE a.idachat = :id");
 		query.setParameter("id", id);
 		final AchatDO achat = (AchatDO) query.getSingleResult();
 		achat.setListeprod(listeprod);
@@ -62,7 +62,7 @@ public class AchatDAOimpl implements IAchatDAO {
 	public AchatDO updateactive(final int id, final boolean active) {
 		final EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
-		final Query query = em.createQuery("SELECT a FROM AchatDO a WHERE a.id = :id");
+		final Query query = em.createQuery("SELECT a FROM AchatDO a WHERE a.idachat = :id");
 		query.setParameter("id", id);
 		final AchatDO achat = (AchatDO) query.getSingleResult();
 		achat.setActive(active);
@@ -75,7 +75,7 @@ public class AchatDAOimpl implements IAchatDAO {
 	public void delete(final int id) {
 		final EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
-		final AchatDO produit = (AchatDO) em.createQuery("SELECT a FROM AchatDO a WHERE a.id = '" + id + "'")
+		final AchatDO produit = (AchatDO) em.createQuery("SELECT a FROM AchatDO a WHERE a.idachat = '" + id + "'")
 				.getSingleResult();
 		em.remove(produit);
 		em.getTransaction().commit();
