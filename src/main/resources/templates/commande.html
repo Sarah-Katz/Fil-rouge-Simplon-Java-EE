@@ -10,9 +10,9 @@
 
 <body>
 	<a href="/interne">Retour liste fournisseurs</a><br>
-	<!-- <form action="/achat" method="get">
+	<form action="/achatinterne" method="get">
 		<button type="submit">Valider le panier</button>
-	</form> -->
+	</form>
 	<div class="produit" th:each="prod:${products}">
 		<span th:text="${prod.nom}"></span>
 		<span th:text="${prod.description}"></span>

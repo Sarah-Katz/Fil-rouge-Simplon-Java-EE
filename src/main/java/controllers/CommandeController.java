@@ -11,13 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import accesDonnees.DAO.AchatDAO.AchatDAOimpl;
-import accesDonnees.DAO.ClientDAO.ClientDAOimpl;
 import accesDonnees.DAO.CommandeDAO.CommandeDAOimpl;
 import accesDonnees.DAO.ProduitDAO.ProduitDAOimpl;
 import accesDonnees.DO.AchatDO;
-import accesDonnees.DO.ClientDO;
-import accesDonnees.DO.CommandeDO;
-import accesDonnees.DO.PanierDO;
 import accesDonnees.DO.ProduitDO;
 
 @Controller
@@ -45,7 +41,7 @@ public class CommandeController {
 			products.add(p);
 		}
 		model.addAttribute("products", products);
-		return "panier";
+		return "commande";
 	}
 
 	@PostMapping

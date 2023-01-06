@@ -48,17 +48,6 @@ public class AchatProdController {
 		return "achatprod";
 	}
 
-//	@PostMapping
-//	public String addToCommande(@RequestParam int id, RedirectAttributes redirectAttributes, Model model) {
-//		final ProduitDO product = PRODDAO.findById(id);
-//		int idfour = product.getFournisseur().getIdfour();
-//		commande.add(product);
-//		model.addAllAttributes(commande);
-//		redirectAttributes.addAttribute("idfour", idfour);
-//		redirectAttributes.addAttribute(commande);
-//		return "achatprod";
-//	}
-
 	@PostMapping
 	public String addToCommande(@RequestParam int id) {
 		final ProduitDO product = PRODDAO.findById(id);
