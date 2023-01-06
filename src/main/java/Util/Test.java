@@ -4,10 +4,12 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import accesDonnees.DAO.AchatDAO.AchatDAOimpl;
 import accesDonnees.DAO.ClientDAO.ClientDAOimpl;
 import accesDonnees.DAO.FournisseurDAO.FournisseurDAOimpl;
 import accesDonnees.DAO.PanierDAO.PanierDAOimpl;
 import accesDonnees.DAO.ProduitDAO.ProduitDAOimpl;
+import accesDonnees.DO.AchatDO;
 import accesDonnees.DO.ClientDO;
 import accesDonnees.DO.FournisseurDO;
 import accesDonnees.DO.PanierDO;
@@ -18,12 +20,14 @@ public class Test {
 	final static PanierDAOimpl PANIERDAO = new PanierDAOimpl();
 	final static ProduitDAOimpl PRODUITDAO = new ProduitDAOimpl();	
 	final static FournisseurDAOimpl FOURDAO = new FournisseurDAOimpl();
+	final static AchatDAOimpl ACHATDAO = new AchatDAOimpl();
 	
 	public static void main(String[] args) {
 //		dropTables();
 		addClientToDb();
 		addProductsToDb();
 		addFournisseurToDb();
+		addAchatToDb();
 	}
 	
 	public static ClientDO addClientToDb() {
@@ -71,10 +75,14 @@ public class Test {
 		FOURDAO.updateProduits(four.getIdfour(), produits);
 	}
 	
+	public static void addAchatToDb() {
+		AchatDO achat = ACHATDAO.create(null, null);
+	}
+	
 	public static void dropTables() {
 		EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
-	    String query = "DROP TABLE achat, client, commande, fournisseur, panier, fournisseur_produit, produit CASCADE";
+	    String query = "DROP TABLE achat, achat_produit, client, commande, fournisseur, panier, fournisseur_produit, produit CASCADE";
 	    em.createNativeQuery(query).executeUpdate();
 	    em.getTransaction().commit();
 	}
