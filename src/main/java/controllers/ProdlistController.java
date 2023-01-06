@@ -25,7 +25,7 @@ import accesDonnees.DO.ProduitDO;
 @Controller
 @RequestMapping("/prodlist")
 public class ProdlistController {
-
+ 
 	private List<ProduitDO> products = new ArrayList<ProduitDO>();
 	private final ProduitDAOimpl PRODDAO = new ProduitDAOimpl();
 	private final PanierDAOimpl PANIERDAO = new PanierDAOimpl();
@@ -54,7 +54,7 @@ public class ProdlistController {
 		List<ProduitDO> panierlist = new ArrayList<>();
 		CommandeDO commande = null;
 		if (client.getPanier().getCommande() == null) {
-			commande = new CommandeDAOimpl().create(date, panierlist);
+			commande = COMMDAO.create(date, panierlist);
 			PanierDO panier = client.getPanier();
 			PANIERDAO.updateCommande(panier.getIdpanier(), commande);
 		} else {

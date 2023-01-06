@@ -11,11 +11,7 @@
 
 <body>
 	<a href="/interne">Retour liste fournisseurs</a>
-	<!-- <a href="/commande">Voir la commande</a> -->
-	<form method="post" th:if="${session.commande != null}" th:action="@{/commande}">
-		<input type="hidden" th:name="${#requestParams.commande}" th:value="${commande.toString()}" />
-		<button type="submit">Voir la commande</button>
-	</form>
+	<a href="/commande">Voir la commande</a>
 	<div id="container">
 		<div class="produit" th:each="prod:${products}">
 			<h2 class="nom" th:text="${prod.nom}"></h2><br>
@@ -23,6 +19,7 @@
 			<span class="categorie" th:text="${prod.categorie}"></span><br>
 			<span class="prix" th:text="${prod.prix} + €"></span><br>
 			<form action="#" method="post">
+				<input type="hidden" name="commande" th:value="${commande}">
 				<input type="hidden" name="id" th:value="${prod.idprod}">
 				<input type="number" min="1" name="quantity">
 				<button type="submit">Ajouter à la commande</button>

@@ -18,10 +18,10 @@ import accesDonnees.DO.CommandeDO;
 import accesDonnees.DO.PanierDO;
 import accesDonnees.DO.ProduitDO;
 
+//TODO fix error panier null
 @Controller
 @RequestMapping("/panier")
 public class PanierController {
-	;
 	private final ProduitDAOimpl PRODDAO = new ProduitDAOimpl();
 	private final CommandeDAOimpl COMMDAO = new CommandeDAOimpl();
 	private List<ProduitDO> products = new ArrayList<ProduitDO>();

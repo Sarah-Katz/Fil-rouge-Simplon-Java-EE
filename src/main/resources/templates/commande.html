@@ -18,7 +18,7 @@
 		<span th:text="${prod.description}"></span>
 		<span th:text="${prod.categorie}"></span>
 		<span th:text="${prod.prix}"></span><br>
-		<form action="/panier" method="post">
+		<form action="/commande" method="post">
 			<input type="hidden" name="id" th:value="${prod.idprod}">
 			<button type="submit">Retirer de la commande</button>
 		</form>
