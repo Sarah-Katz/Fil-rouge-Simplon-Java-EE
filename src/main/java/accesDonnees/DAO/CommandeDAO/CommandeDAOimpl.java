@@ -49,6 +49,17 @@ public class CommandeDAOimpl implements ICommandeDAO {
 		em.getTransaction().commit();
 		return commande;
 	}
+	
+	public CommandeDO updateActive(final int id, final boolean active) {
+		EntityManager em = Util.JPA.getEntityManager();
+		em.getTransaction().begin();
+		Query query = em.createQuery("SELECT c from CommandeDO c where c.idcomm = :id");
+		query.setParameter("id", id);
+		CommandeDO commande = (CommandeDO) query.getSingleResult();
+		commande.setActive(active);
+		em.getTransaction().commit();
+		return commande;
+	}
 
 	public void delete(final int id) {
 		EntityManager em = Util.JPA.getEntityManager();
