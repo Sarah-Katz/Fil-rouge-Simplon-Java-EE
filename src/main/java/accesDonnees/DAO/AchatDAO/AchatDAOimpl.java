@@ -6,16 +6,15 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import accesDonnees.DO.AchatDO;
-import accesDonnees.DO.FournisseurDO;
+import accesDonnees.DO.AchatDO; 
 import accesDonnees.DO.ProduitDO;
 
 public class AchatDAOimpl implements IAchatDAO {
 
-	public AchatDO create(final Date dateachat, final ProduitDO produit, final FournisseurDO fournisseur) {
+	public AchatDO create(final Date dateachat, final List<ProduitDO> listeprod) {
 		final EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
-		AchatDO achat = new AchatDO(dateachat, produit, fournisseur);
+		AchatDO achat = new AchatDO(dateachat, listeprod);
 		em.persist(achat);
 		em.getTransaction().commit();
 		return achat;
@@ -48,29 +47,30 @@ public class AchatDAOimpl implements IAchatDAO {
 		return achat;
 	}
 
-	public AchatDO updateProduit(final int id, final ProduitDO produit) {
+	public AchatDO updateListeprod(final int id, final List<ProduitDO> listeprod) {
 		final EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
 		final Query query = em.createQuery("SELECT a FROM AchatDO a WHERE a.id = :id");
 		query.setParameter("id", id);
 		final AchatDO achat = (AchatDO) query.getSingleResult();
-		achat.setProduit(produit);
+		achat.setListeprod(listeprod);
+		em.merge(achat);
+		em.getTransaction().commit();
+		return achat;
+	}
+	
+	public AchatDO updateactive(final int id, final boolean active) {
+		final EntityManager em = Util.JPA.getEntityManager();
+		em.getTransaction().begin();
+		final Query query = em.createQuery("SELECT a FROM AchatDO a WHERE a.id = :id");
+		query.setParameter("id", id);
+		final AchatDO achat = (AchatDO) query.getSingleResult();
+		achat.setActive(active);
 		em.merge(achat);
 		em.getTransaction().commit();
 		return achat;
 	}
 
-	public AchatDO updateFournisseur(final int id, final FournisseurDO fournisseur) {
-		final EntityManager em = Util.JPA.getEntityManager();
-		em.getTransaction().begin();
-		final Query query = em.createQuery("SELECT a FROM AchatDO a WHERE a.id = :id");
-		query.setParameter("id", id);
-		final AchatDO achat = (AchatDO) query.getSingleResult();
-		achat.setFournisseur(fournisseur);
-		em.merge(achat);
-		em.getTransaction().commit();
-		return achat;
-	}
 
 	public void delete(final int id) {
 		final EntityManager em = Util.JPA.getEntityManager();

@@ -1,14 +1,17 @@
 package accesDonnees.DO;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 /**
@@ -26,11 +29,11 @@ public class AchatDO {
 	private int idachat;
 	@Column(name = "dateachat")
 	private Date dateachat;
-	@OneToOne
-	private ProduitDO produit;
-	@OneToOne
-	@JoinColumn(name = "idfour")
-	private FournisseurDO fournisseur;
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "achats")
+	private List<ProduitDO> listeprod = new ArrayList<ProduitDO>();
+	@Column(name = "active")
+	private boolean active;
 
 	AchatDO() {
 	}
@@ -44,10 +47,10 @@ public class AchatDO {
 	 * @param produit     Produit acheté.
 	 * @param fournisseur Fournisseur de l'achat.
 	 */
-	public AchatDO(final Date dateachat, final ProduitDO produit, final FournisseurDO fournisseur) {
+	public AchatDO(final Date dateachat, final List<ProduitDO> listeprod) { 
 		this.dateachat = dateachat;
-		this.produit = produit;
-		this.fournisseur = fournisseur;
+		this.listeprod = listeprod;
+		this.active = true;
 	}
 	
 	public int getIdachat() {
@@ -66,21 +69,23 @@ public class AchatDO {
 		this.dateachat = dateachat;
 	}
 
-	public ProduitDO getProduit() {
-		return produit;
+	public List<ProduitDO> getListeprod() {
+		return listeprod;
 	}
 
-	public void setProduit(ProduitDO produit) {
-		this.produit = produit;
+	public void setListeprod(List<ProduitDO> listeprod) {
+		this.listeprod = listeprod;
 	}
 
-	public FournisseurDO getFournisseur() {
-		return fournisseur;
+	public boolean isActive() {
+		return active;
 	}
 
-	public void setFournisseur(FournisseurDO fournisseur) {
-		this.fournisseur = fournisseur;
+	public void setActive(boolean active) {
+		this.active = active;
 	}
+	
+	
 
 	
 

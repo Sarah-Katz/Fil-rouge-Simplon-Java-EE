@@ -3,12 +3,11 @@ package accesDonnees.DAO.AchatDAO;
 import java.sql.Date;
 import java.util.List;
 
-import accesDonnees.DO.AchatDO;
-import accesDonnees.DO.FournisseurDO;
+import accesDonnees.DO.AchatDO; 
 import accesDonnees.DO.ProduitDO;
 
 public interface IAchatDAO {
-	public AchatDO create(final Date dateachat, final ProduitDO produit, final FournisseurDO fournisseur);
+	public AchatDO create(final Date dateachat, final List<ProduitDO> listeprod);
 
 	public List<AchatDO> findAll();
 
@@ -16,9 +15,9 @@ public interface IAchatDAO {
 
 	public AchatDO updateDateachat(final int id, final Date dateachat);
 
-	public AchatDO updateProduit(final int id, final ProduitDO produit);
+	public AchatDO updateListeprod(final int id, final List<ProduitDO> listeprod);
 
-	public AchatDO updateFournisseur(final int id, final FournisseurDO fournisseur);
+	public AchatDO updateactive(final int id, final boolean active);
 
 	public void delete(final int id);
 }
