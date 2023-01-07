@@ -84,6 +84,8 @@ public class AchatDO {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
+
+	
 	
 	
 

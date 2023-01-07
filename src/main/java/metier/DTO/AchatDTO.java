@@ -1,6 +1,10 @@
 package metier.DTO;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+
+import accesDonnees.DO.ProduitDO;
 
 /**
  * Classe représentant un achat dans le système de gestion du stock.
@@ -13,8 +17,8 @@ public class AchatDTO {
 	
 	private int idachat;
 	private Date dateachat;
-	private ProduitDTO produit;
-	private FournisseurDTO fournisseur;
+	private List<ProduitDO> listeprod = new ArrayList<ProduitDO>();
+	private boolean active;
 
 	AchatDTO() {
 	}
@@ -35,20 +39,20 @@ public class AchatDTO {
 		this.dateachat = dateachat;
 	}
 
-	public ProduitDTO getProduit() {
-		return produit;
+	public List<ProduitDO> getListeprod() {
+		return listeprod;
 	}
 
-	public void setProduit(ProduitDTO produit) {
-		this.produit = produit;
+	public void setListeprod(List<ProduitDO> listeprod) {
+		this.listeprod = listeprod;
 	}
 
-	public FournisseurDTO getFournisseur() {
-		return fournisseur;
+	public boolean isActive() {
+		return active;
 	}
 
-	public void setFournisseur(FournisseurDTO fournisseur) {
-		this.fournisseur = fournisseur;
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	/**
@@ -60,12 +64,11 @@ public class AchatDTO {
 	 * @param produit     Produit acheté.
 	 * @param fournisseur Fournisseur de l'achat.
 	 */
-	public AchatDTO(final int id, final Date dateachat, final ProduitDTO produit,
-			final FournisseurDTO fournisseur) {
+	public AchatDTO(final int id, final Date dateachat, final List<ProduitDO> listeprod) {
 		this.idachat = id;
 		this.dateachat = dateachat;
-		this.produit = produit;
-		this.fournisseur = fournisseur;
+		this.listeprod = listeprod;
+		this.active = true;
 	}
 
 }

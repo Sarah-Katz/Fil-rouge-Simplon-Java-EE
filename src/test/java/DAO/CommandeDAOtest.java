@@ -53,10 +53,9 @@ class CommandeDAOtest {
 	@Test
 	@Order(3)
 	public void testCommandeDOupdateNom() {
-		Date ancien_date = new Date(10);
 		Date nouveau_date = new Date(20);
 		CommandeDAOimpl commandedao = new CommandeDAOimpl();
-		CommandeDO commande = commandedao.updateDate(ancien_date, nouveau_date);
+		CommandeDO commande = commandedao.updateDate(1, nouveau_date);
 		
 		assertEquals(nouveau_date,commande.getDate());
 	}
@@ -80,11 +79,9 @@ class CommandeDAOtest {
 	@Test
 	@Order(6)
 	public void testProduitDOupdateCate() {
-		String ancien_cate = "categorie";
 		String nouveau_cate = "cate2";
 		ProduitDAOimpl produitdao = new ProduitDAOimpl();
-		ProduitDO produit = produitdao.updatecate(ancien_cate, nouveau_cate);
-		
+		ProduitDO produit = produitdao.updatecate(1, nouveau_cate);
 		assertEquals(nouveau_cate,produit.getCategorie());
 	}
 	
@@ -102,10 +99,9 @@ class CommandeDAOtest {
 	@Test
 	@Order(8)
 	public void testProduitDOupdatePrix() {
-		double ancien_prix = 2000;
 		double nouveau_prix = 3000;
 		ProduitDAOimpl produitdao = new ProduitDAOimpl();
-		ProduitDO produit = produitdao.updateprix(ancien_prix, nouveau_prix);
+		ProduitDO produit = produitdao.updateprix(1, nouveau_prix);
 		
 		assertEquals(nouveau_prix,produit.getPrix());
 	}

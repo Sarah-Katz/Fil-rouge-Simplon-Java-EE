@@ -23,9 +23,11 @@ public class AchatDAOtest {
 	@Order(1)
 	public void testAchatDOcreate() {
 		final ProduitDO produit = new ProduitDAOimpl().create("test", "testdesc", "testcat", 2323, 120,null);
+		List<ProduitDO> produits = new ArrayList<ProduitDO>();
+		produits.add(produit);
 		final Date date = new Date(10);
 		final AchatDAOimpl achatdao = new AchatDAOimpl();
-		final AchatDO achat = achatdao.create(date, produit, null);
+		final AchatDO achat = achatdao.create(date, produits);
 		assertEquals(date, achat.getDateachat());
 	}
 
@@ -52,7 +54,9 @@ public class AchatDAOtest {
 		final List<AchatDO> list = achatdao.findByRef(ref);
 		final List<Integer> list3 = new ArrayList<Integer>();
 		for (AchatDO a : list) {
-			list3.add(a.getProduit().getRef());
+			for (ProduitDO prod : a.getListeprod()) {
+				list3.add(prod.getRef());
+			}
 		}
 		List<Integer> list2 = new ArrayList<Integer>();
 		list2.add(ref);
@@ -77,10 +81,7 @@ public class AchatDAOtest {
 		final AchatDAOimpl achatdao = new AchatDAOimpl();
 		final List<AchatDO> achat = achatdao.findByRef(2323);		
 		final int idachat = achat.get(0).getIdachat();
-		final int idprod = achat.get(0).getProduit().getIdprod();
 		achatdao.delete(idachat);
-		ProduitDAOimpl produitDAOimpl = new ProduitDAOimpl();
-		produitDAOimpl.delete(idprod);
 	}
 
 }

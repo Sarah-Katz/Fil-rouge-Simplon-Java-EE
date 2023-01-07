@@ -70,10 +70,9 @@ class ProduitDAOtest {
 	@Test
 	@Order(4)
 	public void testProduitDOupdateNom() {
-		String ancien_nom = "jean";
 		String nouveau_nom = "marc";
 		ProduitDAOimpl produitdao = new ProduitDAOimpl();
-		ProduitDO produit = produitdao.updateNom(ancien_nom, nouveau_nom);
+		ProduitDO produit = produitdao.updateNom(1, nouveau_nom);
 		
 		assertEquals(nouveau_nom,produit.getNom());
 	}
@@ -81,10 +80,9 @@ class ProduitDAOtest {
 	@Test
 	@Order(5)
 	public void testProduitDOupdateDesc() {
-		String ancien_desc = "description";
 		String nouveau_desc = "desc2";
 		ProduitDAOimpl produitdao = new ProduitDAOimpl();
-		ProduitDO produit = produitdao.updateDesc(ancien_desc, nouveau_desc);
+		ProduitDO produit = produitdao.updateDesc(1, nouveau_desc);
 		
 		assertEquals(nouveau_desc,produit.getDescription());
 	}
@@ -92,10 +90,9 @@ class ProduitDAOtest {
 	@Test
 	@Order(6)
 	public void testProduitDOupdateCate() {
-		String ancien_cate = "categorie";
 		String nouveau_cate = "cate2";
 		ProduitDAOimpl produitdao = new ProduitDAOimpl();
-		ProduitDO produit = produitdao.updatecate(ancien_cate, nouveau_cate);
+		ProduitDO produit = produitdao.updatecate(1, nouveau_cate);
 		
 		assertEquals(nouveau_cate,produit.getCategorie());
 	}
@@ -114,10 +111,9 @@ class ProduitDAOtest {
 	@Test
 	@Order(8)
 	public void testProduitDOupdatePrix() {
-		double ancien_prix = 2000;
 		double nouveau_prix = 3000;
 		ProduitDAOimpl produitdao = new ProduitDAOimpl();
-		ProduitDO produit = produitdao.updateprix(ancien_prix, nouveau_prix);
+		ProduitDO produit = produitdao.updateprix(1, nouveau_prix);
 		
 		assertEquals(nouveau_prix,produit.getPrix());
 	}

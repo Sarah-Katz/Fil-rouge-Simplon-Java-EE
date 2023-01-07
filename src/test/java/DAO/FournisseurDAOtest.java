@@ -50,10 +50,9 @@ public class FournisseurDAOtest {
 	@Test
 	@Order(3)
 	public void testFournisseurDOupdate() {
-		String ancien_nom = "jean";
 		String nouveau_nom = "marc";
 		FournisseurDAOimpl fournisseurdao = new FournisseurDAOimpl();
-		FournisseurDO fournisseur = fournisseurdao.update(ancien_nom,nouveau_nom);
+		FournisseurDO fournisseur = fournisseurdao.update(1,nouveau_nom);
 		assertEquals(nouveau_nom,fournisseur.getNom());
 	}
 	
