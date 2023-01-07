@@ -8,10 +8,13 @@
 	<link rel="stylesheet" th:href="@{/CSS/prodlist.css}">
 	<title>Liste Produits</title>
 </head>
+<header>
+	<a href="/interne">Retour liste fournisseurs</a>
+	<h1>E-shop une fois, e-shop toujours</h1>
+	<a href="/commande">Voir la commande</a>
+</header>
 
 <body>
-	<a href="/interne">Retour liste fournisseurs</a>
-	<a href="/commande">Voir la commande</a>
 	<div id="container">
 		<div class="produit" th:each="prod:${products}">
 			<h2 class="nom" th:text="${prod.nom}"></h2><br>

@@ -5,19 +5,26 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" th:href="@{/CSS/panier.css}">
 	<title>Panier</title>
 </head>
 
-<body>
-	<a href="/prodlist">Retour liste produits</a><br>
+<header>
+	<a href="/prodlist">Retour liste produits</a>
+	<h1>E-shop une fois, e-shop toujours</h1>
 	<form action="/achat" method="get">
 		<button type="submit">Valider le panier</button>
 	</form>
+</header>
+
+<body>
 	<div class="produit" th:each="prod:${products}">
-		<span th:text="${prod.nom}"></span>
-		<span th:text="${prod.description}"></span>
-		<span th:text="${prod.categorie}"></span>
-		<span th:text="${prod.prix}"></span><br>
+		<div class="desc">
+			<span class="nom" th:text="${prod.nom}"></span>
+			<span class="description" th:text="${prod.description}"></span>
+			<span class="categorie" th:text="${prod.categorie}"></span>
+			<span class="prix" th:text="${prod.prix}"></span><br>
+		</div>
 		<form action="/panier" method="post">
 			<input type="hidden" name="id" th:value="${prod.idprod}">
 			<button type="submit">Retirer du panier</button>

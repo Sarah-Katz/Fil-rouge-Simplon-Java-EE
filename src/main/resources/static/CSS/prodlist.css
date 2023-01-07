@@ -10,7 +10,7 @@ body {
 
 /* Styles pour les liens */
 a {
-  color: blue;
+  color: rgb(0, 0, 0);
   text-decoration: none;
 }
 a:hover {
@@ -29,7 +29,7 @@ header {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* ajoute une ombre au header */
 }
 header a {
-  color: blue;
+  color: rgb(0, 0, 0);
   text-decoration: none;
   margin:1%
 }
@@ -38,13 +38,13 @@ header a:hover {
 }
 header h1 {
   margin: 0;
+  margin-left: -4%;
 }
 
 /* Styles pour le conteneur principal */
 #container {
-  width: 80%;
   margin: 1em;
-  text-align: center;
+  text-align: justify;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -54,11 +54,14 @@ header h1 {
 .produit {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 30%;
+  align-items: justify;
+  width: 29%;
   margin: 1em;
-  text-align: left;
+  text-align: center;
   vertical-align: top;
+  padding : 1%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: white;
 }
 .nom {
   font-size: 1.2em;
@@ -74,6 +77,17 @@ header h1 {
 .prix {
   font-weight: bold;
   color: red;
+}
+
+button{
+  background-color: #007c74;
+  border: none;
+  color: #fff;
+  padding: 10px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
 }
 
 /* Styles pour le design responsive */
