@@ -21,6 +21,7 @@
 	<div class="vide" th:if="${products.isEmpty()}">
 		Votre panier ne contient aucun article.
 	</div>
+	<div class="total" th:unless="${products.isEmpty()}">Votre total est de : <span th:text="${total}"></span> €</div>
 	<div class="produit" th:each="prod:${products}">
 		<div class="desc">
 			<span class="nom" th:text="${prod.nom}"></span>
