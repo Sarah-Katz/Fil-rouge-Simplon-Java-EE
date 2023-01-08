@@ -18,6 +18,9 @@
 </header>
 
 <body>
+	<div class="vide" th:if="${products.isEmpty()}">
+		Votre panier ne contient aucun articles.
+	</div>
 	<div class="produit" th:each="prod:${products}">
 		<div class="desc">
 			<span class="nom" th:text="${prod.nom}"></span>
@@ -32,7 +35,7 @@
 	</div>
 	<form action="/clear" method="post">
 		<button class="clear" type="submit">Vider le panier</button>
-	</form>	
+	</form>
 </body>
 
 </html>
