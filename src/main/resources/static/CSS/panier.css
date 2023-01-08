@@ -71,6 +71,7 @@ header button{
 	width:100%;
 }
 .produit{
+	background-color:white;
 	margin-top:1%;
 	display:flex;
 	justify-content:space-between;
@@ -79,4 +80,5 @@ header button{
   	border-bottom-right-radius: 5px;
  	border-bottom-left-radius: 5px;
   	border-top-left-radius: 5px;
+  	padding: 0.5em;
 }
