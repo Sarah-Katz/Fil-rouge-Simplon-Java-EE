@@ -18,8 +18,8 @@ import accesDonnees.DO.ProduitDO;
 @Controller
 @RequestMapping("/detailvente")
 public class DetailventeController {
- 
-	private static List<ProduitDO> products = new ArrayList<ProduitDO>();
+
+	private static List<ProduitDO> products = new ArrayList<>();
 	private static final CommandeDAOimpl COMMDAO = new CommandeDAOimpl();
 
 	@GetMapping
@@ -34,7 +34,7 @@ public class DetailventeController {
 	    model.addAttribute("products", products);
 	    return "detailvente";
 	}
-	
+
 	@PostMapping
 	public String showAchat(@RequestParam("id") int idcomm, RedirectAttributes redirectAttributes) {
 	    redirectAttributes.addAttribute("id", idcomm);

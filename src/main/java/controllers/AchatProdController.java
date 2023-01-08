@@ -23,7 +23,7 @@ public class AchatProdController {
 	private static final ProduitDAOimpl PRODDAO = new ProduitDAOimpl();
 	private static final FournisseurDAOimpl FOURDAO = new FournisseurDAOimpl();
 	private static final AchatDAOimpl ACHATDAO = new AchatDAOimpl();
-	private static List<ProduitDO> products = new ArrayList<ProduitDO>();
+	private static List<ProduitDO> products = new ArrayList<>();
 
 	@GetMapping
 	public String showProduits(@RequestParam("idfour") int idfour, Model model) {
@@ -39,7 +39,7 @@ public class AchatProdController {
 		model.addAttribute("products", products);
 		return "achatprod";
 	}
-	
+
 	@PostMapping
 	public String addToCommande(@RequestParam int id, @RequestParam int idfour) {
 	    final ProduitDO product = PRODDAO.findById(id);
@@ -55,7 +55,7 @@ public class AchatProdController {
 	    }
 	    if (!hasActive) {
 	        // no active AchatDO objects found, create a new one
-	        List<ProduitDO> prodList = new ArrayList<ProduitDO>();
+	        List<ProduitDO> prodList = new ArrayList<>();
 	        prodList.add(product);
 	        achat = ACHATDAO.create(null, prodList);
 	    } else {
@@ -68,7 +68,7 @@ public class AchatProdController {
 	                break;
 	            }
 	        }
-	    }	    
+	    }
 	    return "redirect:achatprod?idfour=" + idfour;
 	}
 

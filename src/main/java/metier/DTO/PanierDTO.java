@@ -33,7 +33,7 @@ public class PanierDTO {
 	public void setCommande(CommandeDTO commande) {
 		this.commande = commande;
 	}
-	
-	
+
+
 
 }

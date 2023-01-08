@@ -15,7 +15,7 @@ public class ConvertAchat {
 	public AchatDO achattodo(AchatDTO achatdto) {
 		AchatDAOimpl achatdao = new AchatDAOimpl();
 		AchatDO achatdo = achatdao.create(achatdto.getDateachat(), achatdto.getListeprod());
-		;
+
 		return achatdo;
 	}
 

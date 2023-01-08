@@ -20,7 +20,7 @@ public class FournisseurController {
 	private static final List<FournisseurDO> LISTEFOUR = FOURDAO.findAll();
 
 	@GetMapping
-	public String getFournisseurs(Model model) {	    
+	public String getFournisseurs(Model model) {
 	    model.addAttribute("fournisseurs", LISTEFOUR);
 	    return "interne";
 	}

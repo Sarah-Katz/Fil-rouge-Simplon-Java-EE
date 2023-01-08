@@ -3,7 +3,7 @@ package metier.DTO;
 import accesDonnees.DO.PanierDO;
 
 public class ClientDTO {
-	
+
 	private int idclient;
 	private String nom;
 	private String prenom;
@@ -14,8 +14,8 @@ public class ClientDTO {
 
 	ClientDTO() {
 	}
-	
-	
+
+
 
 	public int getIdclient() {
 		return idclient;

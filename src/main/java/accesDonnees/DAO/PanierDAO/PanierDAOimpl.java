@@ -10,6 +10,7 @@ import accesDonnees.DO.PanierDO;
 
 public class PanierDAOimpl implements IPanierDAO {
 
+	@Override
 	public PanierDO create(final CommandeDO commande) {
 		final EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
@@ -19,6 +20,7 @@ public class PanierDAOimpl implements IPanierDAO {
 		return panier;
 	}
 
+	@Override
 	public List<PanierDO> findAll() {
 		final EntityManager em = Util.JPA.getEntityManager();
 		@SuppressWarnings("unchecked")
@@ -26,15 +28,17 @@ public class PanierDAOimpl implements IPanierDAO {
 		return list;
 	}
 
+	@Override
 	public List<PanierDO> findByCommande(final CommandeDO commande) {
 		final EntityManager em = Util.JPA.getEntityManager();
 		@SuppressWarnings("unchecked")
 		List<PanierDO> list = em.createQuery("SELECT p FROM PanierDO p WHERE p.commande.id = :commid")
-		.setParameter("commid", commande.getIdcomm()).getResultList();		
+		.setParameter("commid", commande.getIdcomm()).getResultList();
 		return list;
-		
+
 	}
 
+	@Override
 	public PanierDO updateCommande(final int id, final CommandeDO commande) {
 		final EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
@@ -46,6 +50,7 @@ public class PanierDAOimpl implements IPanierDAO {
 		return panier;
 	}
 
+	@Override
 	public void delete(final int id) {
 		final EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();

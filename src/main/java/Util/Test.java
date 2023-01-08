@@ -19,10 +19,10 @@ import accesDonnees.DO.ProduitDO;
 public class Test {
 	final static ClientDAOimpl CLIENTDAO = new ClientDAOimpl();
 	final static PanierDAOimpl PANIERDAO = new PanierDAOimpl();
-	final static ProduitDAOimpl PRODUITDAO = new ProduitDAOimpl();	
+	final static ProduitDAOimpl PRODUITDAO = new ProduitDAOimpl();
 	final static FournisseurDAOimpl FOURDAO = new FournisseurDAOimpl();
 	final static AchatDAOimpl ACHATDAO = new AchatDAOimpl();
-	
+
 	public static void main(String[] args) {
 //		dropTables();
 		addClientToDb();
@@ -30,18 +30,18 @@ public class Test {
 		addFournisseurToDb();
 		addAchatToDb();
 	}
-	
+
 	public static ClientDO addClientToDb() {
 		PanierDO panier = PANIERDAO.create(null);
 		ClientDO client = CLIENTDAO.create("Katz", "Sarah", "44 rue du test", 0606060606, "mail@mail.mail", panier);
 		return client;
 	}
-	
+
 	public static ProduitDO createprod(String nom, String desc, String cat, int ref, double prix) {
 		ProduitDO prod = PRODUITDAO.create(nom, desc, cat, ref, prix);
-		return prod;		
+		return prod;
 	}
-	
+
 	public static void addProductsToDb() {
 		createprod("Pâtes fraîches aux œufs", "Des pâtes fraîches maison au blé dur et aux œufs, idéales pour toutes vos recettes de pâtes", "Pâtes", 1, 4.99);
 		createprod("Riz basmati", "Un riz parfumé aux grains longs et fins, idéal pour accompagner vos plats indiens ou asiatiques", "Riz et grains", 2, 1.99);
@@ -66,21 +66,21 @@ public class Test {
 		createprod("Filet mignon de porc", "Un filet mignon de porc tendre et juteux, idéal pour les repas de fête ou les plats en sauce", "Viande", 21, 13.99);
 		createprod("Aiguillettes de poulet", "Des aiguillettes de poulet tendres et juteuses, idéales pour les salades ou les plats en sauce", "Viande", 22, 7.99);
 	}
-	
+
 	public static void addFournisseurToDb() {
 		FournisseurDO four = FOURDAO.create("Centrale d'achat", null);
 		List<ProduitDO> prodlist = PRODUITDAO.findAll();
-		List<Integer> reflist = new ArrayList<Integer>();
+		List<Integer> reflist = new ArrayList<>();
 		for (ProduitDO p : prodlist) {
 			reflist.add(p.getRef());
 		}
 		FOURDAO.updateReflist(four.getIdfour(), reflist);
 	}
-	
+
 	public static void addAchatToDb() {
 		AchatDO achat = ACHATDAO.create(null, null);
 	}
-	
+
 	public static void dropTables() {
 		EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();

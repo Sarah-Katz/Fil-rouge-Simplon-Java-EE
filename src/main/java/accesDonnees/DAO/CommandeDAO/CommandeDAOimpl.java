@@ -12,6 +12,7 @@ import accesDonnees.DO.ProduitDO;
 
 public class CommandeDAOimpl implements ICommandeDAO {
 
+	@Override
 	public CommandeDO create(final Date date, final List<ProduitDO> listeprod) {
 		EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
@@ -21,20 +22,23 @@ public class CommandeDAOimpl implements ICommandeDAO {
 		return commande;
 	}
 
+	@Override
 	public List<CommandeDO> findAll() {
 		EntityManager em = Util.JPA.getEntityManager();
 		@SuppressWarnings("unchecked")
-		List<CommandeDO> list = (List<CommandeDO>) em.createQuery("SELECT c FROM CommandeDO c").getResultList();
+		List<CommandeDO> list = em.createQuery("SELECT c FROM CommandeDO c").getResultList();
 		return list;
 	}
 
+	@Override
 	public CommandeDO findById(final int id) {
         final EntityManager em = Util.JPA.getEntityManager();
         CommandeDO comm = (CommandeDO) em.createQuery("SELECT c FROM CommandeDO c WHERE c.idcomm = :id")
                 .setParameter("id", id).getSingleResult();
         return comm;
     }
-	
+
+	@Override
 	public CommandeDO updateDate(final int id, final Date nouveau_date) {
 		EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
@@ -46,6 +50,7 @@ public class CommandeDAOimpl implements ICommandeDAO {
 		return commande;
 	}
 
+	@Override
 	public CommandeDO updateProduit(final int id, final List<ProduitDO> nouveau_produit) {
 		EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
@@ -56,7 +61,7 @@ public class CommandeDAOimpl implements ICommandeDAO {
 		em.getTransaction().commit();
 		return commande;
 	}
-	
+
 	public CommandeDO updateActive(final int id, final boolean active) {
 		EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
@@ -68,6 +73,7 @@ public class CommandeDAOimpl implements ICommandeDAO {
 		return commande;
 	}
 
+	@Override
 	public void delete(final int id) {
 		EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();

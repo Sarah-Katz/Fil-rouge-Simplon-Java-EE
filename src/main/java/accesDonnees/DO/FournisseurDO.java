@@ -30,7 +30,7 @@ public class FournisseurDO {
 	private String nom;
 	@Convert(converter = IntegerListConverter.class)
 	@Column(name = "reflist")
-	private List<Integer> reflist = new ArrayList<Integer>();
+	private List<Integer> reflist = new ArrayList<>();
 
 	public FournisseurDO() {
 	}

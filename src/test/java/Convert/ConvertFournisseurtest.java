@@ -1,6 +1,6 @@
 package Convert;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,21 +22,21 @@ class ConvertFournisseurtest {
 		FournisseurDAOimpl fournisseurdao = new FournisseurDAOimpl();
 		ProduitDAOimpl produitdao = new ProduitDAOimpl();
 		ProduitDO produit = produitdao.create("jean", "description", "categorie", 1, 3000,null);
-		List<ProduitDO> produits = new ArrayList<ProduitDO>();
+		List<ProduitDO> produits = new ArrayList<>();
 		produits.add(produit);
 		FournisseurDO fournisseurdo = fournisseurdao.create(nom, produits);
 		ConvertFournisseur convert = new ConvertFournisseur();
 		FournisseurDTO fournisseurdto = convert.fourtodto(fournisseurdo);
 		assertEquals(fournisseurdo.getNom(), fournisseurdto.getNom());
 	}
-	
+
 	@Test
 	public void testfourtodo() {
 		int id = 5;
 		String nom = "jean";
 		ProduitDAOimpl produitdao = new ProduitDAOimpl();
 		ProduitDO produit = produitdao.create("jean", "description", "categorie", 1, 3000,null);
-		List<ProduitDO> produits = new ArrayList<ProduitDO>();
+		List<ProduitDO> produits = new ArrayList<>();
 		produits.add(produit);
 		FournisseurDTO fournisseurdto = new FournisseurDTO(id,nom, produits);
 		ConvertFournisseur convert = new ConvertFournisseur();

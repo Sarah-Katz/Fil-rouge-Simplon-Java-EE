@@ -23,13 +23,13 @@ import accesDonnees.DO.ProduitDO;
 public class PanierController {
 	private static final ProduitDAOimpl PRODDAO = new ProduitDAOimpl();
 	private static final CommandeDAOimpl COMMDAO = new CommandeDAOimpl();
-	private static List<ProduitDO> products = new ArrayList<ProduitDO>();
+	private static List<ProduitDO> products = new ArrayList<>();
 
 	@GetMapping
 	public String showPanier(Model model) {
 		final ClientDO client = new ClientDAOimpl().findByMail("mail@mail.mail");
 		PanierDO panier = null;
-		List<ProduitDO> listprod = new ArrayList<ProduitDO>();
+		List<ProduitDO> listprod = new ArrayList<>();
 		double total = 0;
 		try {
 			panier = client.getPanier();

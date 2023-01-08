@@ -35,7 +35,7 @@ public class AchatController {
 			COMMDAO.updateActive(commande.getIdcomm(), false);
 			final Date date = new Date(System.currentTimeMillis());
 			COMMDAO.updateDate(commande.getIdcomm(), date);
-			List<ProduitDO> listprod = new ArrayList<ProduitDO>();
+			List<ProduitDO> listprod = new ArrayList<>();
 			PANIERDAO.updateCommande(CLIENT.getPanier().getIdpanier(), COMMDAO.create(null, listprod));
 			return "/achat";
 		} else {

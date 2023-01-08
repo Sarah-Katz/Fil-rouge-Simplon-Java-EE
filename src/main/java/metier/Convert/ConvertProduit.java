@@ -16,7 +16,7 @@ public class ConvertProduit {
 		ProduitDAOimpl produitdao = new ProduitDAOimpl();
 		ProduitDO produitdo = produitdao.create(produitdto.getNom(), produitdto.getDescription(),
 				produitdto.getCategorie(), produitdto.getRef(), produitdto.getPrix(), produitdto.getFournisseur());
-		;
+
 		return produitdo;
 	}
 

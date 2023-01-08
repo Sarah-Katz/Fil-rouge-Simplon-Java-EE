@@ -20,7 +20,7 @@ import accesDonnees.DO.ProduitDO;
 public class CommandeController {
 	private static final ProduitDAOimpl PRODDAO = new ProduitDAOimpl();
 	private static final AchatDAOimpl ACHATDAO = new AchatDAOimpl();
-	private static List<ProduitDO> products = new ArrayList<ProduitDO>();
+	private static List<ProduitDO> products = new ArrayList<>();
 
 	@GetMapping
 	public String showCommande(Model model) {
