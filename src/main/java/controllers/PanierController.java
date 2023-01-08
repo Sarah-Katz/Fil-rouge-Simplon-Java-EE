@@ -28,15 +28,22 @@ public class PanierController {
 
 	@GetMapping
 	public String showPanier(Model model) {
-		products.removeAll(products);
 		final ClientDO client = new ClientDAOimpl().findByMail("mail@mail.mail");
-		final PanierDO panier = client.getPanier();
-		model.addAttribute("panier", panier);
-		final List<ProduitDO> listprod = panier.getCommande().getListeprod();
-		for (ProduitDO p : listprod) {
-			products.add(p);
+		PanierDO panier = null;
+		List<ProduitDO> listprod = null;
+		try {
+			panier = client.getPanier();
+			model.addAttribute("panier", panier);
+
+			listprod = panier.getCommande().getListeprod();
+			products.removeAll(products);
+			for (ProduitDO p : listprod) {
+				products.add(p);
+			}
+		} catch (NullPointerException e) {
+		} finally {
+			model.addAttribute("products", products);
 		}
-		model.addAttribute("products", products);
 		return "panier";
 	}
 
@@ -50,5 +57,4 @@ public class PanierController {
 		COMMDAO.updateProduit(commande.getIdcomm(), commande.getListeprod());
 		return "redirect:panier";
 	}
-
 }
