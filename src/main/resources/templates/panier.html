@@ -13,13 +13,13 @@
 	<a href="/prodlist">Retour liste produits</a>
 	<h1>E-shop une fois, e-shop toujours</h1>
 	<form action="/achat" method="get">
-		<button type="submit">Valider le panier</button>
+		<button type="submit" th:unless="${products.isEmpty()}">Valider le panier</button>
 	</form>
 </header>
 
 <body>
 	<div class="vide" th:if="${products.isEmpty()}">
-		Votre panier ne contient aucun articles.
+		Votre panier ne contient aucun article.
 	</div>
 	<div class="produit" th:each="prod:${products}">
 		<div class="desc">
