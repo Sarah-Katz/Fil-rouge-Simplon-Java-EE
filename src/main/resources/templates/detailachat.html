@@ -16,7 +16,8 @@
 
 <body>
 	<div class="container">
-		<h2>Produits achetés lors de la commande</h2>
+		<h2>Produits achetés lors de la commande n°<span class="id" th:text="${achat.idachat}"></span>
+			du <span class="date" th:text="${#dates.format(achat.dateachat, 'EEEE d MMMM yyyy')}"></span></h2>
 		<div class="produit" th:each="prod:${products}">
 			<span class="label">Article : </span><br>
 			<span class="nom" th:text="${prod.nom}"></span><br>
