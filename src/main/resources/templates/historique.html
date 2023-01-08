@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" th:href="@{/CSS/valide.css}">
+	<title>Achat</title>
+</head>
+<header>
+	<a href="/interne">Retour accueil gestion</a>
+	<h1>E-shop une fois, e-shop toujours</h1>
+
+</header>
+
+<body>
+	<div class="container">
+		<div class="contachat">
+			<h2>Historique des Ventes</h2>
+			<div class="achat" th:each="achat:${achats}" th:unless="${achat.active}">
+				<span>N° de commande : </span>
+				<span class="id" th:text="${achat.idcomm}"></span><br>
+				<span>Date : </span>
+				<span class="date" th:text="${#dates.format(achat.date, 'EEEE d MMMM yyyy')}"></span>
+				<ul>
+					<li th:each="prod:${achat.listeprod}">
+					  <span th:text="${prod.nom}+test"></span>
+					</li>
+				  </ul>
+				<form method="post" action="/historique">
+					<input type="hidden" name="id" th:value="${achat.idcomm}">
+					<button type="submit">Voir le détail</button>
+				</form>
+			</div>
+		</div>
+		<div class="contvente">
+			<h2>Historique des Achats</h2>
+			<div class="vente" th:each="vente:${ventes}" th:unless="${vente.active}">
+				<span>N° de commande : </span>
+				<span class="id" th:text="${vente.idachat}"></span><br>
+				<span>Date : </span>
+				<span class="date" th:text="${#dates.format(vente.dateachat, 'EEEE d MMMM yyyy')}"></span>
+				<span class="liste" th:object="${vente.listeprod}"></span>
+				<form method="post" action="/detailachat">
+					<input type="hidden" name="id" th:value="${vente.idachat}">
+					<button type="submit">Voir le détail</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
