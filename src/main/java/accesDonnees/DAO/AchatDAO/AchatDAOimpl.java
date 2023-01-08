@@ -27,12 +27,12 @@ public class AchatDAOimpl implements IAchatDAO {
 		return list;
 	}
 
-	public List<AchatDO> findByRef(final int ref) {
+	public AchatDO findById(final int id) {
 		final EntityManager em = Util.JPA.getEntityManager();
-		@SuppressWarnings("unchecked")
-		List<AchatDO> list = em.createQuery("SELECT a FROM AchatDO a WHERE a.produit.ref = :ref")
-				.setParameter("ref", ref).getResultList();
-		return list;
+		final Query query = em.createQuery("SELECT a FROM AchatDO a WHERE a.idachat = :id");
+		query.setParameter("id", id);
+		final AchatDO achat = (AchatDO) query.getSingleResult();
+		return achat;
 	}
 
 	public AchatDO updateDateachat(final int id, final Date dateachat) {

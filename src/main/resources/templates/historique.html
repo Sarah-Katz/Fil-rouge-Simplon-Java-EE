@@ -28,7 +28,7 @@
 					  <span th:text="${prod.nom}+test"></span>
 					</li>
 				  </ul>
-				<form method="post" action="/historique">
+				<form method="post" action="/detailvente">
 					<input type="hidden" name="id" th:value="${achat.idcomm}">
 					<button type="submit">Voir le détail</button>
 				</form>

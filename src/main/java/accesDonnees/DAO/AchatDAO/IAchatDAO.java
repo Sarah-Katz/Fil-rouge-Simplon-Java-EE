@@ -3,7 +3,7 @@ package accesDonnees.DAO.AchatDAO;
 import java.sql.Date;
 import java.util.List;
 
-import accesDonnees.DO.AchatDO; 
+import accesDonnees.DO.AchatDO;
 import accesDonnees.DO.ProduitDO;
 
 public interface IAchatDAO {
@@ -11,7 +11,7 @@ public interface IAchatDAO {
 
 	public List<AchatDO> findAll();
 
-	public List<AchatDO> findByRef(final int ref);
+	public AchatDO findById(final int id);
 
 	public AchatDO updateDateachat(final int id, final Date dateachat);
 

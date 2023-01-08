@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -11,29 +12,31 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import accesDonnees.DAO.AchatDAO.AchatDAOimpl;
-import accesDonnees.DAO.CommandeDAO.CommandeDAOimpl;
 import accesDonnees.DO.AchatDO;
-import accesDonnees.DO.CommandeDO;
+import accesDonnees.DO.ProduitDO;
 
 @Controller
-@RequestMapping("/historique")
-public class HistoriqueController {
-	private final CommandeDAOimpl COMMDAO = new CommandeDAOimpl();
+@RequestMapping("/detailachat")
+public class DetailachatController {
+ 
+	private List<ProduitDO> products = new ArrayList<ProduitDO>();
 	private final AchatDAOimpl ACHATDAO = new AchatDAOimpl();
 
 	@GetMapping
-	public String getData(Model model) {
-		List<CommandeDO> achats = COMMDAO.findAll();
-		List<AchatDO> ventes = ACHATDAO.findAll();
-	    model.addAttribute("achats", achats);
-	    model.addAttribute("ventes", ventes);
-	    return "historique";
+	public String getProduits(@RequestParam("id") int id, Model model) {
+		AchatDO achat = ACHATDAO.findById(id);
+		List<ProduitDO> prodlist = achat.getListeprod();
+		products.removeAll(products);
+		for (ProduitDO p : prodlist) {
+			products.add(p);
+		}
+		model.addAttribute("achat", achat);
+	    model.addAttribute("products", products);
+	    return "detailachat";
 	}
-
 	
-	
-	@PostMapping("/detailvente")
-	public String showVente(@RequestParam("id") int idachat, RedirectAttributes redirectAttributes) {
+	@PostMapping
+	public String showAchat(@RequestParam("id") int idachat, RedirectAttributes redirectAttributes) {
 	    redirectAttributes.addAttribute("id", idachat);
 	    return "redirect:/detailachat";
 	}

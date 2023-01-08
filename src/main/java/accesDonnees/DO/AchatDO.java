@@ -11,7 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -29,7 +29,7 @@ public class AchatDO {
 	private int idachat;
 	@Column(name = "dateachat")
 	private Date dateachat;
-	@ManyToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "achats")
 	private List<ProduitDO> listeprod = new ArrayList<ProduitDO>();
 	@Column(name = "active")

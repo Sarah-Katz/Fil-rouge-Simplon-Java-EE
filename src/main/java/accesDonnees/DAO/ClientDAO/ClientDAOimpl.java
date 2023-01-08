@@ -8,7 +8,7 @@ import accesDonnees.DO.ClientDO;
 import accesDonnees.DO.PanierDO;
 
 public class ClientDAOimpl implements IClientDAO {
-	final EntityManager EM = Util.JPA.getEntityManager();
+	final static EntityManager EM = Util.JPA.getEntityManager();
 
 	public ClientDO create(final String nom, final String prenom, final String adresse, final int tel,
 			final String mail, final PanierDO panier) {
