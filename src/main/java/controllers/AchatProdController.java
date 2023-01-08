@@ -1,8 +1,6 @@
 package controllers;
 
-import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.NoResultException;
@@ -13,27 +11,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import accesDonnees.DAO.AchatDAO.AchatDAOimpl;
-import accesDonnees.DAO.ClientDAO.ClientDAOimpl;
-import accesDonnees.DAO.CommandeDAO.CommandeDAOimpl;
 import accesDonnees.DAO.FournisseurDAO.FournisseurDAOimpl;
-import accesDonnees.DAO.PanierDAO.PanierDAOimpl;
 import accesDonnees.DAO.ProduitDAO.ProduitDAOimpl;
 import accesDonnees.DO.AchatDO;
-import accesDonnees.DO.ClientDO;
-import accesDonnees.DO.CommandeDO;
 import accesDonnees.DO.FournisseurDO;
-import accesDonnees.DO.PanierDO;
 import accesDonnees.DO.ProduitDO;
 
 @Controller
 @RequestMapping("/achatprod")
 public class AchatProdController {
 	private final ProduitDAOimpl PRODDAO = new ProduitDAOimpl();
-	private final PanierDAOimpl PANIERDAO = new PanierDAOimpl();
-	private final CommandeDAOimpl COMMDAO = new CommandeDAOimpl();
 	private final FournisseurDAOimpl FOURDAO = new FournisseurDAOimpl();
 	private final AchatDAOimpl ACHATDAO = new AchatDAOimpl();
 	List<ProduitDO> products = new ArrayList<ProduitDO>();
