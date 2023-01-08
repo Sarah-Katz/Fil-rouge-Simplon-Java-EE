@@ -23,7 +23,7 @@
 			<span class="nom" th:text="${prod.nom}"></span>
 			<span class="description" th:text="${prod.description}"></span>
 			<span class="categorie" th:text="${prod.categorie}"></span>
-			<span class="prix" th:text="${prod.prix}"></span><br>
+			<span class="prix" th:text="${prod.prix} + €"></span><br>
 		</div>
 		<form action="/panier" method="post">
 			<input type="hidden" name="id" th:value="${prod.idprod}">
