@@ -12,7 +12,7 @@ public interface ICommandeDAO {
 
 	public List<CommandeDO> findAll();
 	
-	public List<CommandeDO> findById();
+	public CommandeDO findById(final int id);
 
 	public CommandeDO updateDate(final int id, final Date nouveau_date);
 
