@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Titre</title>
+	<link rel="stylesheet" th:href="@{/CSS/index.css}">
+	<title>index</title>
 </head>
-
+<header>
+	<h1>E-shop une fois, e-shop toujours</h1>
+</header>
 <body>
-	<h1>Lol c du html</h1>
-	<a href="/prodlist">Liste des produits</a>
-	<span>--------</span>
-	<a href="/panier">Panier</a>
-	<span>--------</span>
-	<a href="/interne">Interne</a>
+	<div id="container">
+		<a href="/prodlist">Liste des produits</a>
+		<a href="/interne">Interne</a>
+	</div>
 </body>
 
 </html>
