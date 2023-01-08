@@ -1,7 +1,6 @@
 package controllers;
 
 import java.sql.Date;
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -19,10 +18,10 @@ import accesDonnees.DO.ProduitDO;
 @Controller
 @RequestMapping("/achat")
 public class AchatController {
-	private final ProduitDAOimpl PRODDAO = new ProduitDAOimpl();
-	private final PanierDAOimpl PANIERDAO = new PanierDAOimpl();
-	private final CommandeDAOimpl COMMDAO = new CommandeDAOimpl();
-	final ClientDO CLIENT = new ClientDAOimpl().findByMail("mail@mail.mail");
+	private static final ProduitDAOimpl PRODDAO = new ProduitDAOimpl();
+	private static final PanierDAOimpl PANIERDAO = new PanierDAOimpl();
+	private static final CommandeDAOimpl COMMDAO = new CommandeDAOimpl();
+	final static ClientDO CLIENT = new ClientDAOimpl().findByMail("mail@mail.mail");
 
 	@GetMapping
 	public String confirmPanier() {

@@ -19,7 +19,7 @@ import accesDonnees.DO.ProduitDO;
 @RequestMapping("/detailvente")
 public class DetailventeController {
  
-	private List<ProduitDO> products = new ArrayList<ProduitDO>();
+	private static List<ProduitDO> products = new ArrayList<ProduitDO>();
 	private static final CommandeDAOimpl COMMDAO = new CommandeDAOimpl();
 
 	@GetMapping

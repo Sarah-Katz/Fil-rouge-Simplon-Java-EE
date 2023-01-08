@@ -1,9 +1,7 @@
 package controllers;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,11 +20,10 @@ import accesDonnees.DO.ProduitDO;
 @Controller
 @RequestMapping("/achatprod")
 public class AchatProdController {
-	private final ProduitDAOimpl PRODDAO = new ProduitDAOimpl();
-	private final FournisseurDAOimpl FOURDAO = new FournisseurDAOimpl();
-	private final AchatDAOimpl ACHATDAO = new AchatDAOimpl();
-	List<ProduitDO> products = new ArrayList<ProduitDO>();
-	List<ProduitDO> commande = new ArrayList<ProduitDO>();
+	private static final ProduitDAOimpl PRODDAO = new ProduitDAOimpl();
+	private static final FournisseurDAOimpl FOURDAO = new FournisseurDAOimpl();
+	private static final AchatDAOimpl ACHATDAO = new AchatDAOimpl();
+	private static List<ProduitDO> products = new ArrayList<ProduitDO>();
 
 	@GetMapping
 	public String showProduits(@RequestParam("idfour") int idfour, Model model) {

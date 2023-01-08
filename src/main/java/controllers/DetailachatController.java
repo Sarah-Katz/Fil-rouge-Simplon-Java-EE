@@ -19,8 +19,8 @@ import accesDonnees.DO.ProduitDO;
 @RequestMapping("/detailachat")
 public class DetailachatController {
  
-	private List<ProduitDO> products = new ArrayList<ProduitDO>();
-	private final AchatDAOimpl ACHATDAO = new AchatDAOimpl();
+	private static List<ProduitDO> products = new ArrayList<ProduitDO>();
+	private static final AchatDAOimpl ACHATDAO = new AchatDAOimpl();
 
 	@GetMapping
 	public String getProduits(@RequestParam("id") int id, Model model) {

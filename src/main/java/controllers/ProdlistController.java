@@ -1,10 +1,7 @@
 package controllers;
 
-import java.sql.Date;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +16,6 @@ import accesDonnees.DAO.PanierDAO.PanierDAOimpl;
 import accesDonnees.DAO.ProduitDAO.ProduitDAOimpl;
 import accesDonnees.DO.ClientDO;
 import accesDonnees.DO.CommandeDO;
-import accesDonnees.DO.FournisseurDO;
 import accesDonnees.DO.PanierDO;
 import accesDonnees.DO.ProduitDO;
 
@@ -27,25 +23,10 @@ import accesDonnees.DO.ProduitDO;
 @RequestMapping("/prodlist")
 public class ProdlistController {
  
-	private List<ProduitDO> products = new ArrayList<ProduitDO>();
-	private final ProduitDAOimpl PRODDAO = new ProduitDAOimpl();
-	private final PanierDAOimpl PANIERDAO = new PanierDAOimpl();
-	private final CommandeDAOimpl COMMDAO = new CommandeDAOimpl();
-
-//	@GetMapping
-//	public String getProduits(Model model) {
-//	    Set<ProduitDO> products = new HashSet<>();
-//	    List<ProduitDO> listdb = PRODDAO.findAll();
-//	    Set<Integer> refs = new HashSet<>();
-//	    for (ProduitDO p : listdb) {
-//	        if (!p.isIncomm() && !refs.contains(p.getRef())) {
-//	            products.add(p);
-//	            refs.add(p.getRef());
-//	        }
-//	    }
-//	    model.addAttribute("products", products);
-//	    return "prodlist";
-//	}
+	private static List<ProduitDO> products = new ArrayList<ProduitDO>();
+	private static final ProduitDAOimpl PRODDAO = new ProduitDAOimpl();
+	private static final PanierDAOimpl PANIERDAO = new PanierDAOimpl();
+	private static final CommandeDAOimpl COMMDAO = new CommandeDAOimpl();
 	
 	@GetMapping
 	public String getProduits(Model model) {

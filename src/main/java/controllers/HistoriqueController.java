@@ -18,8 +18,8 @@ import accesDonnees.DO.CommandeDO;
 @Controller
 @RequestMapping("/historique")
 public class HistoriqueController {
-	private final CommandeDAOimpl COMMDAO = new CommandeDAOimpl();
-	private final AchatDAOimpl ACHATDAO = new AchatDAOimpl();
+	private static final CommandeDAOimpl COMMDAO = new CommandeDAOimpl();
+	private static final AchatDAOimpl ACHATDAO = new AchatDAOimpl();
 
 	@GetMapping
 	public String getData(Model model) {

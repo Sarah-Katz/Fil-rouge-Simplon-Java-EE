@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import accesDonnees.DAO.AchatDAO.AchatDAOimpl;
-import accesDonnees.DAO.CommandeDAO.CommandeDAOimpl;
 import accesDonnees.DAO.ProduitDAO.ProduitDAOimpl;
 import accesDonnees.DO.AchatDO;
 import accesDonnees.DO.ProduitDO;
@@ -19,11 +18,9 @@ import accesDonnees.DO.ProduitDO;
 @Controller
 @RequestMapping("/commande")
 public class CommandeController {
-	;
-	private final ProduitDAOimpl PRODDAO = new ProduitDAOimpl();
-	private final CommandeDAOimpl COMMDAO = new CommandeDAOimpl();
-	private final AchatDAOimpl ACHATDAO = new AchatDAOimpl();
-	private List<ProduitDO> products = new ArrayList<ProduitDO>();
+	private static final ProduitDAOimpl PRODDAO = new ProduitDAOimpl();
+	private static final AchatDAOimpl ACHATDAO = new AchatDAOimpl();
+	private static List<ProduitDO> products = new ArrayList<ProduitDO>();
 
 	@GetMapping
 	public String showCommande(Model model) {

@@ -16,8 +16,8 @@ import accesDonnees.DO.FournisseurDO;
 @Controller
 @RequestMapping("/interne")
 public class FournisseurController {
-	private final FournisseurDAOimpl FOURDAO = new FournisseurDAOimpl();
-	private final List<FournisseurDO> LISTEFOUR = FOURDAO.findAll();
+	private static final FournisseurDAOimpl FOURDAO = new FournisseurDAOimpl();
+	private static final List<FournisseurDO> LISTEFOUR = FOURDAO.findAll();
 
 	@GetMapping
 	public String getFournisseurs(Model model) {	    

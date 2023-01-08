@@ -21,9 +21,9 @@ import accesDonnees.DO.ProduitDO;
 @Controller
 @RequestMapping("/panier")
 public class PanierController {
-	private final ProduitDAOimpl PRODDAO = new ProduitDAOimpl();
-	private final CommandeDAOimpl COMMDAO = new CommandeDAOimpl();
-	private List<ProduitDO> products = new ArrayList<ProduitDO>();
+	private static final ProduitDAOimpl PRODDAO = new ProduitDAOimpl();
+	private static final CommandeDAOimpl COMMDAO = new CommandeDAOimpl();
+	private static List<ProduitDO> products = new ArrayList<ProduitDO>();
 
 	@GetMapping
 	public String showPanier(Model model) {

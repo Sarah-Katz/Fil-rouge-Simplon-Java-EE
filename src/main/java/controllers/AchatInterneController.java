@@ -15,22 +15,22 @@ import accesDonnees.DO.ProduitDO;
 @Controller
 @RequestMapping("/achatinterne")
 public class AchatInterneController {
-	AchatDO achat = null;
-	private final ProduitDAOimpl PRODDAO = new ProduitDAOimpl();
-	private final AchatDAOimpl ACHATDAO = new AchatDAOimpl();
+	private static final ProduitDAOimpl PRODDAO = new ProduitDAOimpl();
+	private static final AchatDAOimpl ACHATDAO = new AchatDAOimpl();
 
 	@GetMapping
 	public String confirmPanier() {
+		AchatDO achat = null;
 		List<AchatDO> achatlist = ACHATDAO.findAll();
 		for (AchatDO a : achatlist) {
 			if (a.isActive()) {
 				achat = a;
 			}
 		}
-		List<ProduitDO> produits = achat.getListeprod();		
+		List<ProduitDO> produits = achat.getListeprod();
 		if (produits.size() > 0) {
 			for (ProduitDO p : produits) {
-			PRODDAO.create(p.getNom(), p.getDescription(), p.getCategorie(), p.getRef(), p.getPrix());				
+				PRODDAO.create(p.getNom(), p.getDescription(), p.getCategorie(), p.getRef(), p.getPrix());
 			}
 			ACHATDAO.updateactive(achat.getIdachat(), false);
 			final Date date = new Date(System.currentTimeMillis());
