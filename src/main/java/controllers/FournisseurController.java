@@ -17,11 +17,12 @@ import accesDonnees.DO.FournisseurDO;
 @RequestMapping("/interne")
 public class FournisseurController {
 	private static final FournisseurDAOimpl FOURDAO = new FournisseurDAOimpl();
-	private static final List<FournisseurDO> LISTEFOUR = FOURDAO.findAll();
 
 	@GetMapping
 	public String getFournisseurs(Model model) {
-	    model.addAttribute("fournisseurs", LISTEFOUR);
+		List<FournisseurDO> listefour = FOURDAO.findAll();
+		model.addAttribute("fournisseur", new FournisseurDO());
+	    model.addAttribute("fournisseurs", listefour);
 	    return "interne";
 	}
 
