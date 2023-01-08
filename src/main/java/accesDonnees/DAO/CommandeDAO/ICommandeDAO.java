@@ -11,6 +11,8 @@ public interface ICommandeDAO {
 	public CommandeDO create(final Date date, final List<ProduitDO> listeprod);
 
 	public List<CommandeDO> findAll();
+	
+	public List<CommandeDO> findById();
 
 	public CommandeDO updateDate(final int id, final Date nouveau_date);
 

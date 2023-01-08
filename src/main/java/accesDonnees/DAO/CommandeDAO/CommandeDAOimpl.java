@@ -28,6 +28,14 @@ public class CommandeDAOimpl implements ICommandeDAO {
 		return list;
 	}
 
+	public List<CommandeDO> findById(final int id) {
+        final EntityManager em = Util.JPA.getEntityManager();
+        @SuppressWarnings("unchecked")
+        List<CommandeDO> list = em.createQuery("SELECT c FROM CommandeDO c WHERE c.idcomm = :id")
+                .setParameter("id", id).getResultList();
+        return list;
+    }
+	
 	public CommandeDO updateDate(final int id, final Date nouveau_date) {
 		EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
