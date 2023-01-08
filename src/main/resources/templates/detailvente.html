@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" th:href="@{/CSS/valide.css}">
+	<title>Achat</title>
+</head>
+<header>
+	<a href="/historique">Retour à l'historique</a>
+	<h1>E-shop une fois, e-shop toujours</h1>
+
+</header>
+
+<body>
+	<div class="container">
+		<h2>Produits vendus lors de la commande</h2>
+		<div class="produit" th:each="prod:${products}">
+			<span class="label">Article : </span><br>
+			<span class="nom" th:text="${prod.nom}"></span><br>
+			<span class="label">Description : </span><br>
+			<span class="description" th:text="${prod.description}"></span><br>
+			<span class="label">Catégorie : </span><br>
+			<span class="categorie" th:text="${prod.categorie}"></span><br>
+			<span class="label">Prix : </span><br>
+			<span class="prix" th:text="${prod.prix} + €"></span><br>
+			<span class="label">Réference : </span><br>
+			<span class="ref" th:text="${prod.ref}"></span>
+		</div>
+	</div>
+</body>
+
+</html>
