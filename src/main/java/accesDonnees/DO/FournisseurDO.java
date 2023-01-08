@@ -3,18 +3,15 @@ package accesDonnees.DO;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
+import Util.IntegerListConverter;
 
 /**
  * Classe représentant un fournisseur.
@@ -31,8 +28,9 @@ public class FournisseurDO {
 	private int idfour;
 	@Column(name = "nomfour")
 	private String nom;
-	  @OneToMany(mappedBy = "fournisseur", cascade = CascadeType.ALL)
-	private List<ProduitDO> produits = new ArrayList<ProduitDO>();
+	@Convert(converter = IntegerListConverter.class)
+	@Column(name = "reflist")
+	private List<Integer> reflist = new ArrayList<Integer>();
 
 	public FournisseurDO() {
 	}
@@ -43,9 +41,9 @@ public class FournisseurDO {
 	 * @param nom      le nom du fournisseur
 	 * @param produits la liste des produits vendus par le fournisseur
 	 */
-	public FournisseurDO(final String nom, final List<ProduitDO> produits) {
+	public FournisseurDO(final String nom, final List<Integer> reflist) {
 		this.nom = nom;
-		this.produits = produits;
+		this.reflist = reflist;
 	}
 
 	public int getIdfour() {
@@ -64,12 +62,12 @@ public class FournisseurDO {
 		this.nom = nom;
 	}
 
-	public List<ProduitDO> getProduits() {
-		return produits;
+	public List<Integer> getReflist() {
+		return reflist;
 	}
 
-	public void setProduits(List<ProduitDO> produits) {
-		this.produits = produits;
+	public void setReflist(List<Integer> reflist) {
+		this.reflist = reflist;
 	}
 
 }

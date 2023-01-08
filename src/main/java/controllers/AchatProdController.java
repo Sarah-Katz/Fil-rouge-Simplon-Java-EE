@@ -43,15 +43,22 @@ public class AchatProdController {
 	public String showProduits(@RequestParam("idfour") int idfour, Model model) {
 		products.removeAll(products);
 		FournisseurDO four = FOURDAO.findById(idfour);
-		products.addAll(four.getProduits());
+		List<Integer> reflist = four.getReflist();
+		List<ProduitDO> prodlist = PRODDAO.findAll();
+		for (Integer r : reflist) {
+			for (ProduitDO p : prodlist) {
+				if (r == p.getRef()) {
+					products.add(p);
+				}
+			}
+		}
 		model.addAttribute("products", products);
 		return "achatprod";
 	}
 
 	@PostMapping
-	public String addToCommande(@RequestParam int id) {
+	public String addToCommande(@RequestParam int id, @RequestParam int idfour) {
 		final ProduitDO product = PRODDAO.findById(id);
-		final int idfour = product.getFournisseur().getIdfour();
 		AchatDO achat = null;
 		List<AchatDO> achatlist = null;
 		try {

@@ -11,10 +11,10 @@ import accesDonnees.DO.ProduitDO;
 public class ProduitDAOimpl implements IProduitDAO {
 
 	public ProduitDO create(final String nom, final String desc, final String categorie, final int ref,
-			final double prix, final FournisseurDO fournisseur) {
+			final double prix) {
 		EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
-		ProduitDO produit = new ProduitDO(nom, desc, categorie, ref, prix,fournisseur);
+		ProduitDO produit = new ProduitDO(nom, desc, categorie, ref, prix);
 		em.persist(produit);
 		em.getTransaction().commit();
 		return produit;
@@ -130,18 +130,6 @@ public class ProduitDAOimpl implements IProduitDAO {
 		query.setParameter("id", id);
 		ProduitDO produit = (ProduitDO) query.getSingleResult();
 		produit.setIncomm(incomm);
-		em.merge(produit);
-		em.getTransaction().commit();
-		return produit;
-	}
-	
-	public ProduitDO updatefour(final int id, final FournisseurDO fournisseur) {
-		EntityManager em = Util.JPA.getEntityManager();
-		em.getTransaction().begin();
-		Query query = em.createQuery("SELECT p from ProduitDO p where p.idprod =:id");
-		query.setParameter("id", id);
-		ProduitDO produit = (ProduitDO) query.getSingleResult();
-		produit.setFournisseur(fournisseur);
 		em.merge(produit);
 		em.getTransaction().commit();
 		return produit;

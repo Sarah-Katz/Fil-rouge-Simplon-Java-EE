@@ -33,12 +33,12 @@ public class AchatController {
 			while (iterator.hasNext()) {
 				ProduitDO p = iterator.next();
 				iterator.remove();
-				PRODDAO.updatefour(p.getIdprod(), null);
 				PRODDAO.delete(p.getIdprod());
 			}
 			COMMDAO.updateActive(commande.getIdcomm(), false);
 			final Date date = new Date(System.currentTimeMillis());
 			COMMDAO.updateDate(commande.getIdcomm(), date);
+			PANIERDAO.updateCommande(CLIENT.getPanier().getIdpanier(), null);
 			return "/achat";
 		} else {
 			return "/panier";

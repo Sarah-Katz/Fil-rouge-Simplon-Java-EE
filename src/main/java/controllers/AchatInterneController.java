@@ -37,9 +37,8 @@ public class AchatInterneController {
 		}
 		List<ProduitDO> produits = achat.getListeprod();		
 		if (produits.size() > 0) {
-			Iterator<ProduitDO> iterator = produits.iterator();
 			for (ProduitDO p : produits) {
-			PRODDAO.create(p.getNom(), p.getDescription(), p.getCategorie(), p.getRef(), p.getPrix(), p.getFournisseur());				
+			PRODDAO.create(p.getNom(), p.getDescription(), p.getCategorie(), p.getRef(), p.getPrix());				
 			}
 			ACHATDAO.updateactive(achat.getIdachat(), false);
 			final Date date = new Date(System.currentTimeMillis());

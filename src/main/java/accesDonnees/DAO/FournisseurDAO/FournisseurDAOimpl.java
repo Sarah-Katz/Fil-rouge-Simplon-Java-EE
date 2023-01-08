@@ -10,10 +10,10 @@ import accesDonnees.DO.ProduitDO;
 
 public class FournisseurDAOimpl implements IFournisseurDAO {
 
-	public FournisseurDO create(final String nom, final List<ProduitDO> produits) {
+	public FournisseurDO create(final String nom, final List<Integer> reflist) {
 		EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
-		FournisseurDO Fournisseur = new FournisseurDO(nom, produits);
+		FournisseurDO Fournisseur = new FournisseurDO(nom, reflist);
 		em.persist(Fournisseur);
 		em.getTransaction().commit();
 		return Fournisseur;
@@ -47,13 +47,13 @@ public class FournisseurDAOimpl implements IFournisseurDAO {
 		return fournisseur;
 	}
 	
-	public FournisseurDO updateProduits(final int id, final List<ProduitDO> produits) {
+	public FournisseurDO updateReflist(final int id, final List<Integer> reflist) {
 		EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
 		Query query = em.createQuery("SELECT f from FournisseurDO f where f.idfour =:id");
 		query.setParameter("id", id);
 		FournisseurDO fournisseur = (FournisseurDO) query.getSingleResult();
-		fournisseur.setProduits(produits);
+		fournisseur.setReflist(reflist);
 		em.merge(fournisseur);
 		em.getTransaction().commit();
 		return fournisseur;

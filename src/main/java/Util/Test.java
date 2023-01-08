@@ -1,5 +1,6 @@
 package Util;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -37,7 +38,7 @@ public class Test {
 	}
 	
 	public static ProduitDO createprod(String nom, String desc, String cat, int ref, double prix) {
-		ProduitDO prod = PRODUITDAO.create(nom, desc, cat, ref, prix, null);
+		ProduitDO prod = PRODUITDAO.create(nom, desc, cat, ref, prix);
 		return prod;		
 	}
 	
@@ -68,11 +69,12 @@ public class Test {
 	
 	public static void addFournisseurToDb() {
 		FournisseurDO four = FOURDAO.create("Centrale d'achat", null);
-		List<ProduitDO> produits = PRODUITDAO.findAll();
-		for (ProduitDO p : produits) {
-			PRODUITDAO.updatefour(p.getIdprod(), four);
+		List<ProduitDO> prodlist = PRODUITDAO.findAll();
+		List<Integer> reflist = new ArrayList<Integer>();
+		for (ProduitDO p : prodlist) {
+			reflist.add(p.getRef());
 		}
-		FOURDAO.updateProduits(four.getIdfour(), produits);
+		FOURDAO.updateReflist(four.getIdfour(), reflist);
 	}
 	
 	public static void addAchatToDb() {
@@ -82,7 +84,7 @@ public class Test {
 	public static void dropTables() {
 		EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
-	    String query = "DROP TABLE achat, achat_produit, client, commande, fournisseur, panier, fournisseur_produit, produit CASCADE";
+	    String query = "DROP TABLE achat, achat_produit, client, commande, fournisseur, panier, produit CASCADE";
 	    em.createNativeQuery(query).executeUpdate();
 	    em.getTransaction().commit();
 	}

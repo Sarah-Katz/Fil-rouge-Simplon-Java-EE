@@ -33,8 +33,6 @@ public class ProduitDO {
 	private double prix;
 	@Column(name = "incomm")
 	private boolean incomm;
-	@ManyToOne
-	private FournisseurDO fournisseur;
 
 	public ProduitDO() {
 	}
@@ -48,13 +46,12 @@ public class ProduitDO {
 	 * @param ref  la référence du produit
 	 * @param prix le prix du produit
 	 */
-	public ProduitDO(String nom, String desc, String cate, int ref, double prix, FournisseurDO fournisseur) {
+	public ProduitDO(final String nom, final String desc, final String cate, final int ref, final double prix) {
 		this.nom = nom;
 		this.description = desc;
 		this.categorie = cate;
 		this.ref = ref;
 		this.prix = prix;
-		this.fournisseur = fournisseur;
 		this.incomm = false;
 	}
 
@@ -112,44 +109,6 @@ public class ProduitDO {
 
 	public void setIncomm(boolean incomm) {
 		this.incomm = incomm;
-	}
-
-	public FournisseurDO getFournisseur() {
-		return fournisseur;
-	}
-
-	public void setFournisseur(FournisseurDO fournisseur) {
-		this.fournisseur = fournisseur;
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append(idprod).append("|");
-		sb.append(nom).append("|");
-		sb.append(description).append("|");
-		sb.append(categorie).append("|");
-		sb.append(ref).append("|");
-		sb.append(prix).append("|");
-		sb.append(incomm);
-//		sb.append(fournisseur.toString());
-		return sb.toString();
-	}
-	
-	public static ProduitDO fromString(String str) {
-	    // Split the string into tokens
-	    String[] tokens = str.split("\\|");
-	    // Extract the values of the fields from the tokens
-	    int idprod = Integer.parseInt(tokens[0]);
-	    String nom = tokens[1];
-	    String description = tokens[2];
-	    String categorie = tokens[3];
-	    int ref = Integer.parseInt(tokens[4]);
-	    double prix = Double.parseDouble(tokens[5]);
-	    boolean incomm = Boolean.parseBoolean(tokens[6]);
-//	    FournisseurDO fournisseur = FournisseurDO.fromString(tokens[7]);
-	    // Create and return a new ProduitDO object
-	    return new ProduitDO(nom, description, categorie, ref, prix, null);
 	}
 
 }
