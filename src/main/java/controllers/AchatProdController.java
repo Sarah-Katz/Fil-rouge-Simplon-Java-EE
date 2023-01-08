@@ -1,9 +1,9 @@
 package controllers;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-
-import javax.persistence.NoResultException;
+import java.util.Set;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,43 +34,68 @@ public class AchatProdController {
 		FournisseurDO four = FOURDAO.findById(idfour);
 		List<Integer> reflist = four.getReflist();
 		List<ProduitDO> prodlist = PRODDAO.findAll();
-		for (Integer r : reflist) {
-			for (ProduitDO p : prodlist) {
-				if (r == p.getRef()) {
-					products.add(p);
-				}
+		for (ProduitDO p : prodlist) {
+			if (reflist.contains(p.getRef()) && !products.contains(p)) {
+				products.add(p);
 			}
 		}
 		model.addAttribute("products", products);
 		return "achatprod";
 	}
 
+//	@PostMapping
+//	public String addToCommande(@RequestParam int id, @RequestParam int idfour) {
+//		final ProduitDO product = PRODDAO.findById(id);
+//		List<AchatDO> achatlist = ACHATDAO.findAll();
+//		AchatDO achat = null;
+//		if (achatlist.isEmpty()) {
+//			achat = ACHATDAO.create(null, null);
+//		}
+//		for (AchatDO a : achatlist) {
+//			if (a.isActive()) {
+//				achat = a;
+//				achat.getListeprod().add(product);
+//				ACHATDAO.updateListeprod(achat.getIdachat(), achat.getListeprod());
+//				break;
+//			} else {
+//				List<ProduitDO> prodlist = new ArrayList<ProduitDO>();
+//				prodlist.add(product);
+//				achat = ACHATDAO.create(null, prodlist);
+//			}
+//		}
+//		return "redirect:achatprod?idfour=" + idfour;
+//	}
+	
 	@PostMapping
 	public String addToCommande(@RequestParam int id, @RequestParam int idfour) {
-		final ProduitDO product = PRODDAO.findById(id);
-		AchatDO achat = null;
-		List<AchatDO> achatlist = null;
-		try {
-			achatlist = ACHATDAO.findAll();
-		} catch (NoResultException e) {
-			achat = ACHATDAO.create(null, null);
-		} finally {
-			for (AchatDO a : achatlist) {
-				if (a.isActive()) {
-					achat = a;
-				} else {
-					achat = ACHATDAO.create(null, null);
-				}
-			}
-			if (achat.getListeprod() == null) {
-				List<ProduitDO> prodlist = new ArrayList<ProduitDO>();
-				prodlist.add(product);
-				ACHATDAO.updateListeprod(achat.getIdachat(), prodlist);
-			} else {
-				achat.getListeprod().add(product);
-				ACHATDAO.updateListeprod(achat.getIdachat(), achat.getListeprod());
-			}
-		}
-		return "redirect:achatprod?idfour="+idfour;
+	    final ProduitDO product = PRODDAO.findById(id);
+	    List<AchatDO> achatList = ACHATDAO.findAll();
+	    AchatDO achat = null;
+	    // check if there are any active AchatDO objects in the list
+	    boolean hasActive = false;
+	    for (AchatDO a : achatList) {
+	        if (a.isActive()) {
+	            hasActive = true;
+	            break;
+	        }
+	    }
+	    if (!hasActive) {
+	        // no active AchatDO objects found, create a new one
+	        List<ProduitDO> prodList = new ArrayList<ProduitDO>();
+	        prodList.add(product);
+	        achat = ACHATDAO.create(null, prodList);
+	    } else {
+	        // active AchatDO object found, add product to list
+	        for (AchatDO a : achatList) {
+	            if (a.isActive()) {
+	                achat = a;
+	                achat.getListeprod().add(product);
+	                ACHATDAO.updateListeprod(achat.getIdachat(), achat.getListeprod());
+	                break;
+	            }
+	        }
+	    }	    
+	    return "redirect:achatprod?idfour=" + idfour;
 	}
+
 }

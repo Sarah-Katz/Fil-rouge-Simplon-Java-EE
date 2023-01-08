@@ -29,10 +29,7 @@ public class AchatController {
 		if (CLIENT.getPanier().getCommande().getListeprod().size() > 0) {
 			List<ProduitDO> produits = CLIENT.getPanier().getCommande().getListeprod();
 			final CommandeDO commande = CLIENT.getPanier().getCommande();
-			Iterator<ProduitDO> iterator = produits.iterator();
-			while (iterator.hasNext()) {
-				ProduitDO p = iterator.next();
-				iterator.remove();
+			for (ProduitDO p : produits) {
 				PRODDAO.delete(p.getIdprod());
 			}
 			COMMDAO.updateActive(commande.getIdcomm(), false);

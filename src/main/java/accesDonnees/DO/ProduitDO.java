@@ -110,5 +110,17 @@ public class ProduitDO {
 	public void setIncomm(boolean incomm) {
 		this.incomm = incomm;
 	}
+	
+	@Override
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+        if (!(o instanceof ProduitDO)) {
+            return false;
+        }
+        ProduitDO p = (ProduitDO) o;
+        return p.getRef() == this.ref;
+    }
 
 }

@@ -21,7 +21,7 @@
 			<span class="description" th:text="${prod.description}"></span><br>
 			<span class="categorie" th:text="${prod.categorie}"></span><br>
 			<span class="prix" th:text="${prod.prix} + €"></span><br>
-			<span class="ref" th.text="${prod.ref}"></span>
+			<span class="ref" th:text="${prod.ref}"></span>
 			<form action="#" method="post">
 				<input type="hidden" name="commande" th:value="${commande}">
 				<input type="hidden" name="id" th:value="${prod.idprod}">

@@ -84,7 +84,7 @@ public class Test {
 	public static void dropTables() {
 		EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
-	    String query = "DROP TABLE achat, achat_produit, client, commande, fournisseur, panier, produit CASCADE";
+	    String query = "DROP TABLE achat, client, commande, fournisseur, panier, produit CASCADE";
 	    em.createNativeQuery(query).executeUpdate();
 	    em.getTransaction().commit();
 	}
