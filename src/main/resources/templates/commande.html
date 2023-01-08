@@ -13,12 +13,15 @@
 	<a href="/interne">Retour liste fournisseurs</a><br>
 	<h1>E-shop une fois, e-shop toujours</h1>
 	<form action="/achatinterne" method="get">
-		<button type="submit">Valider la commande</button>
+		<button type="submit" th:unless="${products.isEmpty()}">Valider la commande</button>
 	</form>
 </header>
 
 <body>
-
+	<div class="vide" th:if="${products.isEmpty()}">
+		Votre commande est vide.
+	</div>
+	<div class="total" th:unless="${products.isEmpty()}">Votre total est de : <span th:text="${total}"></span> €</div>
 	<div class="produit" th:each="prod:${products}">
 		<div class="desc">
 			<span class="nom" th:text="${prod.nom}"></span>
@@ -33,4 +36,4 @@
 	</div>
 </body>
 
-</html>
+</html>²

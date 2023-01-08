@@ -27,6 +27,7 @@ public class CommandeController {
 		products.removeAll(products);
 		AchatDO achat = null;
 		List<AchatDO> achatlist = ACHATDAO.findAll();
+		double total = 0;
 		for (AchatDO a : achatlist) {
 			if (a.isActive()) {
 				achat = a;
@@ -36,8 +37,10 @@ public class CommandeController {
 		final List<ProduitDO> listprod = achat.getListeprod();
 		for (ProduitDO p : listprod) {
 			products.add(p);
+			total += p.getPrix();
 		}
 		model.addAttribute("products", products);
+		model.addAttribute("total", total);
 		return "commande";
 	}
 
