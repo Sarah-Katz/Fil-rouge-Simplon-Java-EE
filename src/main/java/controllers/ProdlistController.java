@@ -19,6 +19,7 @@ import accesDonnees.DAO.PanierDAO.PanierDAOimpl;
 import accesDonnees.DAO.ProduitDAO.ProduitDAOimpl;
 import accesDonnees.DO.ClientDO;
 import accesDonnees.DO.CommandeDO;
+import accesDonnees.DO.FournisseurDO;
 import accesDonnees.DO.PanierDO;
 import accesDonnees.DO.ProduitDO;
 
@@ -31,11 +32,26 @@ public class ProdlistController {
 	private final PanierDAOimpl PANIERDAO = new PanierDAOimpl();
 	private final CommandeDAOimpl COMMDAO = new CommandeDAOimpl();
 
+//	@GetMapping
+//	public String getProduits(Model model) {
+//	    Set<ProduitDO> products = new HashSet<>();
+//	    List<ProduitDO> listdb = PRODDAO.findAll();
+//	    Set<Integer> refs = new HashSet<>();
+//	    for (ProduitDO p : listdb) {
+//	        if (!p.isIncomm() && !refs.contains(p.getRef())) {
+//	            products.add(p);
+//	            refs.add(p.getRef());
+//	        }
+//	    }
+//	    model.addAttribute("products", products);
+//	    return "prodlist";
+//	}
+	
 	@GetMapping
 	public String getProduits(Model model) {
-	    Set<ProduitDO> products = new HashSet<>();
+		products.removeAll(products);
 	    List<ProduitDO> listdb = PRODDAO.findAll();
-	    Set<Integer> refs = new HashSet<>();
+	    List<Integer> refs = new ArrayList<>();
 	    for (ProduitDO p : listdb) {
 	        if (!p.isIncomm() && !refs.contains(p.getRef())) {
 	            products.add(p);
@@ -46,6 +62,7 @@ public class ProdlistController {
 	    return "prodlist";
 	}
 
+	
 	@PostMapping
 	public String addToPanier(@RequestParam int id) {
 		final ProduitDO product = PRODDAO.findById(id);
