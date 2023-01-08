@@ -1,7 +1,6 @@
 package controllers;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -30,12 +29,12 @@ public class PanierController {
 	public String showPanier(Model model) {
 		final ClientDO client = new ClientDAOimpl().findByMail("mail@mail.mail");
 		PanierDO panier = null;
-		List<ProduitDO> listprod = null;
+		List<ProduitDO> listprod = new ArrayList<ProduitDO>();
 		try {
 			panier = client.getPanier();
 			model.addAttribute("panier", panier);
 			listprod = panier.getCommande().getListeprod();
-			products.removeAll(products);
+			products.clear();
 			for (ProduitDO p : listprod) {
 				products.add(p);
 			}

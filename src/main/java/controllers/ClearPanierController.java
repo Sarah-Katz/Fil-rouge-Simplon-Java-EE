@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -20,6 +21,7 @@ import accesDonnees.DO.ProduitDO;
 public class ClearPanierController {
 	private static final ProduitDAOimpl PRODDAO = new ProduitDAOimpl();
 	private static final CommandeDAOimpl COMMDAO = new CommandeDAOimpl();
+	private static List<ProduitDO> products = new ArrayList<ProduitDO>();
 
 	@PostMapping
 	public String clearPanier(Model model) {
@@ -33,6 +35,7 @@ public class ClearPanierController {
 			iterator.remove();
 		}
 		COMMDAO.updateProduit(commande.getIdcomm(), listprod);
+		model.addAttribute("products", products);
 		return "panier";
 	}
 }

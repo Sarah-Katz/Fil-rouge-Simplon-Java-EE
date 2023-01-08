@@ -1,6 +1,7 @@
 package controllers;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -34,7 +35,8 @@ public class AchatController {
 			COMMDAO.updateActive(commande.getIdcomm(), false);
 			final Date date = new Date(System.currentTimeMillis());
 			COMMDAO.updateDate(commande.getIdcomm(), date);
-			PANIERDAO.updateCommande(CLIENT.getPanier().getIdpanier(), null);
+			List<ProduitDO> listprod = new ArrayList<ProduitDO>();
+			PANIERDAO.updateCommande(CLIENT.getPanier().getIdpanier(), COMMDAO.create(null, listprod));
 			return "/achat";
 		} else {
 			return "/panier";
