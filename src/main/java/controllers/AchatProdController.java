@@ -42,29 +42,6 @@ public class AchatProdController {
 		model.addAttribute("products", products);
 		return "achatprod";
 	}
-
-//	@PostMapping
-//	public String addToCommande(@RequestParam int id, @RequestParam int idfour) {
-//		final ProduitDO product = PRODDAO.findById(id);
-//		List<AchatDO> achatlist = ACHATDAO.findAll();
-//		AchatDO achat = null;
-//		if (achatlist.isEmpty()) {
-//			achat = ACHATDAO.create(null, null);
-//		}
-//		for (AchatDO a : achatlist) {
-//			if (a.isActive()) {
-//				achat = a;
-//				achat.getListeprod().add(product);
-//				ACHATDAO.updateListeprod(achat.getIdachat(), achat.getListeprod());
-//				break;
-//			} else {
-//				List<ProduitDO> prodlist = new ArrayList<ProduitDO>();
-//				prodlist.add(product);
-//				achat = ACHATDAO.create(null, prodlist);
-//			}
-//		}
-//		return "redirect:achatprod?idfour=" + idfour;
-//	}
 	
 	@PostMapping
 	public String addToCommande(@RequestParam int id, @RequestParam int idfour) {
