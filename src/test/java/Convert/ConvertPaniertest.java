@@ -1,6 +1,6 @@
 package Convert;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ class ConvertPaniertest {
 		final ProduitDO produit1 = new ProduitDAOimpl().create("test", "testdesc", "testcat", 2323, 120,null);
 		final ProduitDO produit2 = new ProduitDAOimpl().create("test2", "testdesc2", "testcat2", 23232, 1202,null);
 		final Date date = new Date(10);
-		final List<ProduitDO> listeprod = new ArrayList<ProduitDO>();
+		final List<ProduitDO> listeprod = new ArrayList<>();
 		listeprod.add(produit1);
 		listeprod.add(produit2);
 		final CommandeDAOimpl commandedao = new CommandeDAOimpl();
@@ -36,13 +36,13 @@ class ConvertPaniertest {
 		PanierDTO panierdto = convert.paniertodto(panierdo);
 		assertEquals(panierdo.getCommande().getDate(), panierdto.getCommande().getDate());
 	}
-	
+
 	@Test
 	public void testpaniertodo() {
 		final ProduitDO produit1 = new ProduitDAOimpl().create("test", "testdesc", "testcat", 2323, 120,null);
 		final ProduitDO produit2 = new ProduitDAOimpl().create("test2", "testdesc2", "testcat2", 23232, 1202,null);
 		final Date date = new Date(10);
-		final List<ProduitDO> listeprod = new ArrayList<ProduitDO>();
+		final List<ProduitDO> listeprod = new ArrayList<>();
 		listeprod.add(produit1);
 		listeprod.add(produit2);
 		final CommandeDTO commandedto = new CommandeDTO(1, date, listeprod);

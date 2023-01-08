@@ -30,8 +30,8 @@ public class HistoriqueController {
 	    return "historique";
 	}
 
-	
-	
+
+
 	@PostMapping("/detailvente")
 	public String showVente(@RequestParam("id") int idachat, RedirectAttributes redirectAttributes) {
 	    redirectAttributes.addAttribute("id", idachat);

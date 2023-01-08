@@ -31,14 +31,14 @@ public class CommandeDO {
 	private Date date;
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "commande")
-	private List<ProduitDO> listeprod = new ArrayList<ProduitDO>();
+	private List<ProduitDO> listeprod = new ArrayList<>();
 	@Column(name = "active")
 	private boolean active;
 
 	CommandeDO() {
 	}
-	
-	
+
+
 
 	public int getIdcomm() {
 		return idcomm;

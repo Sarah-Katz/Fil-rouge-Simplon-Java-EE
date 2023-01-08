@@ -20,13 +20,13 @@ import metier.Convert.ConvertClient;
 import metier.DTO.ClientDTO;
 
 public class ConvertClienttest {
-	
+
 	@Test
 	public void testclienttodto() {
 		final ProduitDO produit1 = new ProduitDAOimpl().create("test", "testdesc", "testcat", 2323, 120,null);
 		final ProduitDO produit2 = new ProduitDAOimpl().create("test2", "testdesc2", "testcat2", 23232, 1202,null);
 		final Date date = new Date(10);
-		final List<ProduitDO> listeprod = new ArrayList<ProduitDO>();
+		final List<ProduitDO> listeprod = new ArrayList<>();
 		listeprod.add(produit1);
 		listeprod.add(produit2);
 		final CommandeDAOimpl commandedao = new CommandeDAOimpl();
@@ -44,13 +44,13 @@ public class ConvertClienttest {
 		assertEquals(clientdo.getTel(), clientdto.getTel());
 		assertEquals(clientdo.getMail(), clientdto.getMail());
 	}
-	
+
 	@Test
 	public void testclienttodo() {
 		final ProduitDO produit1 = new ProduitDAOimpl().create("test", "testdesc", "testcat", 2323, 120,null);
 		final ProduitDO produit2 = new ProduitDAOimpl().create("test2", "testdesc2", "testcat2", 23232, 1202,null);
 		final Date date = new Date(10);
-		final List<ProduitDO> listeprod = new ArrayList<ProduitDO>();
+		final List<ProduitDO> listeprod = new ArrayList<>();
 		listeprod.add(produit1);
 		listeprod.add(produit2);
 		final CommandeDAOimpl commandedao = new CommandeDAOimpl();

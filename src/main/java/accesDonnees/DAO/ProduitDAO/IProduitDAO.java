@@ -2,7 +2,6 @@ package accesDonnees.DAO.ProduitDAO;
 
 import java.util.List;
 
-import accesDonnees.DO.FournisseurDO;
 import accesDonnees.DO.ProduitDO;
 
 public interface IProduitDAO {

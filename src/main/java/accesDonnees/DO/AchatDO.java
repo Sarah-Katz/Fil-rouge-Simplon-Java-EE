@@ -31,7 +31,7 @@ public class AchatDO {
 	private Date dateachat;
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "achats")
-	private List<ProduitDO> listeprod = new ArrayList<ProduitDO>();
+	private List<ProduitDO> listeprod = new ArrayList<>();
 	@Column(name = "active")
 	private boolean active;
 
@@ -47,12 +47,12 @@ public class AchatDO {
 	 * @param produit     Produit acheté.
 	 * @param fournisseur Fournisseur de l'achat.
 	 */
-	public AchatDO(final Date dateachat, final List<ProduitDO> listeprod) { 
+	public AchatDO(final Date dateachat, final List<ProduitDO> listeprod) {
 		this.dateachat = dateachat;
 		this.listeprod = listeprod;
 		this.active = true;
 	}
-	
+
 	public int getIdachat() {
 		return idachat;
 	}
@@ -85,10 +85,10 @@ public class AchatDO {
 		this.active = active;
 	}
 
-	
-	
-	
 
-	
+
+
+
+
 
 }

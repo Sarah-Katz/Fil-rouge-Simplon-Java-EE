@@ -33,11 +33,11 @@ public class ClientDAOtest {
 		final List<ClientDO> list = CLIENTDAOIMPL.findAll();
 		final String adresse = list.get(0).getAdresse();
 
-		final List<String> list3 = new ArrayList<String>();
+		final List<String> list3 = new ArrayList<>();
 		for (ClientDO c : list) {
 			list3.add(c.getAdresse());
 		}
-		final List<String> list2 = new ArrayList<String>();
+		final List<String> list2 = new ArrayList<>();
 		list2.add(adresse);
 		assertEquals(list2, list3);
 	}

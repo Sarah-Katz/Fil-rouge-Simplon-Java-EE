@@ -6,11 +6,12 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import accesDonnees.DO.AchatDO; 
+import accesDonnees.DO.AchatDO;
 import accesDonnees.DO.ProduitDO;
 
 public class AchatDAOimpl implements IAchatDAO {
 
+	@Override
 	public AchatDO create(final Date dateachat, final List<ProduitDO> listeprod) {
 		final EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
@@ -20,6 +21,7 @@ public class AchatDAOimpl implements IAchatDAO {
 		return achat;
 	}
 
+	@Override
 	public List<AchatDO> findAll() {
 		final EntityManager em = Util.JPA.getEntityManager();
 		@SuppressWarnings("unchecked")
@@ -27,6 +29,7 @@ public class AchatDAOimpl implements IAchatDAO {
 		return list;
 	}
 
+	@Override
 	public AchatDO findById(final int id) {
 		final EntityManager em = Util.JPA.getEntityManager();
 		final Query query = em.createQuery("SELECT a FROM AchatDO a WHERE a.idachat = :id");
@@ -35,6 +38,7 @@ public class AchatDAOimpl implements IAchatDAO {
 		return achat;
 	}
 
+	@Override
 	public AchatDO updateDateachat(final int id, final Date dateachat) {
 		final EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
@@ -47,6 +51,7 @@ public class AchatDAOimpl implements IAchatDAO {
 		return achat;
 	}
 
+	@Override
 	public AchatDO updateListeprod(final int id, final List<ProduitDO> listeprod) {
 		final EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
@@ -58,7 +63,8 @@ public class AchatDAOimpl implements IAchatDAO {
 		em.getTransaction().commit();
 		return achat;
 	}
-	
+
+	@Override
 	public AchatDO updateactive(final int id, final boolean active) {
 		final EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();
@@ -72,6 +78,7 @@ public class AchatDAOimpl implements IAchatDAO {
 	}
 
 
+	@Override
 	public void delete(final int id) {
 		final EntityManager em = Util.JPA.getEntityManager();
 		em.getTransaction().begin();

@@ -29,15 +29,15 @@ public class PanierDAOtest {
 
 	@Test
 	@Order(2)
-	public void testPanierDOfindall() {		
+	public void testPanierDOfindall() {
 		final List<PanierDO> list = PANIERDAOIMPL.findAll();
 		final CommandeDO commande = list.get(0).getCommande();
-		
-		final List<CommandeDO> list3 = new ArrayList<CommandeDO>();
+
+		final List<CommandeDO> list3 = new ArrayList<>();
 		for (PanierDO p : list) {
 			list3.add(p.getCommande());
 		}
-		final List<CommandeDO> list2 = new ArrayList<CommandeDO>();
+		final List<CommandeDO> list2 = new ArrayList<>();
 		list2.add(commande);
 		assertEquals(list2, list3);
 	}

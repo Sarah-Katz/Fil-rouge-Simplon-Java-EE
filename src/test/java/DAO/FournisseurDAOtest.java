@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -23,30 +24,30 @@ public class FournisseurDAOtest {
 		String nom = "jean";
 		ProduitDAOimpl produitdao = new ProduitDAOimpl();
 		ProduitDO produit = produitdao.create("jean", "description", "categorie", 1, 3000,null);
-		List<ProduitDO> produits = new ArrayList<ProduitDO>();
+		List<ProduitDO> produits = new ArrayList<>();
 		produits.add(produit);
 		FournisseurDAOimpl fournisseurdao = new FournisseurDAOimpl();
 		FournisseurDO fournisseur = fournisseurdao.create(nom, produits);
-		
+
 		assertEquals(nom,fournisseur.getNom());
 	}
-	
+
 	@Test
 	@Order(2)
 	public void testFournisseurDOfindall() {
 		String nom = "jean";
 		FournisseurDAOimpl fournisseurdao = new FournisseurDAOimpl();
 		List<FournisseurDO> list = fournisseurdao.findAll();
-		List<String> list3 = new ArrayList<String>();
+		List<String> list3 = new ArrayList<>();
 		for (FournisseurDO fournisseurDO : list) {
 			list3.add(fournisseurDO.getNom());
 		}
-		List<String> list2 = new ArrayList<String>();
+		List<String> list2 = new ArrayList<>();
 		list2.add(nom);
-		
+
 		assertEquals(list2,list3);
 	}
-	
+
 	@Test
 	@Order(3)
 	public void testFournisseurDOupdate() {
@@ -55,7 +56,7 @@ public class FournisseurDAOtest {
 		FournisseurDO fournisseur = fournisseurdao.updateNom(1,nouveau_nom);
 		assertEquals(nouveau_nom,fournisseur.getNom());
 	}
-	
+
 	@Test
 	@Order(4)
 	public void testFournisseurDOdelete() {
@@ -63,7 +64,7 @@ public class FournisseurDAOtest {
 		FournisseurDAOimpl fournisseurdao = new FournisseurDAOimpl();
 		fournisseurdao.delete(id);
 	}
-	
+
 
 }
 

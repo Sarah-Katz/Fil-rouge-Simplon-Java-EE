@@ -23,7 +23,7 @@ public class AchatDAOtest {
 	@Order(1)
 	public void testAchatDOcreate() {
 		final ProduitDO produit = new ProduitDAOimpl().create("test", "testdesc", "testcat", 2323, 120,null);
-		List<ProduitDO> produits = new ArrayList<ProduitDO>();
+		List<ProduitDO> produits = new ArrayList<>();
 		produits.add(produit);
 		final Date date = new Date(10);
 		final AchatDAOimpl achatdao = new AchatDAOimpl();
@@ -37,11 +37,11 @@ public class AchatDAOtest {
 		final Date date = new Date(10);
 		final AchatDAOimpl achatdao = new AchatDAOimpl();
 		final List<AchatDO> list = achatdao.findAll();
-		final List<Date> list3 = new ArrayList<Date>();
+		final List<Date> list3 = new ArrayList<>();
 		for (AchatDO a : list) {
 			list3.add(a.getDateachat());
 		}
-		final List<Date> list2 = new ArrayList<Date>();
+		final List<Date> list2 = new ArrayList<>();
 		list2.add(date);
 		assertEquals(list2, list3);
 	}
@@ -52,13 +52,13 @@ public class AchatDAOtest {
 		final int ref = 2323;
 		final AchatDAOimpl achatdao = new AchatDAOimpl();
 		final List<AchatDO> list = achatdao.findByRef(ref);
-		final List<Integer> list3 = new ArrayList<Integer>();
+		final List<Integer> list3 = new ArrayList<>();
 		for (AchatDO a : list) {
 			for (ProduitDO prod : a.getListeprod()) {
 				list3.add(prod.getRef());
 			}
 		}
-		List<Integer> list2 = new ArrayList<Integer>();
+		List<Integer> list2 = new ArrayList<>();
 		list2.add(ref);
 		assertEquals(list2, list3);
 	}
@@ -79,7 +79,7 @@ public class AchatDAOtest {
 	@Order(5)
 	public void testAchatDOdelete() {
 		final AchatDAOimpl achatdao = new AchatDAOimpl();
-		final List<AchatDO> achat = achatdao.findByRef(2323);		
+		final List<AchatDO> achat = achatdao.findByRef(2323);
 		final int idachat = achat.get(0).getIdachat();
 		achatdao.delete(idachat);
 	}

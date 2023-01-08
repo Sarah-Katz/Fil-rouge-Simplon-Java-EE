@@ -9,7 +9,7 @@ public interface IPanierDAO {
 	public PanierDO create(final CommandeDO commande);
 
 	public List<PanierDO> findAll();
-	
+
 	public List<PanierDO> findByCommande(final CommandeDO commande);
 
 	public PanierDO updateCommande(final int id, final CommandeDO commande);

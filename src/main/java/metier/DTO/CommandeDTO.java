@@ -15,10 +15,10 @@ import accesDonnees.DO.ProduitDO;
  */
 
 public class CommandeDTO {
-	
+
 	private int idcomm;
 	private Date date;
-	private List<ProduitDO> listeprod = new ArrayList<ProduitDO>();
+	private List<ProduitDO> listeprod = new ArrayList<>();
 
 	CommandeDTO() {
 	}
@@ -59,7 +59,7 @@ public class CommandeDTO {
 	public void setListeprod(List<ProduitDO> listeprod) {
 		this.listeprod = listeprod;
 	}
-	
-	
+
+
 
 }

@@ -28,7 +28,7 @@ public class ConvertProduittest {
 		assertEquals(produitdo.getRef(), produitdto.getRef());
 		assertEquals(produitdo.getPrix(), produitdto.getPrix());
 	}
-	
+
 	@Test
 	public void testprodtodo() {
 		int id = 5;

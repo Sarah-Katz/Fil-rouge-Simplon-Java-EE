@@ -14,15 +14,15 @@ import accesDonnees.DO.ProduitDO;
  */
 
 public class AchatDTO {
-	
+
 	private int idachat;
 	private Date dateachat;
-	private List<ProduitDO> listeprod = new ArrayList<ProduitDO>();
+	private List<ProduitDO> listeprod = new ArrayList<>();
 	private boolean active;
 
 	AchatDTO() {
 	}
-	
+
 	public int getIdachat() {
 		return idachat;
 	}

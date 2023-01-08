@@ -109,7 +109,7 @@ public class ProduitDO {
 	public void setIncomm(boolean incomm) {
 		this.incomm = incomm;
 	}
-	
+
 	@Override
     public boolean equals(Object o) {
         if (o == this) {

@@ -13,11 +13,11 @@ import accesDonnees.DO.ProduitDO;
  */
 
 public class FournisseurDTO {
-	
-	
+
+
 		private int idfour;
 		private String nom;
-		private List<ProduitDO> produits = new ArrayList<ProduitDO>();
+		private List<ProduitDO> produits = new ArrayList<>();
 
 		public FournisseurDTO() {
 		}
@@ -56,7 +56,7 @@ public class FournisseurDTO {
 		public void setProduits(List<ProduitDO> produits) {
 			this.produits = produits;
 		}
-		
-		
+
+
 
 }

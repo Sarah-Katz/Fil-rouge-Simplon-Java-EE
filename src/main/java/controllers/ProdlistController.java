@@ -22,12 +22,12 @@ import accesDonnees.DO.ProduitDO;
 @Controller
 @RequestMapping("/prodlist")
 public class ProdlistController {
- 
-	private static List<ProduitDO> products = new ArrayList<ProduitDO>();
+
+	private static List<ProduitDO> products = new ArrayList<>();
 	private static final ProduitDAOimpl PRODDAO = new ProduitDAOimpl();
 	private static final PanierDAOimpl PANIERDAO = new PanierDAOimpl();
 	private static final CommandeDAOimpl COMMDAO = new CommandeDAOimpl();
-	
+
 	@GetMapping
 	public String getProduits(Model model) {
 		products.removeAll(products);
@@ -43,7 +43,7 @@ public class ProdlistController {
 	    return "prodlist";
 	}
 
-	
+
 	@PostMapping
 	public String addToPanier(@RequestParam int id) {
 		final ProduitDO product = PRODDAO.findById(id);

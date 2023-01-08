@@ -1,6 +1,6 @@
 package Convert;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ class ConvertAchattest {
 	public void testachattodto() {
 		ProduitDAOimpl produitdao = new ProduitDAOimpl();
 		ProduitDO produit = produitdao.create("jean", "description", "categorie", 1, 3000,null);
-		List<ProduitDO> produits = new ArrayList<ProduitDO>();
+		List<ProduitDO> produits = new ArrayList<>();
 		produits.add(produit);
 		final Date date = new Date(10);
 		final AchatDAOimpl achatdao = new AchatDAOimpl();
@@ -31,12 +31,12 @@ class ConvertAchattest {
 		assertEquals(achatdo.getDateachat(), achatdto.getDateachat());
 		assertEquals(achatdo.getListeprod(), achatdto.getListeprod());
 	}
-	
+
 	@Test
 	public void testachattodo() {
 		ProduitDAOimpl produitdao = new ProduitDAOimpl();
 		ProduitDO produit1 = produitdao.create("jean", "description", "categorie", 1, 3000,null);
-		List<ProduitDO> produits = new ArrayList<ProduitDO>();
+		List<ProduitDO> produits = new ArrayList<>();
 		produits.add(produit1);
 		final Date date = new Date(10);
 		final AchatDTO achatdto = new AchatDTO(5,date, produits);
