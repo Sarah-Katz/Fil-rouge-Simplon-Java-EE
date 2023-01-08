@@ -18,7 +18,6 @@ import accesDonnees.DO.CommandeDO;
 import accesDonnees.DO.PanierDO;
 import accesDonnees.DO.ProduitDO;
 
-//TODO fix error panier null
 @Controller
 @RequestMapping("/panier")
 public class PanierController {
