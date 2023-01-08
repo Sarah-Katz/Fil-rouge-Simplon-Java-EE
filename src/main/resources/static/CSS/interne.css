@@ -3,15 +3,13 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 1%;
+  background-color: #39528C;
 }
 
 /* Styles pour les liens */
 a {
   color: rgb(0, 0, 0);
   text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
 }
 
 header {
@@ -26,7 +24,7 @@ header {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* ajoute une ombre au header */
 }
 header a {
-  background-color: #007c74;
+  background-color: #BC2A1E;
   border: none;
   color: #fff;
   padding: 10px;
@@ -78,7 +76,7 @@ header h1 {
 }
 
 button{
-  background-color: #007c74;
+  background-color: #BC2A1E;
   border: none;
   color: #fff;
   padding: 10px;
@@ -90,7 +88,13 @@ button{
 .fournisseur{
 	margin-top:1%;
 	display:flex;
+	align-items:center;
 	justify-content:space-between;
+	background-color: rgba(255, 255, 255);
+	border-top-right-radius: 5px;
+  	border-bottom-right-radius: 5px;
+ 	border-bottom-left-radius: 5px;
+  	border-top-left-radius: 5px;
 }
 /* Styles pour le design responsive */
 @media (max-width: 600px) {

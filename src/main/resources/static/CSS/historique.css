@@ -3,6 +3,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 1%;
+  background-color: #39528C;
 }
 
 /* Styles pour les liens */
@@ -26,7 +27,7 @@ header {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* ajoute une ombre au header */
 }
 header a {
-  background-color: #007c74;
+  background-color: #BC2A1E;
   border: none;
   color: #fff;
   padding: 10px;
@@ -38,4 +39,40 @@ header a {
 header h1 {
   margin: 0;
   margin-left: -13%;
+}
+.container{
+	display: flex;
+	justify-content: space-around;
+}
+.contachat{
+	background-color: rgba(255, 255, 255, 0.8);
+	padding: 10px;
+	border-top-right-radius: 5px;
+  	border-bottom-right-radius: 5px;
+ 	border-bottom-left-radius: 5px;
+  	border-top-left-radius: 5px;
+}
+.achat{
+	margin: 10px
+}
+button{
+  background-color: #BC2A1E;
+  border: none;
+  color: #fff;
+  padding: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+.contvente{
+	background-color: rgba(255, 255, 255, 0.8);
+	padding: 10px;
+	border-top-right-radius: 5px;
+  	border-bottom-right-radius: 5px;
+ 	border-bottom-left-radius: 5px;
+  	border-top-left-radius: 5px;
+}
+.vente{
+	margin: 10px;
 }
