@@ -30,6 +30,7 @@ public class PanierController {
 		final ClientDO client = new ClientDAOimpl().findByMail("mail@mail.mail");
 		PanierDO panier = null;
 		List<ProduitDO> listprod = new ArrayList<ProduitDO>();
+		double total = 0;
 		try {
 			panier = client.getPanier();
 			model.addAttribute("panier", panier);
@@ -37,10 +38,12 @@ public class PanierController {
 			products.clear();
 			for (ProduitDO p : listprod) {
 				products.add(p);
+				total += p.getPrix();
 			}
 		} catch (NullPointerException e) {
 		} finally {
 			model.addAttribute("products", products);
+			model.addAttribute("total", total);
 		}
 		return "panier";
 	}
