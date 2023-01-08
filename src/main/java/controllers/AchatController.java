@@ -1,5 +1,6 @@
 package controllers;
 
+import java.sql.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -32,9 +33,12 @@ public class AchatController {
 			while (iterator.hasNext()) {
 				ProduitDO p = iterator.next();
 				iterator.remove();
+				PRODDAO.updatefour(p.getIdprod(), null);
 				PRODDAO.delete(p.getIdprod());
 			}
-			COMMDAO.updateProduit(commande.getIdcomm(), commande.getListeprod());
+			COMMDAO.updateActive(commande.getIdcomm(), false);
+			final Date date = new Date(System.currentTimeMillis());
+			COMMDAO.updateDate(commande.getIdcomm(), date);
 			return "/achat";
 		} else {
 			return "/panier";

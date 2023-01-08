@@ -77,11 +77,4 @@ public class AchatProdController {
 		}
 		return "redirect:achatprod?idfour="+idfour;
 	}
-
-	@PostMapping("/commande")
-	public String showCommande(@RequestParam("commande") String commandeStr, Model model) {
-		List<String> commande = Arrays.asList(commandeStr.split(","));
-		model.addAttribute("commande", commande);
-		return "commande";
-	}
 }

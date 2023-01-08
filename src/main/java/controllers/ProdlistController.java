@@ -50,11 +50,10 @@ public class ProdlistController {
 	public String addToPanier(@RequestParam int id) {
 		final ProduitDO product = PRODDAO.findById(id);
 		final ClientDO client = new ClientDAOimpl().findByMail("mail@mail.mail");
-		final Date date = new Date(System.currentTimeMillis());
 		List<ProduitDO> panierlist = new ArrayList<>();
 		CommandeDO commande = null;
 		if (client.getPanier().getCommande() == null) {
-			commande = COMMDAO.create(date, panierlist);
+			commande = COMMDAO.create(null, panierlist);
 			PanierDO panier = client.getPanier();
 			PANIERDAO.updateCommande(panier.getIdpanier(), commande);
 		} else {

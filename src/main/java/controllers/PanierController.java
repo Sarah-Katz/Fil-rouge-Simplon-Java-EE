@@ -34,7 +34,6 @@ public class PanierController {
 		try {
 			panier = client.getPanier();
 			model.addAttribute("panier", panier);
-
 			listprod = panier.getCommande().getListeprod();
 			products.removeAll(products);
 			for (ProduitDO p : listprod) {
