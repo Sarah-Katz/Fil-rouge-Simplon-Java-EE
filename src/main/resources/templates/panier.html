@@ -34,7 +34,7 @@
 			<button type="submit">Retirer du panier</button>
 		</form>
 	</div>
-	<form action="/clear" method="post">
+	<form action="/clear" method="post" th:unless="${products.isEmpty()}">
 		<button class="clear" type="submit">Vider le panier</button>
 	</form>
 </body>
