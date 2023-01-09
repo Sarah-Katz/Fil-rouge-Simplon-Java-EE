@@ -19,7 +19,7 @@ public class ConvertProduittest {
 		int ref = 1;
 		double prix = 2000;
 		ProduitDAOimpl produitdao = new ProduitDAOimpl();
-		ProduitDO produitdo = produitdao.create(nom,desc,categorie,ref,prix,null);
+		ProduitDO produitdo = produitdao.create(nom,desc,categorie,ref,prix);
 		ConvertProduit convert = new ConvertProduit();
 		ProduitDTO produitdto = convert.prodtodto(produitdo);
 		assertEquals(produitdo.getNom(), produitdto.getNom());

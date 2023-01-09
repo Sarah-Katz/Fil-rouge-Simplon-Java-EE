@@ -21,7 +21,7 @@ class ConvertFournisseurtest {
 		String nom = "jean";
 		FournisseurDAOimpl fournisseurdao = new FournisseurDAOimpl();
 		ProduitDAOimpl produitdao = new ProduitDAOimpl();
-		ProduitDO produit = produitdao.create("jean", "description", "categorie", 1, 3000,null);
+		ProduitDO produit = produitdao.create("jean", "description", "categorie", 1, 3000);
 		List<ProduitDO> produits = new ArrayList<>();
 		produits.add(produit);
 		FournisseurDO fournisseurdo = fournisseurdao.create(nom, produits);
