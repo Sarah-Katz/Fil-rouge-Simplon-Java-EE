@@ -27,11 +27,16 @@ public class CommandeController {
 		products.removeAll(products);
 		AchatDO achat = null;
 		List<AchatDO> achatlist = ACHATDAO.findAll();
+		boolean hasAchat = false;
 		double total = 0;
 		for (AchatDO a : achatlist) {
 			if (a.isActive()) {
 				achat = a;
+				hasAchat = true;
 			}
+		}
+		if (!hasAchat) {
+			ACHATDAO.create(null, products);
 		}
 		model.addAttribute("achat", achat);
 		final List<ProduitDO> listprod = achat.getListeprod();
