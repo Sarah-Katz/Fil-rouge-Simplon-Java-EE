@@ -12,8 +12,8 @@
 <header>
 	<a href="/interne">Retour liste fournisseurs</a><br>
 	<h1>E-shop une fois, e-shop toujours</h1>
-	<form action="/achatinterne" method="get">
-		<button type="submit" th:unless="${products.isEmpty()}">Valider la commande</button>
+	<form action="/achatinterne" method="get" th:unless="${products.isEmpty()}">
+		<button type="submit" >Valider la commande</button>
 	</form>
 </header>
 
